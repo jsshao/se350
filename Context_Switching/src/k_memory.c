@@ -73,7 +73,7 @@ void memory_init(void)
 	}
   
 	/* allocate memory for heap, not implemented yet*/
-  
+  /* TODO: Initialize linked list HERE ... RitoJo */
 }
 
 /**
@@ -92,7 +92,7 @@ U32 *alloc_stack(U32 size_b)
 	gp_stack = (U32 *)((U8 *)sp - size_b);
 	
 	/* 8 bytes alignement adjustment to exception stack frame */
-	if ((U32)gp_stack & 0x04) {
+	if ((U32)gp_stack & 0x04) { 1111 & 0100
 		--gp_stack; 
 	}
 	return sp;
@@ -102,6 +102,7 @@ void *k_request_memory_block(void) {
 #ifdef DEBUG_0 
 	printf("k_request_memory_block: entering...\n");
 #endif /* ! DEBUG_0 */
+	
 	return (void *) NULL;
 }
 
