@@ -16,7 +16,7 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
                /* The first stack starts at the RAM high address */
 	       /* stack grows down. Fully decremental stack */
 
- U32 *mem_list; //initialize dis somewhere??
+ Node *head;
 
 /**
  * @brief: Initialize RAM as follows:
@@ -80,11 +80,9 @@ void memory_init(void)
 	U32 block_size = ???;
 	U32 num_blocks = memory_size/block_size;
 	for (int i=0; i<num_blocks; i++) {
-		struct mem_block block;
-		block.address = gp_stack + i*block_size;
-		//todo: block.next
+		struct Node node;
 
-		push_front(mem_list, block);
+		push_front(node, gp_stack - i*block_size);
 	}
 }
 

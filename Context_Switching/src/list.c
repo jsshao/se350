@@ -1,6 +1,6 @@
 #include "list.h";
 
-void push_back(wat head, idk *block) {
+void push_back(wat head, mem_block *block) {
 	block->next = NULL;
 	void runner = *head;
 	while(runner->next !=NULL) {
@@ -9,25 +9,25 @@ void push_back(wat head, idk *block) {
 	runner->next = block;
 }
 
-void push_front(wat head, idk *block) {
-	block->next = *head;
-	*head = block;
+void push_front(Node *head, void *block) {
+	block->next = head;
+	head = block;
 }
 
-void *pop_back(wat head) {
-	if (*head == NULL) {
+void *pop_back(Node *head) {
+	if (head == NULL) {
 		return NULL;
 	}
 
-	??? *runner, *returnBlock;
+	void *runner, *returnBlock;
 
 	if (head->next == NULL) {
 		runner = *head;
-		*head = NULL;
+		head = NULL;
 		return runner;
 	}
 
-	runner = *head;
+	runner = head;
 	while (runner->next->next != NULL) {
 		runner = runner->next;
 	}
@@ -35,28 +35,28 @@ void *pop_back(wat head) {
 	runner->next = NULL;
 }
 
-void *pop_front(wat head) {
-	??? block;
-	block = *head;
+void *pop_front(Node *head) {
+	void block;
+	block = head;
 
-	if (*block != NULL) {
-		*block = head->next;
+	if (block != NULL) {
+		block = head->next;
 	}
 
 	return block;
 }
 
-void remove(wat head, idk *block) {
-	if (*head == NULL) {
+void remove(Node *head, void *block) {
+	if (head == NULL) {
 		return;
 	}
 
-	??? *current, *previous;
+	void *current, *previous;
 	previous = NULL;
-	for (current = *head; current != NULL; current = current->next) {
+	for (current = head; current != NULL; current = current->next) {
 		if (current = block) {
 			if (previous = NULL) {
-				*head = current->next;
+				head = current->next;
 			} else {
 				previous->next = current->next;
 			}
