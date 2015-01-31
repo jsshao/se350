@@ -1,70 +1,38 @@
-#include "list.h";
+#include "list.h"
+#include <stdlib.h>
 
-void push_back(wat head, mem_block *block) {
-	block->next = NULL;
-	void runner = *head;
-	while(runner->next !=NULL) {
-		runner = runner->next;
+void pushQueue(List q, void *addr) {	
+	Node* newNode = (Node*)malloc(sizeof(Node));
+	newNode->addr = addr;
+	
+	if (q.head == NULL && q.tail == NULL) {
+		q.tail = newNode;
+		q.head = newNode;
+	} else {
+		q.tail->next = newNode;
+		q.tail = newNode;
 	}
-	runner->next = block;
 }
 
-void push_front(Node *head, void *block) {
-	block->next = head;
-	head = block;
-}
-
-void *pop_back(Node *head) {
-	if (head == NULL) {
+void *popQueue(List q) {		
+	Node* tmp = q.head;
+	void* addr = tmp->addr;
+	
+	if(q.head == NULL)
 		return NULL;
+	
+	q.head = q.head->next;
+	
+	if (q.head == NULL) {
+		q.tail = NULL;
 	}
-
-	void *runner, *returnBlock;
-
-	if (head->next == NULL) {
-		runner = *head;
-		head = NULL;
-		return runner;
-	}
-
-	runner = head;
-	while (runner->next->next != NULL) {
-		runner = runner->next;
-	}
-	returnBlock = runner->next;
-	runner->next = NULL;
+	
+	free(tmp);
+	
+	return addr;
 }
 
-void *pop_front(Node *head) {
-	void block;
-	block = head;
-
-	if (block != NULL) {
-		block = head->next;
-	}
-
-	return block;
-}
-
-void remove(Node *head, void *block) {
-	if (head == NULL) {
-		return;
-	}
-
-	void *current, *previous;
-	previous = NULL;
-	for (current = head; current != NULL; current = current->next) {
-		if (current = block) {
-			if (previous = NULL) {
-				head = current->next;
-			} else {
-				previous->next = current->next;
-			}
-			current->next = NULL; ///// how to delete current?
-			return;
-		}
-		previous = current;
-	}
-
-
+void initList(List* list) {	
+	list->head = NULL;
+	list->tail = NULL;
 }

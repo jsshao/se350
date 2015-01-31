@@ -6,7 +6,7 @@
  */
 
 #include "k_memory.h"
-
+#include "list.h"
 #ifdef DEBUG_0
 #include "printf.h"
 #endif /* ! DEBUG_0 */
@@ -16,7 +16,6 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
                /* The first stack starts at the RAM high address */
 	       /* stack grows down. Fully decremental stack */
 
- Node *head;
 
 /**
  * @brief: Initialize RAM as follows:
@@ -29,7 +28,7 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
           |                           |
           |        HEAP               |
           |                           |
-          |---------------------------|
+          |---------------------------|<---- p_end
           |        PCB 2              |
           |---------------------------|
           |        PCB 1              |
@@ -46,14 +45,15 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
 
 */
 
+List heap;
+
 void memory_init(void)
-{
+{	
 	U8 *p_end = (U8 *)&Image$$RW_IRAM1$$ZI$$Limit;
 	int i;
-  
+  initList(&heap);
 	/* 4 bytes padding */
-	p_end += 4;
-
+	p_end += 4;	
 	/* allocate memory for pcb pointers   */
 	gp_pcbs = (PCB **)p_end;
 	p_end += NUM_TEST_PROCS * sizeof(PCB *);
@@ -76,13 +76,14 @@ void memory_init(void)
   
 	/* allocate memory for heap, not implemented yet*/
   /* TODO: Initialize linked list HERE ... RitoJo */
-	U32 memory_size = ???;
-	U32 block_size = ???;
-	U32 num_blocks = memory_size/block_size;
-	for (int i=0; i<num_blocks; i++) {
-		struct Node node;
-
-		push_front(node, gp_stack - i*block_size);
+			
+	for (i=0; i < ((char*)gp_stack - (char*)p_end) / 512; i++) {
+		pushQueue(heap, (void*) (gp_stack - (i+1)*512));
+	}
+	
+	while(heap.head != NULL) {
+		printf(heap.head->addr);
+		popQueue(heap);
 	}
 }
 
@@ -102,7 +103,7 @@ U32 *alloc_stack(U32 size_b)
 	gp_stack = (U32 *)((U8 *)sp - size_b);
 	
 	/* 8 bytes alignement adjustment to exception stack frame */
-	if ((U32)gp_stack & 0x04) { 1111 & 0100
+	if ((U32)gp_stack & 0x04) { //1111 & 0100
 		--gp_stack; 
 	}
 	return sp;

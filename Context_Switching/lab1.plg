@@ -7,3 +7,403 @@ N:\SE350\lab\se350\Context_Switching\context_switching.uvproj
 Project File Date:  01/23/2015
 
 <h2>Output:</h2>
+Build target 'Context Switching SIM'
+compiling main_svc.c...
+compiling k_memory.c...
+src\k_memory.c(78): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(78): error:  #29: expected an expression
+src\k_memory.c(79): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(79): error:  #29: expected an expression
+src\k_memory.c(80): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(81): error:  #29: expected an expression
+src\k_memory.c(83): warning:  #223-D: function "push" declared implicitly
+src\k_memory.c(83): error:  #20: identifier "node" is undefined
+src\k_memory.c(103): error:  #137: expression must be a modifiable lvalue
+src\k_memory.c(104): error:  #65: expected a ";"
+compiling list.c...
+src\list.c(1): warning:  #14-D: extra text after expected end of preprocessing directive
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(11): error:  #65: expected a ";"
+src\list.h(12): error:  #65: expected a ";"
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+compiling usr_proc.c...
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(104): error:  #137: expression must be a modifiable lvalue
+src\k_memory.c(105): error:  #65: expected a ";"
+compiling list.c...
+src\list.c(1): warning:  #14-D: extra text after expected end of preprocessing directive
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(11): error:  #65: expected a ";"
+src\list.h(12): error:  #65: expected a ";"
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(104): error:  #137: expression must be a modifiable lvalue
+src\k_memory.c(105): error:  #65: expected a ";"
+compiling list.c...
+src\list.c(1): warning:  #14-D: extra text after expected end of preprocessing directive
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(11): error:  #65: expected a ";"
+src\list.h(12): error:  #65: expected a ";"
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(104): error:  #137: expression must be a modifiable lvalue
+src\k_memory.c(105): error:  #65: expected a ";"
+compiling list.c...
+src\list.c(1): warning:  #14-D: extra text after expected end of preprocessing directive
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(11): error:  #65: expected a ";"
+src\list.h(12): error:  #65: expected a ";"
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(104): error:  #137: expression must be a modifiable lvalue
+src\k_memory.c(105): error:  #65: expected a ";"
+compiling list.c...
+src\list.c(1): warning:  #14-D: extra text after expected end of preprocessing directive
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(104): error:  #137: expression must be a modifiable lvalue
+src\k_memory.c(105): error:  #65: expected a ";"
+compiling list.c...
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+compiling list.c...
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling list.c...
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling list.c...
+src\list.h(7): error:  #20: identifier "Node" is undefined
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling list.c...
+src\list.h(8): error:  #20: identifier "Node" is undefined
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling list.c...
+src\list.h(8): error:  #20: identifier "Node" is undefined
+src\list.h(1): error:  #37: the #endif for this directive is missing
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling list.c...
+src\list.h(8): error:  #20: identifier "Node" is undefined
+src\list.h(19): warning:  #1-D: last line of file ends without a newline
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling list.c...
+src\list.h(19): warning:  #1-D: last line of file ends without a newline
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling list.c...
+src\list.c(21): error:  #268: declaration may not appear after executable statement in block
+src\list.c(22): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling list.c...
+linking...
+Program Size: Code=3312 RO-data=236 RW-data=24 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Context Switching SIM'
+compiling list.c...
+linking...
+Program Size: Code=3312 RO-data=236 RW-data=24 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(48): error:  #20: identifier "List" is undefined
+src\k_memory.c(48): error:  #20: identifier "getList" is undefined
+src\k_memory.c(48): error:  #59: function call is not allowed in a constant expression
+src\k_memory.c(82): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(82): error:  #29: expected an expression
+src\k_memory.c(83): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(83): error:  #29: expected an expression
+src\k_memory.c(84): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(85): error:  #29: expected an expression
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(48): error:  #20: identifier "List" is undefined
+src\k_memory.c(52): warning:  #223-D: function "getList" declared implicitly
+src\k_memory.c(53): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(54): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(83): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(83): error:  #29: expected an expression
+src\k_memory.c(84): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(84): error:  #29: expected an expression
+src\k_memory.c(85): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(86): error:  #29: expected an expression
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(48): error:  #20: identifier "List" is undefined
+src\k_memory.c(52): warning:  #223-D: function "getList" declared implicitly
+src\k_memory.c(54): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(55): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(84): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(84): error:  #29: expected an expression
+src\k_memory.c(85): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(85): error:  #29: expected an expression
+src\k_memory.c(86): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(87): error:  #29: expected an expression
+src\k_memory.c(88): warning:  #223-D: function "pushQueue" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(48): error:  #20: identifier "List" is undefined
+src\k_memory.c(52): warning:  #223-D: function "getList" declared implicitly
+src\k_memory.c(54): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(55): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(52): warning:  #223-D: function "getList" declared implicitly
+src\k_memory.c(52): error:  #513: a value of type "int" cannot be assigned to an entity of type "List"
+src\k_memory.c(54): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(55): error:  #268: declaration may not appear after executable statement in block
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\list.h(19): warning:  #1295-D: Deprecated declaration getList - give arg types
+src\k_memory.c(54): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(55): error:  #268: declaration may not appear after executable statement in block
+compiling list.c...
+src\list.h(19): warning:  #1295-D: Deprecated declaration getList - give arg types
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(54): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(55): error:  #268: declaration may not appear after executable statement in block
+compiling list.c...
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+compiling list.c...
+linking...
+Program Size: Code=3968 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+linking...
+Program Size: Code=3968 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(81): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(81): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+src\k_memory.c(82): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(83): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(84): error:  #29: expected an expression
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(84): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(84): error:  #101: "memory_size" has already been declared in the current scope
+src\k_memory.c(84): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+src\k_memory.c(85): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(85): error:  #101: "block_size" has already been declared in the current scope
+src\k_memory.c(86): error:  #268: declaration may not appear after executable statement in block
+src\k_memory.c(86): error:  #101: "num_blocks" has already been declared in the current scope
+src\k_memory.c(87): error:  #29: expected an expression
+src\k_memory.c(52): warning:  #177-D: variable "memory_size" was declared but never referenced
+src\k_memory.c(53): warning:  #177-D: variable "block_size" was declared but never referenced
+src\k_memory.c(54): warning:  #177-D: variable "num_blocks" was declared but never referenced
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(84): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+src\k_memory.c(87): error:  #29: expected an expression
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(84): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+src\k_memory.c(85): warning:  #69-D: integer conversion resulted in truncation
+src\k_memory.c(87): error:  #29: expected an expression
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(81): error:  #20: identifier "memory_size" is undefined
+src\k_memory.c(81): error:  #29: expected an expression
+src\k_memory.c(82): error:  #20: identifier "block_size" is undefined
+src\k_memory.c(83): error:  #20: identifier "num_blocks" is undefined
+src\k_memory.c(84): error:  #29: expected an expression
+src\k_memory.c(84): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+src\k_memory.c(85): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(81): error:  #20: identifier "num_blocks" is undefined
+src\k_memory.c(81): error:  #20: identifier "memory_size" is undefined
+src\k_memory.c(81): error:  #20: identifier "block_size" is undefined
+src\k_memory.c(82): error:  #29: expected an expression
+src\k_memory.c(82): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+src\k_memory.c(83): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(80): error:  #29: expected an expression
+src\k_memory.c(80): error:  #42: operand types are incompatible ("U32 *" and "U8 *")
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(80): error:  #29: expected an expression
+src\k_memory.c(80): error:  #852: expression must be a pointer to a complete object type
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(80): error:  #29: expected an expression
+src\k_memory.c(80): error:  #852: expression must be a pointer to a complete object type
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(80): error:  #29: expected an expression
+src\k_memory.c(80): error:  #852: expression must be a pointer to a complete object type
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(80): error:  #29: expected an expression
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(80): error:  #852: expression must be a pointer to a complete object type
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+linking...
+Program Size: Code=4012 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+linking...
+Program Size: Code=4012 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(85): warning:  #223-D: function "prinf" declared implicitly
+linking...
+lab1.axf: Error: L6218E: Undefined symbol prinf (referred from k_memory.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+linking...
+Program Size: Code=4040 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_rtx_init.c...
+compiling k_process.c...
+linking...
+Program Size: Code=4036 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100010CBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_rtx_init.c...
+linking...
+Program Size: Code=4040 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100010CFH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=4040 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100010CFH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+assembling startup_LPC17xx.s...
+linking...
+Program Size: Code=4036 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=4036 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Erase skipped!
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Erase skipped!
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Erase skipped!
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Erase skipped!
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=4036 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Erase skipped!
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Erase skipped!
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Erase skipped!
+Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100010CFH
+Erase skipped!
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=4036 RO-data=236 RW-data=32 ZI-data=672  
+"lab1.axf" - 0 Error(s), 0 Warning(s).

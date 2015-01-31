@@ -71,3 +71,75 @@ void proc2(void)
 		i++;
 	}
 }
+
+void proc3(void)
+{
+	int i = 0;
+	int ret_val = 20;
+	while ( 1) {
+		if ( i != 0 && i%5 == 0 ) {
+			uart0_put_string("\n\r");
+			ret_val = release_processor();
+#ifdef DEBUG_0
+			printf("proc3: ret_val=%d\n", ret_val);
+#endif /* DEBUG_0 */
+		}
+		uart0_put_char('0' + i%10);
+		i++;
+	}
+}
+
+
+void proc4(void)
+{
+	int i = 0;
+	int ret_val = 20;
+	while ( 1) {
+		if ( i != 0 && i%5 == 0 ) {
+			uart0_put_string("\n\r");
+			ret_val = release_processor();
+#ifdef DEBUG_0
+			printf("proc4: ret_val=%d\n", ret_val);
+#endif /* DEBUG_0 */
+		}
+		uart0_put_char('0' + i%10);
+		i++;
+	}
+}
+
+
+void proc5(void)
+{
+	int i = 0;
+	int ret_val = 20;
+	while ( 1) {
+		if ( i != 0 && i%5 == 0 ) {
+			uart0_put_string("\n\r");
+			ret_val = release_processor();
+#ifdef DEBUG_0
+			printf("proc5: ret_val=%d\n", ret_val);
+#endif /* DEBUG_0 */
+		}
+		uart0_put_char('0' + i%10);
+		i++;
+	}
+}
+
+
+void proc6(void)
+{
+	int i = 0;
+	int ret_val = 20;
+	while ( 1) {
+		if ( i != 0 && i%5 == 0 ) {
+			uart0_put_string("\n\r");
+			ret_val = release_processor();
+#ifdef DEBUG_0
+			printf("proc6: ret_val=%d\n", ret_val);
+#endif /* DEBUG_0 */
+		}
+		uart0_put_char('0' + i%10);
+		i++;
+	}
+}
+
