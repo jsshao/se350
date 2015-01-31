@@ -7,6 +7,7 @@
 
 #include "k_memory.h"
 #include "list.h"
+
 #ifdef DEBUG_0
 #include "printf.h"
 #endif /* ! DEBUG_0 */
@@ -15,7 +16,6 @@
 U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
                /* The first stack starts at the RAM high address */
 	       /* stack grows down. Fully decremental stack */
-
 
 /**
  * @brief: Initialize RAM as follows:
@@ -28,7 +28,7 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
           |                           |
           |        HEAP               |
           |                           |
-          |---------------------------|<---- p_end
+          |---------------------------|
           |        PCB 2              |
           |---------------------------|
           |        PCB 1              |
@@ -45,15 +45,19 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
 
 */
 
-List heap;
+void* memory[30] = {0}; // addresses of available memory
+int flag[30] = {0}; // 0 is ununsed memory block
 
 void memory_init(void)
-{	
+{
+	void* allocated;
+	void* allocated2;
 	U8 *p_end = (U8 *)&Image$$RW_IRAM1$$ZI$$Limit;
 	int i;
-  initList(&heap);
+  
 	/* 4 bytes padding */
-	p_end += 4;	
+	p_end += 4;
+
 	/* allocate memory for pcb pointers   */
 	gp_pcbs = (PCB **)p_end;
 	p_end += NUM_TEST_PROCS * sizeof(PCB *);
@@ -62,6 +66,7 @@ void memory_init(void)
 		gp_pcbs[i] = (PCB *)p_end;
 		p_end += sizeof(PCB); 
 	}
+	
 #ifdef DEBUG_0  
 	printf("gp_pcbs[0] = 0x%x \n", gp_pcbs[0]);
 	printf("gp_pcbs[1] = 0x%x \n", gp_pcbs[1]);
@@ -73,17 +78,13 @@ void memory_init(void)
 	if ((U32)gp_stack & 0x04) { /* 8 bytes alignment */
 		--gp_stack; 
 	}
-  
-	/* allocate memory for heap, not implemented yet*/
-  /* TODO: Initialize linked list HERE ... RitoJo */
-			
-	for (i=0; i < ((char*)gp_stack - (char*)p_end) / 512; i++) {
-		pushQueue(heap, (void*) (gp_stack - (i+1)*512));
-	}
-	
-	while(heap.head != NULL) {
-		printf(heap.head->addr);
-		popQueue(heap);
+
+	/* Fixed sized memory pool (max of 30 blocks of 512 bytes each) */
+	for (i = 0; i < 30; i++) {
+		if ((char *)p_end + i*512 + 512 > (char*)gp_stack) {
+			break;
+		}
+		memory[i] = (void *) (p_end + i*512);
 	}
 }
 
@@ -110,16 +111,35 @@ U32 *alloc_stack(U32 size_b)
 }
 
 void *k_request_memory_block(void) {
+	int i;
 #ifdef DEBUG_0 
 	printf("k_request_memory_block: entering...\n");
 #endif /* ! DEBUG_0 */
-	
-	return (void *) NULL;
+	for (i = 0; i < 30; i++) {	
+		// available
+		if (flag[i] == 0) {
+			flag[i] = 1;
+			return memory[i];
+		}
+	}
+	/* BLOCKED RELEASE PROCESSOR */
+	return (void*)NULL;
 }
 
 int k_release_memory_block(void *p_mem_blk) {
+	int index;
 #ifdef DEBUG_0 
 	printf("k_release_memory_block: releasing block @ 0x%x\n", p_mem_blk);
 #endif /* ! DEBUG_0 */
+	index = ((char*)p_mem_blk - (char*)memory[0]) / 512;
+	if (index >= 30 || index < 0) {
+		return RTX_ERR;
+	}
+	
+	if (flag[index] == 0) {
+		return RTX_ERR;
+	} else {
+		flag[index] = 0;
+	}
 	return RTX_OK;
 }

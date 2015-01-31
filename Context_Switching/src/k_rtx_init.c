@@ -14,7 +14,8 @@ void k_rtx_init(void)
 {
         __disable_irq();
         uart0_init();   
-        memory_init();
+				uart0_put_string("Hello World!\n\r");				
+				memory_init();
         process_init();
         __enable_irq();
 	

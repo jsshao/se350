@@ -34,6 +34,60 @@ extern PROC_INIT g_test_procs[NUM_TEST_PROCS];
  * @biref: initialize all processes in the system
  * NOTE: We assume there are only two user processes in the system in this example.
  */
+ 
+int processQueue[4][NUM_TEST_PROCS] = {0}; 
+
+void addQ(int pid, int priority) {
+	int i = 0;
+	int j = 0;
+	printf("I AM ADDING %d with priority%d\n", pid, priority);
+
+	
+	for (i = 0; i < NUM_TEST_PROCS; i++) {		
+		if (processQueue[priority][i] == 0) {
+			processQueue[priority][i] = pid;
+			break;
+		}
+	}
+		
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < NUM_TEST_PROCS; j++) {		
+			printf("%d", processQueue[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+int popQ() {
+		int i = 0;
+	// priority
+	for (i = 0; i < 4; i++) {
+		int pid;
+		int k;
+		if (processQueue[i][0] == 0) {
+			continue;
+		}
+		// iterate through and shift
+		pid = processQueue[i][0];
+		for (k = 1; k < NUM_TEST_PROCS; k++) {
+			processQueue[i][k-1] = processQueue[i][k];
+		}
+		
+		// Set last priority to 0 just in case :^)
+		processQueue[i][NUM_TEST_PROCS-1] = 0;
+		printf("I AM REMOVING %d\n", pid);
+		for (i = 0; i < 4; i++) {
+			for (k = 0; k < NUM_TEST_PROCS; k++) {		
+				printf("%d", processQueue[i][k]);
+			}
+			printf("\n");
+		}
+		return pid;	// highest priority proc
+	}
+	printf ("WARNING NOTHING LEFT ON Q");
+	return -1;
+}
+
 void process_init() 
 {
 	int i;
@@ -45,12 +99,15 @@ void process_init()
 		g_proc_table[i].m_pid = g_test_procs[i].m_pid;
 		g_proc_table[i].m_stack_size = g_test_procs[i].m_stack_size;
 		g_proc_table[i].mpf_start_pc = g_test_procs[i].mpf_start_pc;
+		g_proc_table[i].m_priority = g_test_procs[i].m_priority;
+		addQ(g_test_procs[i].m_pid, g_test_procs[i].m_priority);
 	}
   
 	/* initilize exception stack frame (i.e. initial context) for each process */
 	for ( i = 0; i < NUM_TEST_PROCS; i++ ) {
 		int j;
 		(gp_pcbs[i])->m_pid = (g_proc_table[i]).m_pid;
+		(gp_pcbs[i])->m_priority = (g_proc_table[i]).m_priority;
 		(gp_pcbs[i])->m_state = NEW;
 		
 		sp = alloc_stack((g_proc_table[i]).m_stack_size);
@@ -72,18 +129,10 @@ void process_init()
 
 PCB *scheduler(void)
 {
-	if (gp_current_process == NULL) {
-		gp_current_process = gp_pcbs[0]; 
-		return gp_pcbs[0];
-	}
-
-	if ( gp_current_process == gp_pcbs[0] ) {
-		return gp_pcbs[1];
-	} else if ( gp_current_process == gp_pcbs[1] ) {
-		return gp_pcbs[0];
-	} else {
+	int pid = popQ();	
+	if(pid == 0)
 		return NULL;
-	}
+	return gp_pcbs[pid-1];
 }
 
 /*@brief: switch out old pcb (p_pcb_old), run the new pcb (gp_current_process)
@@ -135,15 +184,22 @@ int k_release_processor(void)
 	PCB *p_pcb_old = NULL;
 	
 	p_pcb_old = gp_current_process;
+	printf("CHECK %d", p_pcb_old->m_pid);
 	gp_current_process = scheduler();
 	
-	if ( gp_current_process == NULL  ) {
+	if (gp_current_process == NULL  ) {
+		printf("Joanne big ");
 		gp_current_process = p_pcb_old; // revert back to the old process
 		return RTX_ERR;
 	}
-        if ( p_pcb_old == NULL ) {
+	
+	if (p_pcb_old)
+		addQ(p_pcb_old->m_pid, p_pcb_old->m_priority);
+
+  if ( p_pcb_old == NULL ) {
 		p_pcb_old = gp_current_process;
 	}
+	
 	process_switch(p_pcb_old);
 	return RTX_OK;
 }

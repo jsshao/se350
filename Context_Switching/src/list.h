@@ -1,5 +1,5 @@
 #ifndef LIST_H_
-#define LIST_H
+#define LIST_H_
 
 typedef struct Node Node;
 
@@ -13,9 +13,8 @@ typedef struct {
 	Node *tail;
 } List;
 
-void pushQueue(List q, void *block);
-void *popQueue(List q);
+void pushQueue(List *q, void *block);
+void *popQueue(List *q);
 
-void initList(List*);
 
 #endif

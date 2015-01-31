@@ -89,7 +89,6 @@ void proc3(void)
 	}
 }
 
-
 void proc4(void)
 {
 	int i = 0;
@@ -106,7 +105,6 @@ void proc4(void)
 		i++;
 	}
 }
-
 
 void proc5(void)
 {
@@ -125,7 +123,6 @@ void proc5(void)
 	}
 }
 
-
 void proc6(void)
 {
 	int i = 0;
@@ -142,4 +139,3 @@ void proc6(void)
 		i++;
 	}
 }
-
