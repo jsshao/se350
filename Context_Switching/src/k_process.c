@@ -37,23 +37,24 @@ extern PROC_INIT g_test_procs[NUM_TEST_PROCS];
  */
  
  
-int processQueue[4][NUM_TEST_PROCS] = {0}; 
+int processQueue[5][NUM_TEST_PROCS] = {0}; 
+
 
 ///////////////////////////
-int blockedQueue[4][NUM_TEST_PROCS] = {0};
+int blockedQueue[5][NUM_TEST_PROCS] = {0};
 
 void addBlockedQ(int pid, int priority) {
 	int i=0;
 	int j = 0;
 	for (i = 0; i < NUM_TEST_PROCS; i++) {		
-		if (blockedQueue[priority][i] == 0) {
+		if (blockedQueue[priority][i] == -1) {
 			blockedQueue[priority][i] = pid;
 			break;
 		}
 	}
 	
 	printf("adding to blocked q %d", pid);
-	for (i = 0; i < 4; i++) {
+	for (i = 0; i < 5; i++) {
 		for (j = 0; j < NUM_TEST_PROCS; j++) {		
 			printf("%d", blockedQueue[i][j]);
 		}
@@ -66,9 +67,9 @@ int popBlockedQ() {
 	int pid = -1;
 	int k  =0;
 	// priority
-	for (i = 0; i < 4; i++) {		
+	for (i = 0; i < 5; i++) {		
 		int k;
-		if (blockedQueue[i][0] == 0) {
+		if (blockedQueue[i][0] == -1) {
 			continue;
 		}
 		// iterate through and shift
@@ -77,12 +78,12 @@ int popBlockedQ() {
 			blockedQueue[i][k-1] = blockedQueue[i][k];
 		}
 		
-		blockedQueue[i][NUM_TEST_PROCS-1] = 0;		
+		blockedQueue[i][NUM_TEST_PROCS-1] = -1;	
 		break;
 	}
 	
 	printf("removing from blocked q %d", pid);
-	for (i = 0; i < 4; i++) {
+	for (i = 0; i < 5; i++) {
 		for (k = 0; k < NUM_TEST_PROCS; k++) {		
 			printf("  %d", blockedQueue[i][k]);
 		}
@@ -98,7 +99,7 @@ void printQ() {
 	int i = 0;
 	int k = 0;		
 		
-	for (i = 0; i < 4; i++) {
+	for (i = 0; i < 5; i++) {
 		for (k = 0; k < NUM_TEST_PROCS; k++) {		
 			printf("%d", processQueue[i][k]);
 		}
@@ -112,7 +113,7 @@ void addQ(int pid, int priority) {
 	//printf("I AM ADDING %d with priority%d\n", pid, priority);
 	
 	for (i = 0; i < NUM_TEST_PROCS; i++) {		
-		if (processQueue[priority][i] == 0) {
+		if (processQueue[priority][i] == -1) {
 			processQueue[priority][i] = pid;
 			break;
 		}
@@ -123,10 +124,10 @@ void addQ(int pid, int priority) {
 int popQ() {
 	int i = 0;
 	// priority
-	for (i = 0; i < 4; i++) {
+	for (i = 0; i < 5; i++) {
 		int pid;
 		int k;
-		if (processQueue[i][0] == 0) {
+		if (processQueue[i][0] == -1) {
 			continue;
 		}
 		// iterate through and shift
@@ -135,11 +136,11 @@ int popQ() {
 			processQueue[i][k-1] = processQueue[i][k];
 		}
 		
-		// Set last priority to 0 just in case :^)
-		processQueue[i][NUM_TEST_PROCS-1] = 0;
+		// Set last pid to -1 
+		processQueue[i][NUM_TEST_PROCS-1] = -1;
 		//printf("I AM REMOVING %d\n", pid);
 		/*
-		for (i = 0; i < 4; i++) {
+		for (i = 0; i < 5; i++) {
 			for (k = 0; k < NUM_TEST_PROCS; k++) {		
 				printf("%d", processQueue[i][k]);
 			}
@@ -154,9 +155,17 @@ int popQ() {
 void process_init() 
 {
 	int i;
+	int j;
 	U32 *sp;
   
-        /* fill out the initialization table */
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < NUM_TEST_PROCS; j++) {
+			processQueue[i][j] = -1;
+			blockedQueue[i][j] = -1;
+		}
+	}
+	
+  /* fill out the initialization table */
 	set_test_procs();
 	for ( i = 0; i < NUM_TEST_PROCS; i++ ) {
 		g_proc_table[i].m_pid = g_test_procs[i].m_pid;
@@ -193,9 +202,9 @@ void process_init()
 PCB *scheduler(void)
 {
 	int pid = popQ();	
-	if(pid == 0)
+	if(pid == -1)
 		return NULL;
-	return gp_pcbs[pid-1];
+	return gp_pcbs[pid];
 }
 
 /*@brief: switch out old pcb (p_pcb_old), run the new pcb (gp_current_process)

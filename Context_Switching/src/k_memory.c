@@ -163,8 +163,8 @@ int k_release_memory_block(void *p_mem_blk) {
 	
 	pid = popBlockedQ();
 	if (pid != -1) {
-		gp_pcbs[pid-1]->m_state = RDY;
-		addQ(pid, gp_pcbs[pid-1]->m_priority);
+		gp_pcbs[pid]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid]->m_priority);
 	}
 	
 	return RTX_OK;

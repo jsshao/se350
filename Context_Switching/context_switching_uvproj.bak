@@ -446,6 +446,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\k_process.c</FilePath>
             </File>
+            <File>
+              <FileName>list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\list.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

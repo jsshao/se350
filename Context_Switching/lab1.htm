@@ -1,13 +1,13 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html><head>
-<title>Static Call Graph - [N:\se350\se350\Context_Switching\lab1.axf]</title></head>
+<title>Static Call Graph - [N:\SE350\lab\se350\Context_Switching\lab1.axf]</title></head>
 <body><HR>
-<H1>Static Call Graph for image N:\se350\se350\Context_Switching\lab1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Sun Feb 01 13:40:16 2015
+<H1>Static Call Graph for image N:\SE350\lab\se350\Context_Switching\lab1.axf</H1><HR>
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Sun Feb 01 16:56:26 2015
 <BR><P>
-<H3>Maximum Stack Usage =        168 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        160 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-proc1 &rArr; k_request_memory_block &rArr; k_release_processor &rArr; scheduler &rArr; popQ &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
+k_rtx_init &rArr; k_release_processor &rArr; scheduler &rArr; popQ &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 <P>
 <H3>
 Functions with no stack information
@@ -80,9 +80,9 @@ Function Pointers
  <LI><a href="#[3a]">__main</a> from __main.o(!!!main) referenced from startup_lpc17xx.o(.text)
  <LI><a href="#[39]">k_release_processor</a> from k_process.o(.text) referenced from usr_proc.o(.text)
  <LI><a href="#[38]">k_rtx_init</a> from k_rtx_init.o(.text) referenced from main_svc.o(.text)
- <LI><a href="#[67]">proc1</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
- <LI><a href="#[66]">proc2</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
- <LI><a href="#[65]">proc3</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
+ <LI><a href="#[67]">null_proccess</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
+ <LI><a href="#[66]">proc1</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
+ <LI><a href="#[65]">proc2</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
  <LI><a href="#[37]">putc</a> from uart_polling.o(.text) referenced from main_svc.o(.text)
  <LI><a href="#[36]">putcp</a> from printf.o(.text) referenced from printf.o(.text)
 </UL>
@@ -412,8 +412,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc6
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc5
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc4
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
 <LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putc
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_put_string
 </UL>
@@ -426,8 +426,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc6
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc5
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc4
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_rtx_init
 <LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putc
 </UL>
@@ -464,9 +464,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc6
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc5
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc4
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc3
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;null_proccess
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_switch
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;popQ
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printQ
@@ -515,32 +515,26 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_init
 </UL>
 
-<P><STRONG><a name="[59]"></a>k_request_memory_block</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, k_memory.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = k_request_memory_block &rArr; k_release_processor &rArr; scheduler &rArr; popQ &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
-</UL>
-<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printQ
+<P><STRONG><a name="[59]"></a>k_request_memory_block</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, k_memory.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printQ
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addBlockedQ
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_release_processor
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
-</UL>
 
-<P><STRONG><a name="[5c]"></a>k_release_memory_block</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, k_memory.o(.text), UNUSED)
+<P><STRONG><a name="[5c]"></a>k_release_memory_block</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, k_memory.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;popBlockedQ
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addQ
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 
-<P><STRONG><a name="[5b]"></a>addBlockedQ</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, k_process.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = addBlockedQ &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
-</UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
+<P><STRONG><a name="[5b]"></a>addBlockedQ</STRONG> (Thumb, 114 bytes, Stack size 24 bytes, k_process.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_request_memory_block
 </UL>
 
-<P><STRONG><a name="[5d]"></a>popBlockedQ</STRONG> (Thumb, 158 bytes, Stack size 16 bytes, k_process.o(.text), UNUSED)
+<P><STRONG><a name="[5d]"></a>popBlockedQ</STRONG> (Thumb, 162 bytes, Stack size 16 bytes, k_process.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_release_memory_block
@@ -555,7 +549,7 @@ Global Symbols
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_release_processor
 </UL>
 
-<P><STRONG><a name="[5e]"></a>addQ</STRONG> (Thumb, 52 bytes, Stack size 12 bytes, k_process.o(.text))
+<P><STRONG><a name="[5e]"></a>addQ</STRONG> (Thumb, 54 bytes, Stack size 12 bytes, k_process.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = addQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_release_memory_block
@@ -563,7 +557,7 @@ Global Symbols
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_release_processor
 </UL>
 
-<P><STRONG><a name="[5f]"></a>popQ</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, k_process.o(.text))
+<P><STRONG><a name="[5f]"></a>popQ</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, k_process.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = popQ &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
@@ -571,8 +565,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduler
 </UL>
 
-<P><STRONG><a name="[58]"></a>process_init</STRONG> (Thumb, 226 bytes, Stack size 16 bytes, k_process.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = process_init &rArr; addQ
+<P><STRONG><a name="[58]"></a>process_init</STRONG> (Thumb, 282 bytes, Stack size 24 bytes, k_process.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = process_init &rArr; addQ
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_test_procs
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addQ
@@ -581,7 +575,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_rtx_init
 </UL>
 
-<P><STRONG><a name="[62]"></a>scheduler</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, k_process.o(.text))
+<P><STRONG><a name="[62]"></a>scheduler</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, k_process.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = scheduler &rArr; popQ &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;popQ
@@ -598,7 +592,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_release_processor
 </UL>
 
-<P><STRONG><a name="[39]"></a>k_release_processor</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, k_process.o(.text))
+<P><STRONG><a name="[39]"></a>k_release_processor</STRONG> (Thumb, 274 bytes, Stack size 8 bytes, k_process.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = k_release_processor &rArr; scheduler &rArr; popQ &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_switch
@@ -612,14 +606,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[65]"></a>proc3</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, usr_proc.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = proc3 &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
-</UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
-</UL>
-<P><STRONG><a name="[66]"></a>proc2</STRONG> (Thumb, 76 bytes, Stack size 0 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[65]"></a>proc2</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = proc2 &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
@@ -628,19 +615,27 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[67]"></a>proc1</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, usr_proc.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = proc1 &rArr; k_request_memory_block &rArr; k_release_processor &rArr; scheduler &rArr; popQ &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
+<P><STRONG><a name="[66]"></a>proc1</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, usr_proc.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = proc1 &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
-<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_request_memory_block
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
+<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_put_string
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_put_char
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[60]"></a>set_test_procs</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[67]"></a>null_proccess</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, usr_proc.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = null_proccess &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
+</UL>
+<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
+</UL>
+<P><STRONG><a name="[60]"></a>set_test_procs</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, usr_proc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_init
 </UL>
+
+<P><STRONG><a name="[90]"></a>proc3</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, usr_proc.o(.text), UNUSED)
 
 <P><STRONG><a name="[68]"></a>proc4</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, usr_proc.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
@@ -660,25 +655,25 @@ Global Symbols
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_put_char
 </UL>
 
-<P><STRONG><a name="[90]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[91]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[1]"></a>__rt_heap_escrow</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[0]"></a>__rt_heap_expand</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[91]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[92]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[6b]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[92]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[93]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[93]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[94]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[94]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[95]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[95]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[96]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[40]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
