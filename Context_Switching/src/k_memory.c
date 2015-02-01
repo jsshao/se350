@@ -48,10 +48,11 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
 void* memory[30] = {0}; // addresses of available memory
 int flag[30] = {0}; // 0 is ununsed memory block
 
+extern PCB *gp_current_process;
+int NUM_MEM_BLOCKS = 30;
+
 void memory_init(void)
 {
-	void* allocated;
-	void* allocated2;
 	U8 *p_end = (U8 *)&Image$$RW_IRAM1$$ZI$$Limit;
 	int i;
   
@@ -82,8 +83,10 @@ void memory_init(void)
 	/* Fixed sized memory pool (max of 30 blocks of 512 bytes each) */
 	for (i = 0; i < 30; i++) {
 		if ((char *)p_end + i*512 + 512 > (char*)gp_stack) {
+			NUM_MEM_BLOCKS = i+1;
 			break;
 		}
+		flag[i] = 0;
 		memory[i] = (void *) (p_end + i*512);
 	}
 }
@@ -112,27 +115,43 @@ U32 *alloc_stack(U32 size_b)
 
 void *k_request_memory_block(void) {
 	int i;
+	int available = 0;
 #ifdef DEBUG_0 
 	printf("k_request_memory_block: entering...\n");
 #endif /* ! DEBUG_0 */
-	for (i = 0; i < 30; i++) {	
-		// available
-		if (flag[i] == 0) {
-			flag[i] = 1;
-			return memory[i];
+	
+	while (!available) {
+		//check for if there is available memory
+		for (i = 0; i < NUM_MEM_BLOCKS; i++) {	
+			// available
+			if (flag[i] == 0) {
+				available = 1;
+				break;
+			}
 		}
+		
+		//if there is no memory,
+		if (!available) {
+			printQ();
+			gp_current_process->m_state = BLOCKED;
+			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);
+			printf("releasing processor due to blocked on memory");
+			k_release_processor();		
+		}		
 	}
-	/* BLOCKED RELEASE PROCESSOR */
-	return (void*)NULL;
+	
+	flag[i] = 1;
+	return memory[i];	
 }
 
 int k_release_memory_block(void *p_mem_blk) {
+	int pid;
 	int index;
 #ifdef DEBUG_0 
 	printf("k_release_memory_block: releasing block @ 0x%x\n", p_mem_blk);
 #endif /* ! DEBUG_0 */
 	index = ((char*)p_mem_blk - (char*)memory[0]) / 512;
-	if (index >= 30 || index < 0) {
+	if (index >= NUM_MEM_BLOCKS || index < 0) {
 		return RTX_ERR;
 	}
 	
@@ -141,5 +160,12 @@ int k_release_memory_block(void *p_mem_blk) {
 	} else {
 		flag[index] = 0;
 	}
+	
+	pid = popBlockedQ();
+	if (pid != -1) {
+		gp_pcbs[pid-1]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid-1]->m_priority);
+	}
+	
 	return RTX_OK;
 }

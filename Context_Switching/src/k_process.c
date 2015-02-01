@@ -30,18 +30,86 @@ PCB *gp_current_process = NULL; /* always point to the current RUN process */
 PROC_INIT g_proc_table[NUM_TEST_PROCS];
 extern PROC_INIT g_test_procs[NUM_TEST_PROCS];
 
+
 /**
  * @biref: initialize all processes in the system
  * NOTE: We assume there are only two user processes in the system in this example.
  */
  
+ 
 int processQueue[4][NUM_TEST_PROCS] = {0}; 
+
+///////////////////////////
+int blockedQueue[4][NUM_TEST_PROCS] = {0};
+
+void addBlockedQ(int pid, int priority) {
+	int i=0;
+	int j = 0;
+	for (i = 0; i < NUM_TEST_PROCS; i++) {		
+		if (blockedQueue[priority][i] == 0) {
+			blockedQueue[priority][i] = pid;
+			break;
+		}
+	}
+	
+	printf("adding to blocked q %d", pid);
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < NUM_TEST_PROCS; j++) {		
+			printf("%d", blockedQueue[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+int popBlockedQ() {
+	int i = 0;
+	int pid = -1;
+	int k  =0;
+	// priority
+	for (i = 0; i < 4; i++) {		
+		int k;
+		if (blockedQueue[i][0] == 0) {
+			continue;
+		}
+		// iterate through and shift
+		pid = blockedQueue[i][0];
+		for (k = 1; k < NUM_TEST_PROCS; k++) {
+			blockedQueue[i][k-1] = blockedQueue[i][k];
+		}
+		
+		blockedQueue[i][NUM_TEST_PROCS-1] = 0;		
+		break;
+	}
+	
+	printf("removing from blocked q %d", pid);
+	for (i = 0; i < 4; i++) {
+		for (k = 0; k < NUM_TEST_PROCS; k++) {		
+			printf("  %d", blockedQueue[i][k]);
+		}
+		printf("\n");
+	}
+		
+	 return pid;	 
+}
+//////////////////////////
+
+
+void printQ() {
+	int i = 0;
+	int k = 0;		
+		
+	for (i = 0; i < 4; i++) {
+		for (k = 0; k < NUM_TEST_PROCS; k++) {		
+			printf("%d", processQueue[i][k]);
+		}
+		printf("\n");
+	}
+}
 
 void addQ(int pid, int priority) {
 	int i = 0;
 	int j = 0;
-	printf("I AM ADDING %d with priority%d\n", pid, priority);
-
+	//printf("I AM ADDING %d with priority%d\n", pid, priority);
 	
 	for (i = 0; i < NUM_TEST_PROCS; i++) {		
 		if (processQueue[priority][i] == 0) {
@@ -49,17 +117,11 @@ void addQ(int pid, int priority) {
 			break;
 		}
 	}
-		
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < NUM_TEST_PROCS; j++) {		
-			printf("%d", processQueue[i][j]);
-		}
-		printf("\n");
-	}
+			
 }
 
 int popQ() {
-		int i = 0;
+	int i = 0;
 	// priority
 	for (i = 0; i < 4; i++) {
 		int pid;
@@ -75,13 +137,14 @@ int popQ() {
 		
 		// Set last priority to 0 just in case :^)
 		processQueue[i][NUM_TEST_PROCS-1] = 0;
-		printf("I AM REMOVING %d\n", pid);
+		//printf("I AM REMOVING %d\n", pid);
+		/*
 		for (i = 0; i < 4; i++) {
 			for (k = 0; k < NUM_TEST_PROCS; k++) {		
 				printf("%d", processQueue[i][k]);
 			}
 			printf("\n");
-		}
+		}*/
 		return pid;	// highest priority proc
 	}
 	printf ("WARNING NOTHING LEFT ON Q");
@@ -148,8 +211,9 @@ int process_switch(PCB *p_pcb_old)
 	PROC_STATE_E state;
 	
 	state = gp_current_process->m_state;
-
+	
 	if (state == NEW) {
+		printf("NEW");
 		if (gp_current_process != p_pcb_old && p_pcb_old->m_state != NEW) {
 			p_pcb_old->m_state = RDY;
 			p_pcb_old->mp_sp = (U32 *) __get_MSP();
@@ -163,15 +227,18 @@ int process_switch(PCB *p_pcb_old)
 
 	if (gp_current_process != p_pcb_old) {
 		if (state == RDY){ 		
+			//printf("READY");
 			p_pcb_old->m_state = RDY; 
 			p_pcb_old->mp_sp = (U32 *) __get_MSP(); // save the old process's sp
 			gp_current_process->m_state = RUN;
 			__set_MSP((U32) gp_current_process->mp_sp); //switch to the new proc's stack    
 		} else {
+			printf("NOT READY");
 			gp_current_process = p_pcb_old; // revert back to the old proc on error
 			return RTX_ERR;
 		} 
 	}
+	printf("hi");
 	return RTX_OK;
 }
 /**
@@ -180,21 +247,55 @@ int process_switch(PCB *p_pcb_old)
  * POST: gp_current_process gets updated to next to run process
  */
 int k_release_processor(void)
-{
-	PCB *p_pcb_old = NULL;
+{	
+	PCB *p_pcb_old = gp_current_process;
+	printf("release_processor");
+
+	//printf("CHECK %d", p_pcb_old->m_pid);
 	
-	p_pcb_old = gp_current_process;
-	printf("CHECK %d", p_pcb_old->m_pid);
+	if (gp_current_process != NULL  && gp_current_process->m_state != BLOCKED) {
+		addQ(gp_current_process->m_pid, gp_current_process->m_priority);
+	}
 	gp_current_process = scheduler();
-	
+
 	if (gp_current_process == NULL  ) {
-		printf("Joanne big ");
-		gp_current_process = p_pcb_old; // revert back to the old process
+		printf("what the actual fuck");
 		return RTX_ERR;
 	}
 	
-	if (p_pcb_old)
-		addQ(p_pcb_old->m_pid, p_pcb_old->m_priority);
+	if ( p_pcb_old == NULL ) {
+		p_pcb_old = gp_current_process;
+	}
+	printQ();
+	process_switch(p_pcb_old);
+	
+	return RTX_OK;
+}
+
+/*
+int k_release_processor(void)
+{	
+	PCB *p_pcb_old = NULL;
+	printf("release_processor");
+	
+	p_pcb_old = gp_current_process;
+	//printf("CHECK %d", p_pcb_old->m_pid);
+	gp_current_process = scheduler();
+	
+	if (gp_current_process == NULL  ) {
+		printf("cur process = null");
+		gp_current_process = p_pcb_old; // revert back to the old process
+		//return RTX_ERR;
+		return RTX_OK;
+	}
+	
+	if (p_pcb_old) {		
+		if (p_pcb_old->m_state != BLOCKED) {			
+			addQ(p_pcb_old->m_pid, p_pcb_old->m_priority);
+		} else {
+			printQ();
+		}
+	}
 
   if ( p_pcb_old == NULL ) {
 		p_pcb_old = gp_current_process;
@@ -203,3 +304,4 @@ int k_release_processor(void)
 	process_switch(p_pcb_old);
 	return RTX_OK;
 }
+*/

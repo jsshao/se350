@@ -17,16 +17,18 @@
 /* initialization table item */
 PROC_INIT g_test_procs[NUM_TEST_PROCS];
 
-void set_test_procs() {
-	int i;
+void set_test_procs() {	
+	int i;	
 	for( i = 0; i < NUM_TEST_PROCS; i++ ) {
 		g_test_procs[i].m_pid=(U32)(i+1);
-		g_test_procs[i].m_priority=LOWEST;
+		g_test_procs[i].m_priority=LOW;
 		g_test_procs[i].m_stack_size=0x100;
 	}
   
 	g_test_procs[0].mpf_start_pc = &proc1;
 	g_test_procs[1].mpf_start_pc = &proc2;
+	g_test_procs[2].mpf_start_pc = &proc3;
+	g_test_procs[2].m_priority=LOWEST;
 }
 
 
@@ -41,6 +43,7 @@ void proc1(void)
 	while ( 1) {
 		if ( i != 0 && i%5 == 0 ) {
 			uart0_put_string("\n\r");
+			k_request_memory_block();
 			ret_val = release_processor();
 #ifdef DEBUG_0
 			printf("proc1: ret_val=%d\n", ret_val);
@@ -56,9 +59,10 @@ void proc1(void)
  *         and then yields the cpu.
  */
 void proc2(void)
-{
+{	
 	int i = 0;
 	int ret_val = 20;
+	printf("H proc 2I");
 	while ( 1) {
 		if ( i != 0 && i%5 == 0 ) {
 			uart0_put_string("\n\r");
@@ -73,19 +77,10 @@ void proc2(void)
 }
 
 void proc3(void)
-{
-	int i = 0;
-	int ret_val = 20;
-	while ( 1) {
-		if ( i != 0 && i%5 == 0 ) {
-			uart0_put_string("\n\r");
-			ret_val = release_processor();
-#ifdef DEBUG_0
-			printf("proc3: ret_val=%d\n", ret_val);
-#endif /* DEBUG_0 */
-		}
-		uart0_put_char('0' + i%10);
-		i++;
+{	
+	while (1) {
+		printf("null process\n");
+		release_processor();
 	}
 }
 
