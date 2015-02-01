@@ -52,14 +52,6 @@ void addBlockedQ(int pid, int priority) {
 			break;
 		}
 	}
-	
-	printf("adding to blocked q %d", pid);
-	for (i = 0; i < 5; i++) {
-		for (j = 0; j < NUM_TEST_PROCS; j++) {		
-			printf("%d", blockedQueue[i][j]);
-		}
-		printf("\n");
-	}
 }
 
 int popBlockedQ() {
@@ -80,14 +72,6 @@ int popBlockedQ() {
 		
 		blockedQueue[i][NUM_TEST_PROCS-1] = -1;	
 		break;
-	}
-	
-	printf("removing from blocked q %d", pid);
-	for (i = 0; i < 5; i++) {
-		for (k = 0; k < NUM_TEST_PROCS; k++) {		
-			printf("  %d", blockedQueue[i][k]);
-		}
-		printf("\n");
 	}
 		
 	 return pid;	 
@@ -147,24 +131,23 @@ int popQ() {
 			printf("\n");
 		}*/
 		return pid;	// highest priority proc
-	}
-	printf ("WARNING NOTHING LEFT ON Q");
+	}	
 	return -1;
 }
 
 /** returns the process priority
 **/
-int get_process_priority(int pid) {
+int k_get_process_priority(int pid) {
 	if (pid < 0 || pid > NUM_TEST_PROCS) {
 		return -1;
 	}
 	
-	return (g_proc_table[pid]).m_priority;
+	return gp_pcbs[pid]->m_priority;
 }
 
 /** set process priority
 **/
-int set_process_priority(int pid, int priority) {
+int k_set_process_priority(int pid, int priority) {
 	int i;
 	int j;
 	int oldPriority;
@@ -185,7 +168,7 @@ int set_process_priority(int pid, int priority) {
 			for (j=i; j<NUM_TEST_PROCS-1; j++) {
 				processQueue[oldPriority][j] = processQueue[oldPriority][j+1];
 			}				
-			processQueue[oldPriority][NUM_TEST_PROCS-1] = 0;
+			processQueue[oldPriority][NUM_TEST_PROCS-1] = -1;
 
 			addQ(pid, priority);
 			break;
@@ -197,13 +180,13 @@ int set_process_priority(int pid, int priority) {
 			for (j=i; j<NUM_TEST_PROCS-1; j++) {
 				blockedQueue[oldPriority][j] = blockedQueue[oldPriority][j+1];
 			}
-			blockedQueue[oldPriority][NUM_TEST_PROCS-1] = 0;
+			blockedQueue[oldPriority][NUM_TEST_PROCS-1] = -1;
 			addBlockedQ(pid, priority);
 			break;
 		}
 	}
 	
-	(g_proc_table[pid-1]).m_priority = priority;		
+	(gp_pcbs[pid])->m_priority = priority;
 	return 0;
 }
 
@@ -278,7 +261,6 @@ int process_switch(PCB *p_pcb_old)
 	state = gp_current_process->m_state;
 	
 	if (state == NEW) {
-		printf("NEW");
 		if (gp_current_process != p_pcb_old && p_pcb_old->m_state != NEW) {
 			p_pcb_old->m_state = RDY;
 			p_pcb_old->mp_sp = (U32 *) __get_MSP();
@@ -291,19 +273,16 @@ int process_switch(PCB *p_pcb_old)
 	/* The following will only execute if the if block above is FALSE */
 
 	if (gp_current_process != p_pcb_old) {
-		if (state == RDY){ 		
-			//printf("READY");
+		if (state == RDY){ 					
 			p_pcb_old->m_state = RDY; 
 			p_pcb_old->mp_sp = (U32 *) __get_MSP(); // save the old process's sp
 			gp_current_process->m_state = RUN;
 			__set_MSP((U32) gp_current_process->mp_sp); //switch to the new proc's stack    
-		} else {
-			printf("NOT READY");
+		} else {			
 			gp_current_process = p_pcb_old; // revert back to the old proc on error
 			return RTX_ERR;
 		} 
 	}
-	printf("hi");
 	return RTX_OK;
 }
 /**
@@ -314,24 +293,21 @@ int process_switch(PCB *p_pcb_old)
 int k_release_processor(void)
 {	
 	PCB *p_pcb_old = gp_current_process;
-	printf("release_processor");
-
-	//printf("CHECK %d", p_pcb_old->m_pid);
+	
 	
 	if (gp_current_process != NULL  && gp_current_process->m_state != BLOCKED) {
-		addQ(gp_current_process->m_pid, gp_current_process->m_priority);
+		addQ(gp_current_process->m_pid, gp_current_process->m_priority);		
 	}
 	gp_current_process = scheduler();
 
-	if (gp_current_process == NULL  ) {
-		printf("what the actual fuck");
+	if (gp_current_process == NULL  ) {		
 		return RTX_ERR;
 	}
 	
 	if ( p_pcb_old == NULL ) {
 		p_pcb_old = gp_current_process;
 	}
-	printQ();
+
 	process_switch(p_pcb_old);
 	
 	return RTX_OK;

@@ -28,7 +28,8 @@ void set_test_procs() {
 	g_test_procs[0].mpf_start_pc = &null_proccess;
 	g_test_procs[1].mpf_start_pc = &proc1;
 	g_test_procs[2].mpf_start_pc = &proc2;
-	g_test_procs[0].m_priority=4;
+	g_test_procs[3].mpf_start_pc = &proc3;
+	g_test_procs[0].m_priority=4;	
 }
 
 /**
@@ -87,6 +88,15 @@ void proc2(void)
 
 void proc3(void)
 {	
+	while (1) {
+		set_process_priority(-1, HIGH);
+		printf("proc 3 priority %d\n\r", get_process_priority(414));
+		release_processor();	
+#ifdef DEBUG_0			
+		
+#endif /* DEBUG_0 */
+		}
+				
 }
 
 void proc4(void)

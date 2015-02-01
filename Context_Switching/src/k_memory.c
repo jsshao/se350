@@ -134,8 +134,7 @@ void *k_request_memory_block(void) {
 		if (!available) {
 			printQ();
 			gp_current_process->m_state = BLOCKED;
-			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);
-			printf("releasing processor due to blocked on memory");
+			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);			
 			k_release_processor();		
 		}		
 	}
