@@ -51,7 +51,7 @@ void proc1(void)
 {
 	int i = 0;
 	int ret_val = 10;
-	while ( 1) {
+	while (1) {		
 		if ( i != 0 && i%5 == 0 ) {
 			uart0_put_string("\n\r");			
 			ret_val = release_processor();

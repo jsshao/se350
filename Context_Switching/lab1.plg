@@ -7,125 +7,6 @@ N:\SE350\lab\se350\Context_Switching\context_switching.uvproj
 Project File Date:  02/01/2015
 
 <h2>Output:</h2>
-Build target 'Context Switching SIM'
-compiling k_rtx_init.c...
-compiling k_memory.c...
-src\k_memory.c(135): warning:  #223-D: function "printQ" declared implicitly
-src\k_memory.c(137): warning:  #223-D: function "addBlockedQ" declared implicitly
-src\k_memory.c(139): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_memory.c(164): warning:  #223-D: function "popBlockedQ" declared implicitly
-src\k_memory.c(167): warning:  #223-D: function "addQ" declared implicitly
-compiling k_process.c...
-src\k_process.c(111): warning:  #177-D: variable "j" was declared but never referenced
-src\k_process.c(307): warning:  #1-D: last line of file ends without a newline
-compiling usr_proc.c...
-src\usr_proc.c(52): warning:  #9-D: nested comment is not allowed
-src\usr_proc.c(42): warning:  #177-D: variable "ret_val" was declared but never referenced
-src\usr_proc.c(55): error:  #79: expected a type specifier
-src\usr_proc.c(55): error:  #79: expected a type specifier
-src\usr_proc.c(55): warning:  #77-D: this declaration has no storage class or type specifier
-src\usr_proc.c(56): error:  #77-D: this declaration has no storage class or type specifier
-src\usr_proc.c(56): error:  #65: expected a ";"
-src\usr_proc.c(57): error:  #169: expected a declaration
-src\usr_proc.c(140): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
-Target not created
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-src\usr_proc.c(52): warning:  #9-D: nested comment is not allowed
-src\usr_proc.c(42): warning:  #177-D: variable "ret_val" was declared but never referenced
-src\usr_proc.c(68): warning:  #177-D: variable "ret_val" was declared but never referenced
-linking...
-Program Size: Code=4216 RO-data=236 RW-data=28 ZI-data=1044  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
-Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000117BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000117BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-src\usr_proc.c(46): warning:  #223-D: function "request_memory" declared implicitly
-src\usr_proc.c(71): warning:  #223-D: function "release_memory" declared implicitly
-linking...
-lab1.axf: Error: L6218E: Undefined symbol release_memory (referred from usr_proc.o).
-lab1.axf: Error: L6218E: Undefined symbol request_memory (referred from usr_proc.o).
-Target not created
-Build target 'Context Switching SIM'
-linking...
-lab1.axf: Error: L6218E: Undefined symbol release_memory (referred from usr_proc.o).
-lab1.axf: Error: L6218E: Undefined symbol request_memory (referred from usr_proc.o).
-Target not created
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=4352 RO-data=236 RW-data=28 ZI-data=1044  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001203H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001203H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_memory.c...
-src\k_memory.c(135): warning:  #223-D: function "printQ" declared implicitly
-src\k_memory.c(137): warning:  #223-D: function "addBlockedQ" declared implicitly
-src\k_memory.c(139): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_memory.c(164): warning:  #223-D: function "popBlockedQ" declared implicitly
-src\k_memory.c(167): warning:  #223-D: function "addQ" declared implicitly
-compiling k_process.c...
-src\k_process.c(112): warning:  #177-D: variable "j" was declared but never referenced
-src\k_process.c(316): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=4420 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 7 Warning(s).
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(81): error:  #20: identifier "NUM_PROCS" is undefined
-src\k_process.c(112): warning:  #177-D: variable "j" was declared but never referenced
-src\k_process.c(316): warning:  #1-D: last line of file ends without a newline
-compiling usr_proc.c...
-src\usr_proc.c(28): error:  #20: identifier "null_proccess" is undefined
-Target not created
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(112): warning:  #177-D: variable "j" was declared but never referenced
-src\k_process.c(316): warning:  #1-D: last line of file ends without a newline
-compiling usr_proc.c...
-src\usr_proc.c(28): error:  #20: identifier "null_proccess" is undefined
-Target not created
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=4424 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=4424 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000124BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000124BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=4392 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000122BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000122BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=4376 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
 Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
 No Algorithm found for: 10000000H - 1000121BH
 Partial Erase Done (areas with no algorithms skipped!)
@@ -133,63 +14,7 @@ No Algorithm found for: 10000000H - 1000121BH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(112): warning:  #177-D: variable "j" was declared but never referenced
-src\k_process.c(316): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=4376 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000121BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000121BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_memory.c...
-src\k_memory.c(135): warning:  #223-D: function "printQ" declared implicitly
-src\k_memory.c(137): warning:  #223-D: function "addBlockedQ" declared implicitly
-src\k_memory.c(139): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_memory.c(164): warning:  #223-D: function "popBlockedQ" declared implicitly
-src\k_memory.c(167): warning:  #223-D: function "addQ" declared implicitly
-linking...
-Program Size: Code=4376 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 5 Warning(s).
-Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000121BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000121BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(112): warning:  #177-D: variable "j" was declared but never referenced
-src\k_process.c(316): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=4376 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000121BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000121BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(112): warning:  #177-D: variable "j" was declared but never referenced
-src\k_process.c(316): warning:  #1-D: last line of file ends without a newline
-compiling usr_proc.c...
-linking...
-Program Size: Code=4376 RO-data=236 RW-data=28 ZI-data=1068  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000121BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000121BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
+compiling main_svc.c...
 linking...
 Program Size: Code=4376 RO-data=236 RW-data=28 ZI-data=1068  
 "lab1.axf" - 0 Error(s), 0 Warning(s).
@@ -202,11 +27,16 @@ Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
 compiling usr_proc.c...
 linking...
-Program Size: Code=4376 RO-data=236 RW-data=28 ZI-data=1068  
+Program Size: Code=4384 RO-data=236 RW-data=28 ZI-data=1068  
 "lab1.axf" - 0 Error(s), 0 Warning(s).
 Load "N:\\SE350\\lab\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000121BH
+No Algorithm found for: 10000000H - 10001223H
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000121BH
+No Algorithm found for: 10000000H - 10001223H
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+linking...
+Program Size: Code=4376 RO-data=236 RW-data=28 ZI-data=1068  
+"lab1.axf" - 0 Error(s), 0 Warning(s).

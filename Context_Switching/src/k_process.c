@@ -152,6 +152,62 @@ int popQ() {
 	return -1;
 }
 
+/** returns the process priority
+**/
+int get_process_priority(int pid) {
+	if (pid < 0 || pid > NUM_TEST_PROCS) {
+		return -1;
+	}
+	
+	return (g_proc_table[pid]).m_priority;
+}
+
+/** set process priority
+**/
+int set_process_priority(int pid, int priority) {
+	int i;
+	int j;
+	int oldPriority;
+	
+	if (pid < 1 || pid > NUM_TEST_PROCS || priority < 0 || priority > 3) {
+		return -1;
+	}
+	
+	oldPriority = (g_proc_table[pid]).m_priority;
+
+	//if setting to the same priority, just return
+	if (oldPriority == priority) {
+		return 0;
+	}
+	
+	for (i=0; i<NUM_TEST_PROCS; i++) {
+		if (processQueue[oldPriority][i] == pid) {
+			for (j=i; j<NUM_TEST_PROCS-1; j++) {
+				processQueue[oldPriority][j] = processQueue[oldPriority][j+1];
+			}				
+			processQueue[oldPriority][NUM_TEST_PROCS-1] = 0;
+
+			addQ(pid, priority);
+			break;
+		}
+	}
+	
+	for (i=0; i<NUM_TEST_PROCS; i++) {
+		if (blockedQueue[oldPriority][i] == pid) {
+			for (j=i; j<NUM_TEST_PROCS-1; j++) {
+				blockedQueue[oldPriority][j] = blockedQueue[oldPriority][j+1];
+			}
+			blockedQueue[oldPriority][NUM_TEST_PROCS-1] = 0;
+			addBlockedQ(pid, priority);
+			break;
+		}
+	}
+	
+	(g_proc_table[pid-1]).m_priority = priority;		
+	return 0;
+}
+
+
 void process_init() 
 {
 	int i;
