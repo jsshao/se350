@@ -1,0 +1,5 @@
+-c --cpu Cortex-M3 -g -O0 --apcs=interwork 
+-I C:\Software\Keil\ARM\RV31\INC 
+-I C:\Software\Keil\ARM\CMSIS\Include 
+-I C:\Software\Keil\ARM\Inc\NXP\LPC17xx 
+-DDEBUG_0 -o "system_lpc17xx.o" --omf_browse "system_lpc17xx.crf" --depend "system_lpc17xx.d" "src\system_LPC17xx.c"
