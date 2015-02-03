@@ -68,11 +68,6 @@ void memory_init(void)
 		p_end += sizeof(PCB); 
 	}
 	
-#ifdef DEBUG_0  
-	printf("gp_pcbs[0] = 0x%x \n", gp_pcbs[0]);
-	printf("gp_pcbs[1] = 0x%x \n", gp_pcbs[1]);
-#endif
-	
 	/* prepare for alloc_stack() to allocate memory for stacks */
 	
 	gp_stack = (U32 *)RAM_END_ADDR;
@@ -116,9 +111,6 @@ U32 *alloc_stack(U32 size_b)
 void *k_request_memory_block(void) {
 	int i;
 	int available = 0;
-#ifdef DEBUG_0 
-	printf("k_request_memory_block: entering...\n");
-#endif /* ! DEBUG_0 */
 	
 	while (!available) {
 		//check for if there is available memory
@@ -132,7 +124,6 @@ void *k_request_memory_block(void) {
 		
 		//if there is no memory,
 		if (!available) {
-			printQ();
 			gp_current_process->m_state = BLOCKED;
 			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);			
 			k_release_processor();		
@@ -146,9 +137,7 @@ void *k_request_memory_block(void) {
 int k_release_memory_block(void *p_mem_blk) {
 	int pid;
 	int index;
-#ifdef DEBUG_0 
-	printf("k_release_memory_block: releasing block @ 0x%x\n", p_mem_blk);
-#endif /* ! DEBUG_0 */
+
 	index = ((char*)p_mem_blk - (char*)memory[0]) / 512;
 	if (index >= NUM_MEM_BLOCKS || index < 0) {
 		return RTX_ERR;

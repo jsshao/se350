@@ -175,7 +175,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2CM3</Key>
-          <Name>-UM1338ADE -O463 -S0 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD10000000 -FC800 -FN1 -FF0LPC_IAP_512 -FS00 -FL080000</Name>
+          <Name>-UM0302FCE -O463 -S0 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD10000000 -FC800 -FN1 -FF0LPC_IAP_512 -FS00 -FL080000</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint/>
@@ -215,7 +215,7 @@
         <periodic>1</periodic>
         <aLwin>1</aLwin>
         <aCover>0</aCover>
-        <aSer1>1</aSer1>
+        <aSer1>0</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
         <viewmode>1</viewmode>
@@ -258,7 +258,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>130</TopLine>
+      <TopLine>131</TopLine>
       <CurrentLine>138</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\startup_LPC17xx.s</PathWithFileName>
@@ -298,7 +298,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>102</TopLine>
+      <TopLine>101</TopLine>
       <CurrentLine>113</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\uart_polling.c</PathWithFileName>
@@ -312,10 +312,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>1</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>164</TopLine>
-      <CurrentLine>165</CurrentLine>
+      <TopLine>204</TopLine>
+      <CurrentLine>243</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\printf.c</PathWithFileName>
       <FilenameWithoutPath>printf.c</FilenameWithoutPath>
@@ -328,10 +328,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>1</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>2</TopLine>
-      <CurrentLine>32</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>24</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\main_svc.c</PathWithFileName>
       <FilenameWithoutPath>main_svc.c</FilenameWithoutPath>
@@ -354,8 +354,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>11</TopLine>
+      <CurrentLine>44</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\HAL.c</PathWithFileName>
       <FilenameWithoutPath>HAL.c</FilenameWithoutPath>
@@ -371,7 +371,7 @@
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>19</CurrentLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\k_rtx_init.c</PathWithFileName>
       <FilenameWithoutPath>k_rtx_init.c</FilenameWithoutPath>
@@ -384,10 +384,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>27</ColumnNumber>
+      <ColumnNumber>3</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>138</TopLine>
-      <CurrentLine>167</CurrentLine>
+      <TopLine>58</TopLine>
+      <CurrentLine>69</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\k_memory.c</PathWithFileName>
       <FilenameWithoutPath>k_memory.c</FilenameWithoutPath>
@@ -398,12 +398,12 @@
       <GroupNumber>3</GroupNumber>
       <FileNumber>9</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>11</ColumnNumber>
+      <ColumnNumber>12</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>125</TopLine>
-      <CurrentLine>135</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>46</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\k_process.c</PathWithFileName>
       <FilenameWithoutPath>k_process.c</FilenameWithoutPath>
@@ -440,10 +440,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>27</ColumnNumber>
+      <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>11</TopLine>
-      <CurrentLine>24</CurrentLine>
+      <TopLine>61</TopLine>
+      <CurrentLine>85</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\usr_proc.c</PathWithFileName>
       <FilenameWithoutPath>usr_proc.c</FilenameWithoutPath>

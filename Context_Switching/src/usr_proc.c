@@ -25,6 +25,9 @@ int TEST_BIT_PASSED = 0x0;
 int TOTAL_TESTS_PASSED = 0;
 char GROUP_PREFIX[] = "G016_test: ";
 
+/* Use this to observe previous proc */
+int LAST_PROC = -1; 
+
 void set_test_procs() {	
 	int i;	
 	for( i = 0; i < NUM_TEST_PROCS; i++ ) {
@@ -55,114 +58,179 @@ void null_proccess(void)
 	}
 }
 
-
-/* Test 1: Test request memory block
+/* Test 1 / 2: Test request memory block
+               Test release memory block
  */
 void proc1(void)
 {
-	int i = 0;
-	int ret_val;
 	void* temp;
+	int i;
+	int release_ret_val;
 	
-	while ( 1) {
-		temp = request_memory_block();
-		if (NULL != temp) {
-			printf("%sSTART\n\r", GROUP_PREFIX);
-		}
-		i++;
+	// Print starting message
+	printf("%sSTART\n\r", GROUP_PREFIX);
+	printf("%stotal 6 tests\n\r", GROUP_PREFIX);
+	
+	// Test 1: Get memory block and see if it's a valid address
+	temp = request_memory_block();
+	if (NULL != temp) {
+		TEST_BIT_PASSED |= (1 << 0);
+		TOTAL_TESTS_PASSED++;
+	}
+
+	// Test 2: Release memory block and try to release the same block (should be error)
+	release_memory_block(temp);
+	release_ret_val = release_memory_block(temp);
+	if (release_ret_val == RTX_ERR) {
+		TEST_BIT_PASSED |= (1 << 1);
+		TOTAL_TESTS_PASSED++;
+	}
+	
+	// Set this process as last process
+	LAST_PROC = 1;
+	
+	while(1) {
+		release_processor();
 	}
 }
 
-/**
- * @brief: a process that prints five numbers
- *         and then yields the cpu.
+/* Test 3 / 4: Test process switching
+							 Test setting process priority
  */
 void proc2(void)
 {	
 	int i = 0;
-	int ret_val = 20;	
-	void *temp;
 	
-	while ( 1) {
-		temp = request_memory_block();
-		if (NULL != temp) {
-			printf("%sSTART\n\r", GROUP_PREFIX);
-		}
-		i++;
+	// Test 3: Switching from proc1 to proc2 is a succesful process switch 
+  // in correct order of the queue
+	if (LAST_PROC == 1) {
+		TEST_BIT_PASSED |= (1 << 2);
+		TOTAL_TESTS_PASSED++;
 	}
 	
-	
+	LAST_PROC = 2;
+
+	// Test 4: Set proc6 to have highest priority. We expect proc 6 to execute next.
+	set_process_priority(6, HIGH);
+
 	while ( 1) {
-		if ( i != 0 && i%5 == 0 ) {
-			uart0_put_string("\n\r");
-			ret_val = release_processor();	
-#ifdef DEBUG_0			
-#endif /* DEBUG_0 */
-		}
-		//uart0_put_char('0' + i%10);
-		i++;
+		release_processor();
 	}
 }
 
+/* Test 4 / 5: Test 4: proc should be run after proc2 because it tests set priority 
+							 Test 5: This proc also tests get priority.
+ */
+void proc6(void)
+{
+	int i;
+	int prior2;
+	int prior6;
+  int	prior100;
+	
+	// Test 4: proc 2 should have been just run
+	if (LAST_PROC == 2) {
+		TEST_BIT_PASSED |= (1 << 3);
+		TOTAL_TESTS_PASSED++;
+	}
+		
+	// Test 5: the priority of proc 6 should be HIGH
+	//         the priority of proc 2 should be LOWEST
+	//         the priority of proc100 should return -1
+	// 			   setting process priority to 100 should do nothing
+	prior2 = get_process_priority(2);
+	prior100 = get_process_priority(100);
+	set_process_priority(6, 100);
+	prior6 = get_process_priority(6);
+
+	
+	if (prior2 == LOWEST && prior6 == HIGH && prior100 == -1) {
+		TEST_BIT_PASSED |= (1 << 4);
+		TOTAL_TESTS_PASSED++;
+	}
+	
+	// Set this as last process
+	LAST_PROC = 6;
+	
+	// Reset this priority to low to run other processes
+	set_process_priority(6, LOWEST);
+	
+	while ( 1) {
+		release_processor();
+	}
+}
+
+
+/* Test 6: It will test the blocked queue
+ */
 void proc3(void)
 {	
-	while (1) {
-		release_processor();	
-#ifdef DEBUG_0			
-		
-#endif /* DEBUG_0 */
-		}
-				
+	void *temp;
+	
+	temp = request_memory_block();
+	release_processor();
+	LAST_PROC = 3;
+	set_process_priority(4, HIGH);
+	release_memory_block(temp);
+	
+	while(1) {
+		release_processor();
+	}
 }
 
 void proc4(void)
 {
+	void *requests[30] = {0};
 	int i = 0;
-	int ret_val = 20;
-	while ( 1) {
-		if ( i != 0 && i%5 == 0 ) {
-			uart0_put_string("\n\r");
-			ret_val = release_processor();
-#ifdef DEBUG_0
-			printf("proc4: ret_val=%d\n", ret_val);
-#endif /* DEBUG_0 */
+	
+	set_process_priority(3, HIGH);
+	
+	for (i = 0; i < 30; i++) {
+		if (LAST_PROC == 3) {
+			break;
 		}
-		//uart0_put_char('0' + i%10);
-		i++;
+		requests[i] = request_memory_block();
+	}
+	
+	// Test 6: this proc has successfully been blocked and unblocked by proc 3
+	TEST_BIT_PASSED |= (1 << 5);
+	TOTAL_TESTS_PASSED++;
+	
+	set_process_priority(3, LOWEST);
+	set_process_priority(4, LOWEST);
+	
+	for (i = 0; i < 30; i++) {
+		if (NULL != requests[i]) {
+			release_memory_block(requests[i]);
+		}
+	}
+	
+	set_process_priority(5, HIGH);
+	
+	while(1) {
+		release_processor();
 	}
 }
 
 void proc5(void)
 {
-	int i = 0;
-	int ret_val = 20;
-	while ( 1) {
-		if ( i != 0 && i%5 == 0 ) {
-			uart0_put_string("\n\r");
-			ret_val = release_processor();
-#ifdef DEBUG_0
-			printf("proc5: ret_val=%d\n", ret_val);
-#endif /* DEBUG_0 */
+	int i;
+	
+	for (i = 0; i < 6; i++) {
+		if (TEST_BIT_PASSED & (1 << i)) {
+			printf("%stest %d OK\n\r", GROUP_PREFIX, i+1);
+		} else {
+			printf("%stest %d FAIL\n\r", GROUP_PREFIX, i+1);
 		}
-		
-		//uart0_put_char('0' + i%10);
-		i++;
+	}
+	
+	printf("%s%d/6 tests OK\n\r", GROUP_PREFIX, TOTAL_TESTS_PASSED);
+	printf("%s%d/6 tests FAIL\n\r", GROUP_PREFIX, 6 - TOTAL_TESTS_PASSED);
+	printf("%sEND\n\r", GROUP_PREFIX);
+	
+	while(1) {
+		release_processor();
 	}
 }
 
-void proc6(void)
-{
-	int i = 0;
-	int ret_val = 20;
-	while ( 1) {
-		if ( i != 0 && i%5 == 0 ) {
-			uart0_put_string("\n\r");
-			ret_val = release_processor();
-#ifdef DEBUG_0
-			printf("proc6: ret_val=%d\n", ret_val);
-#endif /* DEBUG_0 */
-		}
-		//uart0_put_char('0' + i%10);
-		i++;
-	}
-}
+
