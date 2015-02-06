@@ -36,13 +36,13 @@ extern PROC_INIT g_test_procs[NUM_TEST_PROCS];
  * NOTE: We assume there are only two user processes in the system in this example.
  */
  
- 
+ //ready queue and blocked queue (each priority has a queue)
 int processQueue[5][NUM_TEST_PROCS] = {0}; 
 int blockedQueue[5][NUM_TEST_PROCS] = {0};
 
+
 void addBlockedQ(int pid, int priority) {
 	int i=0;
-	int j = 0;
 	for (i = 0; i < NUM_TEST_PROCS; i++) {		
 		if (blockedQueue[priority][i] == -1) {
 			blockedQueue[priority][i] = pid;
@@ -54,7 +54,6 @@ void addBlockedQ(int pid, int priority) {
 int popBlockedQ() {
 	int i = 0;
 	int pid = -1;
-	int k  =0;
 	// priority
 	for (i = 0; i < 5; i++) {		
 		int k;
@@ -77,7 +76,6 @@ int popBlockedQ() {
 
 void addQ(int pid, int priority) {
 	int i = 0;
-	int j = 0;
 	
 	for (i = 0; i < NUM_TEST_PROCS; i++) {		
 		if (processQueue[priority][i] == -1) {
@@ -111,9 +109,22 @@ int popQ() {
 	return -1;
 }
 
+//return first element in Q
+int peekQ() {
+	int i = 0;
+	for (i = 0; i < 5; i++) {
+		if (processQueue[i][0] == -1) {
+			continue;
+		}
+		return processQueue[i][0];
+	}	
+	return -1;
+}
+
 /** returns the process priority
 **/
 int k_get_process_priority(int pid) {
+	//return -1 if pid is invalid
 	if (pid < 0 || pid > NUM_TEST_PROCS) {
 		return -1;
 	}
@@ -127,6 +138,7 @@ int k_set_process_priority(int pid, int priority) {
 	int i;
 	int j;
 	int oldPriority;
+	int qPid;
 	
 	if (pid < 1 || pid > NUM_TEST_PROCS || priority < 0 || priority > 3) {
 		return -1;
@@ -164,6 +176,16 @@ int k_set_process_priority(int pid, int priority) {
 	
 	(gp_pcbs[pid])->m_priority = priority;
 
+
+	qPid = peekQ();
+	if(qPid != -1) {
+		//if current process has a lower priority than process with set priority
+		//not 0 is highest prioty, a>b means a has a LOWER priority
+		if(gp_current_process->m_priority > (gp_pcbs[qPid])->m_priority) {
+			k_release_processor();
+		}
+	}
+	
 	return 0;
 }
 
@@ -267,13 +289,22 @@ int process_switch(PCB *p_pcb_old)
  * @return RTX_ERR on error and zero on success
  * POST: gp_current_process gets updated to next to run process
  */
+
+/*
+	the normal flow is to add the running process to the ready priorityQueue, and then
+	take the first element in the priorityQueue
+*/
 int k_release_processor(void)
 {	
 	PCB *p_pcb_old = gp_current_process;
 	
+	// UNLESS system just started(gp_current_process is NULL) or current process is blocked
+	// add current process to ready queue
 	if (gp_current_process != NULL  && gp_current_process->m_state != BLOCKED) {
 		addQ(gp_current_process->m_pid, gp_current_process->m_priority);		
 	}
+	
+	//take first element from ready queue
 	gp_current_process = scheduler();
 
 	if (gp_current_process == NULL  ) {		
@@ -284,6 +315,7 @@ int k_release_processor(void)
 		p_pcb_old = gp_current_process;
 	}
 
+	//switch to the new process from the old process
 	process_switch(p_pcb_old);
 	
 	return RTX_OK;

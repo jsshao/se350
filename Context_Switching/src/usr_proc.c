@@ -64,7 +64,6 @@ void null_proccess(void)
 void proc1(void)
 {
 	void* temp;
-	int i;
 	int release_ret_val;
 	
 	// Print starting message
@@ -99,7 +98,6 @@ void proc1(void)
  */
 void proc2(void)
 {	
-	int i = 0;
 	
 	// Test 3: Switching from proc1 to proc2 is a succesful process switch 
   // in correct order of the queue
@@ -123,7 +121,6 @@ void proc2(void)
  */
 void proc6(void)
 {
-	int i;
 	int prior2;
 	int prior6;
   int	prior100;
@@ -161,16 +158,27 @@ void proc6(void)
 }
 
 
-/* Test 6: It will test the blocked queue
- */
+/* 
+ *Test 6: It will test the blocked queue and preemption(set_process_priority)
+ *
+ * process 3 request 1 block memory, let 4 preempt it by setting 4 to a higher priority,
+ * 4 ask for infinite memory, gets blocked when memory run out, 3 is run again, 3 frees memory
+ * which unblocks 4 and it preempts 3, and 4 sees a flag LAST_PROC = 3
+ *
+ **/
 void proc3(void)
 {	
 	void *temp;
 	
 	temp = request_memory_block();
-	release_processor();
-	LAST_PROC = 3;
+	
+	//Let 4 preempt 3
+	set_process_priority(3, MEDIUM);
 	set_process_priority(4, HIGH);
+	
+	
+	
+	LAST_PROC = 3;
 	release_memory_block(temp);
 	
 	while(1) {
@@ -182,8 +190,6 @@ void proc4(void)
 {
 	void *requests[30] = {0};
 	int i = 0;
-	
-	set_process_priority(3, HIGH);
 	
 	for (i = 0; i < 30; i++) {
 		if (LAST_PROC == 3) {

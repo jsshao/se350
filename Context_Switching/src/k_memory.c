@@ -108,6 +108,11 @@ U32 *alloc_stack(U32 size_b)
 	return sp;
 }
 
+/*
+	while memory is not avaliable, add current process to 
+	blocked queue and release processor
+*/
+
 void *k_request_memory_block(void) {
 	int i;
 	int available = 0;
@@ -122,7 +127,7 @@ void *k_request_memory_block(void) {
 			}
 		}
 		
-		//if there is no memory,
+		//if there is no memory, add current process to blocked queue, and release processor
 		if (!available) {
 			gp_current_process->m_state = BLOCKED;
 			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);			
@@ -134,25 +139,46 @@ void *k_request_memory_block(void) {
 	return memory[i];	
 }
 
+/*
+	when memory is released, mark that memory block as avaliable
+	and remove first element in block queue and put it into ready queue
+*/
 int k_release_memory_block(void *p_mem_blk) {
 	int pid;
 	int index;
 
+	// get index of flag array from pointer
 	index = ((char*)p_mem_blk - (char*)memory[0]) / 512;
+	
+	// if index is invalid, return
 	if (index >= NUM_MEM_BLOCKS || index < 0) {
 		return RTX_ERR;
 	}
 	
+	//set flag array to be avaliable for block at index
 	if (flag[index] == 0) {
 		return RTX_ERR;
 	} else {
 		flag[index] = 0;
 	}
 	
+	//remove first process in blockedQ, and check for preemption
 	pid = popBlockedQ();
 	if (pid != -1) {
+		int qPid;
+		
 		gp_pcbs[pid]->m_state = RDY;
 		addQ(pid, gp_pcbs[pid]->m_priority);
+		
+		qPid = peekQ();
+		if(qPid != -1) {
+			//if current process has a lower priority than next process in queue
+			//not 0 is highest prioty, a>b means a has a LOWER priority
+			if(gp_current_process->m_priority > (gp_pcbs[qPid])->m_priority) {
+				k_release_processor();
+			}
+		}
+		
 	}
 	
 	return RTX_OK;
