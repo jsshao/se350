@@ -49,7 +49,7 @@ void* memory[30] = {0}; // addresses of available memory
 int flag[30] = {0}; // 0 is ununsed memory block
 
 extern PCB *gp_current_process;
-int NUM_MEM_BLOCKS = 30;
+int NUM_MEM_BLOCKS = 7;
 
 void memory_init(void)
 {
@@ -76,11 +76,12 @@ void memory_init(void)
 	}
 
 	/* Fixed sized memory pool (max of 30 blocks of 512 bytes each) */
-	for (i = 0; i < 30; i++) {
+	for (i = 0; i < NUM_MEM_BLOCKS; i++) {
+		/*
 		if ((char *)p_end + i*512 + 512 > (char*)gp_stack) {
 			NUM_MEM_BLOCKS = i+1;
 			break;
-		}
+		} */
 		flag[i] = 0;
 		memory[i] = (void *) (p_end + i*512);
 	}
@@ -135,7 +136,7 @@ void *k_request_memory_block(void) {
 		}		
 	}
 	
-	flag[i] = 1;
+	flag[i] = gp_current_process->m_pid;
 	return memory[i];	
 }
 
@@ -155,21 +156,22 @@ int k_release_memory_block(void *p_mem_blk) {
 		return RTX_ERR;
 	}
 	
-	//set flag array to be avaliable for block at index
-	if (flag[index] == 0) {
+	//set flag array to be avaliable for block at index or if it doesn't belong to the process
+	if (flag[index] == 0 || flag[index] != gp_current_process->m_pid) {
 		return RTX_ERR;
 	} else {
 		flag[index] = 0;
 	}
+	
 	
 	//remove first process in blockedQ, and check for preemption
 	pid = popBlockedQ();
 	if (pid != -1) {
 		int qPid;
 		
-		gp_pcbs[pid]->m_state = RDY;
-		addQ(pid, gp_pcbs[pid]->m_priority);
-		
+		gp_pcbs[pid-1]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid-1]->m_priority);
+		/*
 		qPid = peekQ();
 		if(qPid != -1) {
 			//if current process has a lower priority than next process in queue
@@ -177,7 +179,8 @@ int k_release_memory_block(void *p_mem_blk) {
 			if(gp_current_process->m_priority > (gp_pcbs[qPid])->m_priority) {
 				k_release_processor();
 			}
-		}
+		} */
+		k_release_processor();
 		
 	}
 	

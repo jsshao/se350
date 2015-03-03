@@ -51,6 +51,20 @@ void addBlockedQ(int pid, int priority) {
 	}
 }
 
+void printQ() {
+	int i = 0;
+	int k = 0;		
+		
+	printf("\r\n");
+	for (i = 0; i < 5; i++) {
+		for (k = 0; k < NUM_TEST_PROCS; k++) {		
+			printf("%d", processQueue[i][k]);
+		}
+		printf("\r\n");
+	}
+}
+
+
 int popBlockedQ() {
 	int i = 0;
 	int pid = -1;
@@ -129,7 +143,7 @@ int k_get_process_priority(int pid) {
 		return -1;
 	}
 	
-	return gp_pcbs[pid]->m_priority;
+	return gp_pcbs[pid-1]->m_priority;
 }
 
 /** set process priority
@@ -140,11 +154,13 @@ int k_set_process_priority(int pid, int priority) {
 	int oldPriority;
 	int qPid;
 	
+	//printQ();
+	
 	if (pid < 1 || pid > NUM_TEST_PROCS || priority < 0 || priority > 3) {
 		return -1;
 	}
 	
-	oldPriority = (gp_pcbs[pid])->m_priority;
+	oldPriority = (gp_pcbs[pid-1])->m_priority;
 	
 	//if setting to the same priority, just return
 	if (oldPriority == priority) {
@@ -174,17 +190,12 @@ int k_set_process_priority(int pid, int priority) {
 		}
 	}
 	
-	(gp_pcbs[pid])->m_priority = priority;
+	(gp_pcbs[pid-1])->m_priority = priority;
 
 
-	qPid = peekQ();
-	if(qPid != -1) {
-		//if current process has a lower priority than process with set priority
-		//not 0 is highest prioty, a>b means a has a LOWER priority
-		if(gp_current_process->m_priority > (gp_pcbs[qPid])->m_priority) {
-			k_release_processor();
-		}
-	}
+	//printQ();
+	
+	k_release_processor();
 	
 	return 0;
 }
@@ -210,6 +221,7 @@ void process_init()
 		g_proc_table[i].m_stack_size = g_test_procs[i].m_stack_size;
 		g_proc_table[i].mpf_start_pc = g_test_procs[i].mpf_start_pc;
 		g_proc_table[i].m_priority = g_test_procs[i].m_priority;
+		
 		addQ(g_test_procs[i].m_pid, g_test_procs[i].m_priority);
 	}
   
@@ -237,12 +249,15 @@ void process_init()
  *      No other effect on other global variables.
  */
 
+
+
 PCB *scheduler(void)
 {
-	int pid = popQ();	
+	int pid;
+	pid = popQ();	
 	if(pid == -1)
-		return NULL;
-	return gp_pcbs[pid];
+		return NULL;	
+	return gp_pcbs[pid-1];
 }
 
 /*@brief: switch out old pcb (p_pcb_old), run the new pcb (gp_current_process)
@@ -298,15 +313,21 @@ int k_release_processor(void)
 {	
 	PCB *p_pcb_old = gp_current_process;
 	
+	//printQ();
+	
 	// UNLESS system just started(gp_current_process is NULL) or current process is blocked
 	// add current process to ready queue
 	if (gp_current_process != NULL  && gp_current_process->m_state != BLOCKED) {
 		addQ(gp_current_process->m_pid, gp_current_process->m_priority);		
 	}
 	
+	//printQ();
+	
 	//take first element from ready queue
 	gp_current_process = scheduler();
 
+	//printQ();
+	
 	if (gp_current_process == NULL  ) {		
 		return RTX_ERR;
 	}

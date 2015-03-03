@@ -31,21 +31,17 @@ int LAST_PROC = -1;
 void set_test_procs() {	
 	int i;	
 	for( i = 0; i < NUM_TEST_PROCS; i++ ) {
-		g_test_procs[i].m_pid=(U32)(i);
+		g_test_procs[i].m_pid=(U32)(i+1);
 		g_test_procs[i].m_priority=LOWEST;
 		g_test_procs[i].m_stack_size=0x100;
 	}
 	
-  // NULL PROCESS
-	g_test_procs[0].m_priority=4;	
-	g_test_procs[0].mpf_start_pc = &null_proccess;
-	
-	g_test_procs[1].mpf_start_pc = &proc1;
-	g_test_procs[2].mpf_start_pc = &proc2;
-	g_test_procs[3].mpf_start_pc = &proc3;
-	g_test_procs[4].mpf_start_pc = &proc4;
-	g_test_procs[5].mpf_start_pc = &proc5;
-	g_test_procs[6].mpf_start_pc = &proc6;
+	g_test_procs[0].mpf_start_pc = &proc1;
+	g_test_procs[1].mpf_start_pc = &proc2;
+	g_test_procs[2].mpf_start_pc = &proc3;
+	g_test_procs[3].mpf_start_pc = &proc4;
+	g_test_procs[4].mpf_start_pc = &proc5;
+	g_test_procs[5].mpf_start_pc = &proc6;
 }
 
 /* The null process never terminates. Its priority should be lowest.
@@ -238,5 +234,6 @@ void proc5(void)
 		release_processor();
 	}
 }
+
 
 
