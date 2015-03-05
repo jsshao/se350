@@ -370,11 +370,12 @@ int k_send_message(int pid, void *p_msg) {
 void *k_receive_message(int *p_pid) {
 	int current_pid = gp_current_process->m_pid;	
 	void* msg;
+	MSG_T * msg_t;
 	while (NULL == gp_pcbs[current_pid - 1]->head ||	NULL == gp_pcbs[current_pid - 1]->tail) {
 		gp_current_process->m_state = BLOCKED_ON_RECEIVE;		
 		k_release_processor();		
 	}
-	MSG_T * msg_t = gp_pcbs[current_pid - 1]->head;
+	msg_t = gp_pcbs[current_pid - 1]->head;
 	gp_pcbs[current_pid - 1]->head = gp_pcbs[current_pid - 1]->head->next;
 	if (gp_pcbs[current_pid - 1]->head == NULL) {
 		gp_pcbs[current_pid - 1]->tail = NULL;
