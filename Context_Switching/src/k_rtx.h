@@ -27,13 +27,21 @@ typedef unsigned char U8;
 typedef unsigned int U32;
 
 /* process states, note we only assume three states in this example */
-typedef enum {NEW = 0, RDY, RUN, BLOCKED} PROC_STATE_E;  
+typedef enum {NEW = 0, RDY, RUN, BLOCKED, BLOCKED_ON_RECEIVE} PROC_STATE_E;  
 
 /*
   PCB data structure definition.
   You may want to add your own member variables
   in order to finish P1 and the entire project 
 */
+
+typedef struct msg_t{
+	void* msg;
+	struct msg_t* next;
+	int dest_pid;
+	int sender_pid;	
+} MSG_T;
+
 typedef struct pcb 
 { 
 	//struct pcb *mp_next;  /* next pcb, not used in this example */  
@@ -41,6 +49,8 @@ typedef struct pcb
 	U32 m_pid;		/* process id */
 	PROC_STATE_E m_state;   /* state of the process */      
 	int m_priority;
+	MSG_T* head;
+	MSG_T* tail;
 } PCB;
 
 /* initialization table item */

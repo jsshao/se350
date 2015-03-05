@@ -240,11 +240,12 @@ Removing Unused input sections from the image.
     Removing uart_polling.o(.revsh_text), (4 bytes).
     Removing main_svc.o(.rev16_text), (4 bytes).
     Removing main_svc.o(.revsh_text), (4 bytes).
+    Removing k_memory.o(.constdata), (8 bytes).
     Removing k_process.o(.rev16_text), (4 bytes).
     Removing k_process.o(.revsh_text), (4 bytes).
     Removing list.o(.text), (78 bytes).
 
-9 unused section(s) (total 110 bytes) removed from the image.
+10 unused section(s) (total 118 bytes) removed from the image.
 
 ==============================================================================
 
@@ -408,32 +409,32 @@ Image Symbol Table
     .text                                    0x100007d4   Section        0  main_svc.o(.text)
     .text                                    0x100007f8   Section        0  k_rtx_init.o(.text)
     .text                                    0x10000814   Section        0  k_memory.o(.text)
-    .text                                    0x10000980   Section        0  k_process.o(.text)
-    .text                                    0x10000e6c   Section        0  usr_proc.o(.text)
-    .text                                    0x100011b0   Section       78  rt_memclr_w.o(.text)
-    .text                                    0x100011fe   Section        0  heapauxi.o(.text)
-    .text                                    0x10001204   Section        8  libspace.o(.text)
-    .text                                    0x1000120c   Section        2  use_no_semi.o(.text)
-    .text                                    0x1000120e   Section        0  indicate_semi.o(.text)
-    .text                                    0x1000120e   Section       74  sys_stackheap_outer.o(.text)
-    .text                                    0x10001258   Section        0  exit.o(.text)
-    .text                                    0x10001264   Section        0  sys_exit.o(.text)
+    .text                                    0x10000988   Section        0  k_process.o(.text)
+    .text                                    0x10000f4c   Section        0  usr_proc.o(.text)
+    .text                                    0x10001290   Section       78  rt_memclr_w.o(.text)
+    .text                                    0x100012de   Section        0  heapauxi.o(.text)
+    .text                                    0x100012e4   Section        8  libspace.o(.text)
+    .text                                    0x100012ec   Section        2  use_no_semi.o(.text)
+    .text                                    0x100012ee   Section        0  indicate_semi.o(.text)
+    .text                                    0x100012ee   Section       74  sys_stackheap_outer.o(.text)
+    .text                                    0x10001338   Section        0  exit.o(.text)
+    .text                                    0x10001344   Section        0  sys_exit.o(.text)
     .data                                    0x10004000   Section        4  system_lpc17xx.o(.data)
     .data                                    0x10004004   Section        8  printf.o(.data)
     stdout_putf                              0x10004004   Data           4  printf.o(.data)
     stdout_putp                              0x10004008   Data           4  printf.o(.data)
-    .data                                    0x1000400c   Section        8  k_memory.o(.data)
-    .data                                    0x10004014   Section        8  k_process.o(.data)
-    .data                                    0x1000401c   Section       24  usr_proc.o(.data)
-    .bss                                     0x10004034   Section      240  k_memory.o(.bss)
-    .bss                                     0x10004124   Section      336  k_process.o(.bss)
-    .bss                                     0x10004274   Section       96  usr_proc.o(.bss)
-    .bss                                     0x100042d4   Section       96  libspace.o(.bss)
-    HEAP                                     0x10004338   Section        0  startup_lpc17xx.o(HEAP)
-    STACK                                    0x10004338   Section      512  startup_lpc17xx.o(STACK)
-    Heap_Mem                                 0x10004338   Data           0  startup_lpc17xx.o(HEAP)
-    Stack_Mem                                0x10004338   Data         512  startup_lpc17xx.o(STACK)
-    __initial_sp                             0x10004538   Data           0  startup_lpc17xx.o(STACK)
+    .data                                    0x1000400c   Section        4  k_memory.o(.data)
+    .data                                    0x10004010   Section        8  k_process.o(.data)
+    .data                                    0x10004018   Section       24  usr_proc.o(.data)
+    .bss                                     0x10004030   Section      960  k_memory.o(.bss)
+    .bss                                     0x100043f0   Section      336  k_process.o(.bss)
+    .bss                                     0x10004540   Section       96  usr_proc.o(.bss)
+    .bss                                     0x100045a0   Section       96  libspace.o(.bss)
+    HEAP                                     0x10004600   Section        0  startup_lpc17xx.o(HEAP)
+    STACK                                    0x10004600   Section      512  startup_lpc17xx.o(STACK)
+    Heap_Mem                                 0x10004600   Data           0  startup_lpc17xx.o(HEAP)
+    Stack_Mem                                0x10004600   Data         512  startup_lpc17xx.o(STACK)
+    __initial_sp                             0x10004800   Data           0  startup_lpc17xx.o(STACK)
 
     Global Symbols
 
@@ -574,66 +575,67 @@ Image Symbol Table
     tfp_sprintf                              0x100007a3   Thumb Code    38  printf.o(.text)
     main                                     0x100007d5   Thumb Code    26  main_svc.o(.text)
     k_rtx_init                               0x100007f9   Thumb Code    26  k_rtx_init.o(.text)
-    memory_init                              0x10000815   Thumb Code    88  k_memory.o(.text)
-    alloc_stack                              0x1000086d   Thumb Code    32  k_memory.o(.text)
-    k_request_memory_block                   0x1000088d   Thumb Code    88  k_memory.o(.text)
-    k_release_memory_block                   0x100008e5   Thumb Code   124  k_memory.o(.text)
-    addBlockedQ                              0x10000981   Thumb Code    52  k_process.o(.text)
-    printQ                                   0x100009b5   Thumb Code    60  k_process.o(.text)
-    popBlockedQ                              0x100009f1   Thumb Code   106  k_process.o(.text)
-    addQ                                     0x10000a5b   Thumb Code    52  k_process.o(.text)
-    popQ                                     0x10000a8f   Thumb Code   104  k_process.o(.text)
-    peekQ                                    0x10000af7   Thumb Code    46  k_process.o(.text)
-    k_get_process_priority                   0x10000b25   Thumb Code    30  k_process.o(.text)
-    process_switch                           0x10000b43   Thumb Code   120  k_process.o(.text)
-    scheduler                                0x10000bbb   Thumb Code    26  k_process.o(.text)
-    k_release_processor                      0x10000bd5   Thumb Code    72  k_process.o(.text)
-    k_set_process_priority                   0x10000c1d   Thumb Code   270  k_process.o(.text)
-    process_init                             0x10000d2b   Thumb Code   308  k_process.o(.text)
-    proc6                                    0x10000e6d   Thumb Code   126  usr_proc.o(.text)
-    proc5                                    0x10000eeb   Thumb Code    90  usr_proc.o(.text)
-    proc4                                    0x10000f45   Thumb Code   132  usr_proc.o(.text)
-    proc3                                    0x10000fc9   Thumb Code    52  usr_proc.o(.text)
-    proc2                                    0x10000ffd   Thumb Code    56  usr_proc.o(.text)
-    proc1                                    0x10001035   Thumb Code   108  usr_proc.o(.text)
-    set_test_procs                           0x100010a1   Thumb Code    84  usr_proc.o(.text)
-    null_proccess                            0x100010f5   Thumb Code    16  usr_proc.o(.text)
-    __aeabi_memclr4                          0x100011b1   Thumb Code     0  rt_memclr_w.o(.text)
-    __aeabi_memclr8                          0x100011b1   Thumb Code     0  rt_memclr_w.o(.text)
-    __rt_memclr_w                            0x100011b1   Thumb Code    78  rt_memclr_w.o(.text)
-    _memset_w                                0x100011b5   Thumb Code     0  rt_memclr_w.o(.text)
-    __use_two_region_memory                  0x100011ff   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow                         0x10001201   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand                         0x10001203   Thumb Code     2  heapauxi.o(.text)
-    __user_libspace                          0x10001205   Thumb Code     8  libspace.o(.text)
-    __user_perproc_libspace                  0x10001205   Thumb Code     0  libspace.o(.text)
-    __user_perthread_libspace                0x10001205   Thumb Code     0  libspace.o(.text)
-    __I$use$semihosting                      0x1000120d   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x1000120d   Thumb Code     2  use_no_semi.o(.text)
-    __semihosting_library_function           0x1000120f   Thumb Code     0  indicate_semi.o(.text)
-    __user_setup_stackheap                   0x1000120f   Thumb Code    74  sys_stackheap_outer.o(.text)
-    exit                                     0x10001259   Thumb Code    12  exit.o(.text)
-    _sys_exit                                0x10001265   Thumb Code     8  sys_exit.o(.text)
-    Region$$Table$$Base                      0x10001270   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x10001290   Number         0  anon$$obj.o(Region$$Table)
+    memory_init                              0x10000815   Thumb Code   106  k_memory.o(.text)
+    alloc_stack                              0x1000087f   Thumb Code    32  k_memory.o(.text)
+    k_request_memory_block                   0x1000089f   Thumb Code    84  k_memory.o(.text)
+    k_release_memory_block                   0x100008f3   Thumb Code   120  k_memory.o(.text)
+    addBlockedQ                              0x10000989   Thumb Code    52  k_process.o(.text)
+    printQ                                   0x100009bd   Thumb Code    60  k_process.o(.text)
+    popBlockedQ                              0x100009f9   Thumb Code   106  k_process.o(.text)
+    addQ                                     0x10000a63   Thumb Code    52  k_process.o(.text)
+    popQ                                     0x10000a97   Thumb Code   104  k_process.o(.text)
+    peekQ                                    0x10000aff   Thumb Code    46  k_process.o(.text)
+    k_get_process_priority                   0x10000b2d   Thumb Code    30  k_process.o(.text)
+    process_switch                           0x10000b4b   Thumb Code   120  k_process.o(.text)
+    scheduler                                0x10000bc3   Thumb Code    26  k_process.o(.text)
+    k_release_processor                      0x10000bdd   Thumb Code    82  k_process.o(.text)
+    k_set_process_priority                   0x10000c2f   Thumb Code   270  k_process.o(.text)
+    process_init                             0x10000d3d   Thumb Code   306  k_process.o(.text)
+    k_send_message                           0x10000e6f   Thumb Code   130  k_process.o(.text)
+    k_receive_message                        0x10000ef1   Thumb Code    74  k_process.o(.text)
+    proc6                                    0x10000f4d   Thumb Code   126  usr_proc.o(.text)
+    proc5                                    0x10000fcb   Thumb Code    90  usr_proc.o(.text)
+    proc4                                    0x10001025   Thumb Code   132  usr_proc.o(.text)
+    proc3                                    0x100010a9   Thumb Code    52  usr_proc.o(.text)
+    proc2                                    0x100010dd   Thumb Code    56  usr_proc.o(.text)
+    proc1                                    0x10001115   Thumb Code   108  usr_proc.o(.text)
+    set_test_procs                           0x10001181   Thumb Code    84  usr_proc.o(.text)
+    null_proccess                            0x100011d5   Thumb Code    16  usr_proc.o(.text)
+    __aeabi_memclr4                          0x10001291   Thumb Code     0  rt_memclr_w.o(.text)
+    __aeabi_memclr8                          0x10001291   Thumb Code     0  rt_memclr_w.o(.text)
+    __rt_memclr_w                            0x10001291   Thumb Code    78  rt_memclr_w.o(.text)
+    _memset_w                                0x10001295   Thumb Code     0  rt_memclr_w.o(.text)
+    __use_two_region_memory                  0x100012df   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow                         0x100012e1   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand                         0x100012e3   Thumb Code     2  heapauxi.o(.text)
+    __user_libspace                          0x100012e5   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x100012e5   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x100012e5   Thumb Code     0  libspace.o(.text)
+    __I$use$semihosting                      0x100012ed   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x100012ed   Thumb Code     2  use_no_semi.o(.text)
+    __semihosting_library_function           0x100012ef   Thumb Code     0  indicate_semi.o(.text)
+    __user_setup_stackheap                   0x100012ef   Thumb Code    74  sys_stackheap_outer.o(.text)
+    exit                                     0x10001339   Thumb Code    12  exit.o(.text)
+    _sys_exit                                0x10001345   Thumb Code     8  sys_exit.o(.text)
+    Region$$Table$$Base                      0x10001350   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x10001370   Number         0  anon$$obj.o(Region$$Table)
     SystemFrequency                          0x10004000   Data           4  system_lpc17xx.o(.data)
-    NUM_MEM_BLOCKS                           0x1000400c   Data           4  k_memory.o(.data)
-    gp_stack                                 0x10004010   Data           4  k_memory.o(.data)
-    gp_current_process                       0x10004014   Data           4  k_process.o(.data)
-    gp_pcbs                                  0x10004018   Data           4  k_process.o(.data)
-    TEST_BIT_PASSED                          0x1000401c   Data           4  usr_proc.o(.data)
-    TOTAL_TESTS_PASSED                       0x10004020   Data           4  usr_proc.o(.data)
-    GROUP_PREFIX                             0x10004024   Data          12  usr_proc.o(.data)
-    LAST_PROC                                0x10004030   Data           4  usr_proc.o(.data)
-    memory                                   0x10004034   Data         120  k_memory.o(.bss)
-    flag                                     0x100040ac   Data         120  k_memory.o(.bss)
-    processQueue                             0x10004124   Data         120  k_process.o(.bss)
-    blockedQueue                             0x1000419c   Data         120  k_process.o(.bss)
-    g_proc_table                             0x10004214   Data          96  k_process.o(.bss)
-    g_test_procs                             0x10004274   Data          96  usr_proc.o(.bss)
-    __libspace_start                         0x100042d4   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x10004334   Data           0  libspace.o(.bss)
-    Image$$RW_IRAM1$$ZI$$Limit               0x10004538   Number         0  startup_lpc17xx.o(STACK)
+    gp_stack                                 0x1000400c   Data           4  k_memory.o(.data)
+    gp_current_process                       0x10004010   Data           4  k_process.o(.data)
+    gp_pcbs                                  0x10004014   Data           4  k_process.o(.data)
+    TEST_BIT_PASSED                          0x10004018   Data           4  usr_proc.o(.data)
+    TOTAL_TESTS_PASSED                       0x1000401c   Data           4  usr_proc.o(.data)
+    GROUP_PREFIX                             0x10004020   Data          12  usr_proc.o(.data)
+    LAST_PROC                                0x1000402c   Data           4  usr_proc.o(.data)
+    memory                                   0x10004030   Data         480  k_memory.o(.bss)
+    flag                                     0x10004210   Data         480  k_memory.o(.bss)
+    processQueue                             0x100043f0   Data         120  k_process.o(.bss)
+    blockedQueue                             0x10004468   Data         120  k_process.o(.bss)
+    g_proc_table                             0x100044e0   Data          96  k_process.o(.bss)
+    g_test_procs                             0x10004540   Data          96  usr_proc.o(.bss)
+    __libspace_start                         0x100045a0   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x10004600   Data           0  libspace.o(.bss)
+    Image$$RW_IRAM1$$ZI$$Limit               0x10004800   Number         0  startup_lpc17xx.o(STACK)
 
 
 
@@ -643,57 +645,57 @@ Memory Map of the image
 
   Image Entry point : 0x100000cd
 
-  Load Region LR_IROM1 (Base: 0x10000000, Size: 0x000012c4, Max: 0x00004000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x10000000, Size: 0x000013a0, Max: 0x00004000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x10000000, Size: 0x00001290, Max: 0x00004000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x10000000, Size: 0x00001370, Max: 0x00004000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x10000000   0x000000cc   Data   RO            3    RESET               startup_lpc17xx.o
-    0x100000cc   0x00000008   Code   RO          305  * !!!main             c_w.l(__main.o)
-    0x100000d4   0x00000034   Code   RO          505    !!!scatter          c_w.l(__scatter.o)
-    0x10000108   0x0000001a   Code   RO          507    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x100000cc   0x00000008   Code   RO          306  * !!!main             c_w.l(__main.o)
+    0x100000d4   0x00000034   Code   RO          506    !!!scatter          c_w.l(__scatter.o)
+    0x10000108   0x0000001a   Code   RO          508    !!handler_copy      c_w.l(__scatter_copy.o)
     0x10000122   0x00000002   PAD
-    0x10000124   0x0000001c   Code   RO          509    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x10000140   0x00000002   Code   RO          445    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x10000142   0x00000000   Code   RO          340    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          343    .ARM.Collect$$libinit$$00000008  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          345    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          347    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          350    .ARM.Collect$$libinit$$0000000F  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          352    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          354    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          356    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          358    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          360    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          362    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          364    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          366    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          368    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          370    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          374    .ARM.Collect$$libinit$$0000002A  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          376    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          378    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x10000142   0x00000000   Code   RO          380    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x10000142   0x00000002   Code   RO          381    .ARM.Collect$$libinit$$00000031  c_w.l(libinit2.o)
-    0x10000144   0x00000002   Code   RO          502    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x10000146   0x00000000   Code   RO          460    .ARM.Collect$$libshutdown$$00000003  c_w.l(libshutdown2.o)
-    0x10000146   0x00000000   Code   RO          463    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
-    0x10000146   0x00000000   Code   RO          466    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
-    0x10000146   0x00000000   Code   RO          468    .ARM.Collect$$libshutdown$$0000000B  c_w.l(libshutdown2.o)
-    0x10000146   0x00000000   Code   RO          471    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
-    0x10000146   0x00000002   Code   RO          472    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x10000148   0x00000000   Code   RO          309    .ARM.Collect$$rtentry$$00000000  c_w.l(rtentry.o)
-    0x10000148   0x00000000   Code   RO          388    .ARM.Collect$$rtentry$$00000002  c_w.l(rtentry2.o)
-    0x10000148   0x00000006   Code   RO          400    .ARM.Collect$$rtentry$$00000004  c_w.l(rtentry4.o)
-    0x1000014e   0x00000000   Code   RO          390    .ARM.Collect$$rtentry$$00000009  c_w.l(rtentry2.o)
-    0x1000014e   0x00000004   Code   RO          391    .ARM.Collect$$rtentry$$0000000A  c_w.l(rtentry2.o)
-    0x10000152   0x00000000   Code   RO          393    .ARM.Collect$$rtentry$$0000000C  c_w.l(rtentry2.o)
-    0x10000152   0x00000008   Code   RO          394    .ARM.Collect$$rtentry$$0000000D  c_w.l(rtentry2.o)
-    0x1000015a   0x00000002   Code   RO          448    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x1000015c   0x00000000   Code   RO          476    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x1000015c   0x00000004   Code   RO          477    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x10000160   0x00000006   Code   RO          478    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x10000124   0x0000001c   Code   RO          510    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x10000140   0x00000002   Code   RO          446    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x10000142   0x00000000   Code   RO          341    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          344    .ARM.Collect$$libinit$$00000008  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          346    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          348    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          351    .ARM.Collect$$libinit$$0000000F  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          353    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          355    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          357    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          359    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          361    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          363    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          365    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          367    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          369    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          371    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          375    .ARM.Collect$$libinit$$0000002A  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          377    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          379    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x10000142   0x00000000   Code   RO          381    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x10000142   0x00000002   Code   RO          382    .ARM.Collect$$libinit$$00000031  c_w.l(libinit2.o)
+    0x10000144   0x00000002   Code   RO          503    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x10000146   0x00000000   Code   RO          461    .ARM.Collect$$libshutdown$$00000003  c_w.l(libshutdown2.o)
+    0x10000146   0x00000000   Code   RO          464    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
+    0x10000146   0x00000000   Code   RO          467    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
+    0x10000146   0x00000000   Code   RO          469    .ARM.Collect$$libshutdown$$0000000B  c_w.l(libshutdown2.o)
+    0x10000146   0x00000000   Code   RO          472    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
+    0x10000146   0x00000002   Code   RO          473    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x10000148   0x00000000   Code   RO          310    .ARM.Collect$$rtentry$$00000000  c_w.l(rtentry.o)
+    0x10000148   0x00000000   Code   RO          389    .ARM.Collect$$rtentry$$00000002  c_w.l(rtentry2.o)
+    0x10000148   0x00000006   Code   RO          401    .ARM.Collect$$rtentry$$00000004  c_w.l(rtentry4.o)
+    0x1000014e   0x00000000   Code   RO          391    .ARM.Collect$$rtentry$$00000009  c_w.l(rtentry2.o)
+    0x1000014e   0x00000004   Code   RO          392    .ARM.Collect$$rtentry$$0000000A  c_w.l(rtentry2.o)
+    0x10000152   0x00000000   Code   RO          394    .ARM.Collect$$rtentry$$0000000C  c_w.l(rtentry2.o)
+    0x10000152   0x00000008   Code   RO          395    .ARM.Collect$$rtentry$$0000000D  c_w.l(rtentry2.o)
+    0x1000015a   0x00000002   Code   RO          449    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x1000015c   0x00000000   Code   RO          477    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x1000015c   0x00000004   Code   RO          478    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x10000160   0x00000006   Code   RO          479    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x10000166   0x00000002   PAD
     0x10000168   0x00000032   Code   RO          126    .emb_text           hal.o
     0x1000019a   0x00000002   PAD
@@ -704,36 +706,35 @@ Memory Map of the image
     0x100007d4   0x00000024   Code   RO          105    .text               main_svc.o
     0x100007f8   0x0000001a   Code   RO          133    .text               k_rtx_init.o
     0x10000812   0x00000002   PAD
-    0x10000814   0x0000016c   Code   RO          158    .text               k_memory.o
-    0x10000980   0x000004ec   Code   RO          177    .text               k_process.o
-    0x10000e6c   0x00000344   Code   RO          218    .text               usr_proc.o
-    0x100011b0   0x0000004e   Code   RO          301    .text               c_w.l(rt_memclr_w.o)
-    0x100011fe   0x00000006   Code   RO          303    .text               c_w.l(heapauxi.o)
-    0x10001204   0x00000008   Code   RO          384    .text               c_w.l(libspace.o)
-    0x1000120c   0x00000002   Code   RO          421    .text               c_w.l(use_no_semi.o)
-    0x1000120e   0x00000000   Code   RO          423    .text               c_w.l(indicate_semi.o)
-    0x1000120e   0x0000004a   Code   RO          424    .text               c_w.l(sys_stackheap_outer.o)
-    0x10001258   0x0000000c   Code   RO          430    .text               c_w.l(exit.o)
-    0x10001264   0x0000000c   Code   RO          446    .text               c_w.l(sys_exit.o)
-    0x10001270   0x00000020   Data   RO          503    Region$$Table       anon$$obj.o
+    0x10000814   0x00000174   Code   RO          158    .text               k_memory.o
+    0x10000988   0x000005c4   Code   RO          178    .text               k_process.o
+    0x10000f4c   0x00000344   Code   RO          219    .text               usr_proc.o
+    0x10001290   0x0000004e   Code   RO          302    .text               c_w.l(rt_memclr_w.o)
+    0x100012de   0x00000006   Code   RO          304    .text               c_w.l(heapauxi.o)
+    0x100012e4   0x00000008   Code   RO          385    .text               c_w.l(libspace.o)
+    0x100012ec   0x00000002   Code   RO          422    .text               c_w.l(use_no_semi.o)
+    0x100012ee   0x00000000   Code   RO          424    .text               c_w.l(indicate_semi.o)
+    0x100012ee   0x0000004a   Code   RO          425    .text               c_w.l(sys_stackheap_outer.o)
+    0x10001338   0x0000000c   Code   RO          431    .text               c_w.l(exit.o)
+    0x10001344   0x0000000c   Code   RO          447    .text               c_w.l(sys_exit.o)
+    0x10001350   0x00000020   Data   RO          504    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x10004000, Size: 0x00000538, Max: 0x00004000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Base: 0x10004000, Size: 0x00000800, Max: 0x00004000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x10004000   0x00000004   Data   RW           16    .data               system_lpc17xx.o
     0x10004004   0x00000008   Data   RW           84    .data               printf.o
-    0x1000400c   0x00000008   Data   RW          160    .data               k_memory.o
-    0x10004014   0x00000008   Data   RW          179    .data               k_process.o
-    0x1000401c   0x00000018   Data   RW          220    .data               usr_proc.o
-    0x10004034   0x000000f0   Zero   RW          159    .bss                k_memory.o
-    0x10004124   0x00000150   Zero   RW          178    .bss                k_process.o
-    0x10004274   0x00000060   Zero   RW          219    .bss                usr_proc.o
-    0x100042d4   0x00000060   Zero   RW          385    .bss                c_w.l(libspace.o)
-    0x10004334   0x00000004   PAD
-    0x10004338   0x00000000   Zero   RW            2    HEAP                startup_lpc17xx.o
-    0x10004338   0x00000200   Zero   RW            1    STACK               startup_lpc17xx.o
+    0x1000400c   0x00000004   Data   RW          161    .data               k_memory.o
+    0x10004010   0x00000008   Data   RW          180    .data               k_process.o
+    0x10004018   0x00000018   Data   RW          221    .data               usr_proc.o
+    0x10004030   0x000003c0   Zero   RW          159    .bss                k_memory.o
+    0x100043f0   0x00000150   Zero   RW          179    .bss                k_process.o
+    0x10004540   0x00000060   Zero   RW          220    .bss                usr_proc.o
+    0x100045a0   0x00000060   Zero   RW          386    .bss                c_w.l(libspace.o)
+    0x10004600   0x00000000   Zero   RW            2    HEAP                startup_lpc17xx.o
+    0x10004600   0x00000200   Zero   RW            1    STACK               startup_lpc17xx.o
 
 
 
@@ -754,18 +755,18 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
         50          0          0          0          0        308   hal.o
-       364         32          0          8        240       1903   k_memory.o
-      1260         40          0          8        336       5960   k_process.o
-        26          0          0          0          0        961   k_rtx_init.o
-        36         10          0          0          0       1823   main_svc.o
-       708         12          0          8          0       3952   printf.o
+       372         30          0          4        960       1898   k_memory.o
+      1476         42          0          8        336       6437   k_process.o
+        26          0          0          0          0       1069   k_rtx_init.o
+        36         10          0          0          0       1779   main_svc.o
+       708         12          0          8          0       3868   printf.o
         56         22        204          0        512        908   startup_lpc17xx.o
        540         64          0          4          0      21575   system_lpc17xx.o
-       292         54          0          0          0       1937   uart_polling.o
-       836        172          0         24         96       2424   usr_proc.o
+       292         54          0          0          0       1893   uart_polling.o
+       836        172          0         24         96       2360   usr_proc.o
 
     ----------------------------------------------------------------------
-      4172        406        236         52       1184      41751   Object Totals
+      4396        406        236         48       1904      42095   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          4          0          0          0          0          0   (incl. Padding)
 
@@ -796,8 +797,8 @@ Image component sizes
          2          0          0          0          0         68   use_no_semi.o
 
     ----------------------------------------------------------------------
-       348         16          0          0        100        656   Library Totals
-         4          0          0          0          4          0   (incl. Padding)
+       348         16          0          0         96        656   Library Totals
+         4          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -806,7 +807,7 @@ Image component sizes
        344         16          0          0         96        656   c_w.l
 
     ----------------------------------------------------------------------
-       348         16          0          0        100        656   Library Totals
+       348         16          0          0         96        656   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -815,15 +816,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4520        422        236         52       1284      41471   Grand Totals
-      4520        422        236         52       1284      41471   ELF Image Totals
-      4520        422        236         52          0          0   ROM Totals
+      4744        422        236         48       2000      41815   Grand Totals
+      4744        422        236         48       2000      41815   ELF Image Totals
+      4744        422        236         48          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 4756 (   4.64kB)
-    Total RW  Size (RW Data + ZI Data)              1336 (   1.30kB)
-    Total ROM Size (Code + RO Data + RW Data)       4808 (   4.70kB)
+    Total RO  Size (Code + RO Data)                 4980 (   4.86kB)
+    Total RW  Size (RW Data + ZI Data)              2048 (   2.00kB)
+    Total ROM Size (Code + RO Data + RW Data)       5028 (   4.91kB)
 
 ==============================================================================
 

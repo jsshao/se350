@@ -40,7 +40,6 @@ extern PROC_INIT g_test_procs[NUM_TEST_PROCS];
 int processQueue[5][NUM_TEST_PROCS] = {0}; 
 int blockedQueue[5][NUM_TEST_PROCS] = {0};
 
-
 void addBlockedQ(int pid, int priority) {
 	int i=0;
 	for (i = 0; i < NUM_TEST_PROCS; i++) {		
@@ -317,7 +316,8 @@ int k_release_processor(void)
 	
 	// UNLESS system just started(gp_current_process is NULL) or current process is blocked
 	// add current process to ready queue
-	if (gp_current_process != NULL  && gp_current_process->m_state != BLOCKED) {
+	if (gp_current_process != NULL  && gp_current_process->m_state != BLOCKED
+			&& gp_current_process->m_state != BLOCKED_ON_RECEIVE) {
 		addQ(gp_current_process->m_pid, gp_current_process->m_priority);		
 	}
 	
@@ -340,4 +340,47 @@ int k_release_processor(void)
 	process_switch(p_pcb_old);
 	
 	return RTX_OK;
+}
+
+/* Send p_msg to the process defined at pid */
+int k_send_message(int pid, void *p_msg) {	
+	MSG_T* msg = (MSG_T*)k_request_memory_block();
+	msg->sender_pid = gp_current_process->m_pid;
+	msg->dest_pid = pid;	
+	msg->msg = p_msg;			
+	
+	//push to the tail of the queue
+	msg->next = NULL;				
+	if (gp_pcbs[pid-1]->tail != NULL) {			
+		gp_pcbs[pid-1]->tail->next = msg;
+	} else {
+		gp_pcbs[pid-1]->head = msg;
+	}
+	//assign new tail
+	gp_pcbs[pid-1]->tail = msg;
+	
+	if (BLOCKED_ON_RECEIVE == gp_pcbs[pid-1]->m_state) {
+		gp_pcbs[pid-1]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid-1]->m_priority);			
+		k_release_processor();
+	}
+}
+
+/* This is a blocking receive */
+void *k_receive_message(int *p_pid) {
+	int current_pid = gp_current_process->m_pid;	
+	void* msg;
+	while (NULL == gp_pcbs[current_pid - 1]->head ||	NULL == gp_pcbs[current_pid - 1]->tail) {
+		gp_current_process->m_state = BLOCKED_ON_RECEIVE;		
+		k_release_processor();		
+	}
+	MSG_T * msg_t = gp_pcbs[current_pid - 1]->head;
+	gp_pcbs[current_pid - 1]->head = gp_pcbs[current_pid - 1]->head->next;
+	if (gp_pcbs[current_pid - 1]->head == NULL) {
+		gp_pcbs[current_pid - 1]->tail = NULL;
+	}	
+	*p_pid = msg_t->sender_pid;
+	msg = msg_t->msg;
+	k_super_delete((void*)msg_t);		
+	return msg;
 }

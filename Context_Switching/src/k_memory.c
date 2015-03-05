@@ -45,11 +45,13 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
 
 */
 
-void* memory[30] = {0}; // addresses of available memory
-int flag[30] = {0}; // 0 is ununsed memory block
+const int NUM_MEM_BLOCKS = 120;
+const int MEM_BLOCK_SIZE = 128;
+void* memory[NUM_MEM_BLOCKS] = {0}; // addresses of available memory
+int flag[NUM_MEM_BLOCKS] = {0}; // 0 is ununsed memory block
 
 extern PCB *gp_current_process;
-int NUM_MEM_BLOCKS = 7;
+
 
 void memory_init(void)
 {
@@ -65,6 +67,9 @@ void memory_init(void)
   
 	for ( i = 0; i < NUM_TEST_PROCS; i++ ) {
 		gp_pcbs[i] = (PCB *)p_end;
+		gp_pcbs[i]->head = NULL;
+		gp_pcbs[i]->tail = NULL;
+
 		p_end += sizeof(PCB); 
 	}
 	
@@ -75,7 +80,7 @@ void memory_init(void)
 		--gp_stack; 
 	}
 
-	/* Fixed sized memory pool (max of 30 blocks of 512 bytes each) */
+	/* Fixed sized memory pool (max of 120 blocks of 128 bytes each) */
 	for (i = 0; i < NUM_MEM_BLOCKS; i++) {
 		/*
 		if ((char *)p_end + i*512 + 512 > (char*)gp_stack) {
@@ -83,7 +88,7 @@ void memory_init(void)
 			break;
 		} */
 		flag[i] = 0;
-		memory[i] = (void *) (p_end + i*512);
+		memory[i] = (void *) (p_end + i*MEM_BLOCK_SIZE);
 	}
 }
 
@@ -149,7 +154,7 @@ int k_release_memory_block(void *p_mem_blk) {
 	int index;
 
 	// get index of flag array from pointer
-	index = ((char*)p_mem_blk - (char*)memory[0]) / 512;
+	index = ((char*)p_mem_blk - (char*)memory[0]) / MEM_BLOCK_SIZE;
 	
 	// if index is invalid, return
 	if (index >= NUM_MEM_BLOCKS || index < 0) {
@@ -180,6 +185,38 @@ int k_release_memory_block(void *p_mem_blk) {
 				k_release_processor();
 			}
 		} */
+		k_release_processor();
+		
+	}
+	
+	return RTX_OK;
+}
+
+int k_super_delete(void *p_mem_blk) {
+	int pid;
+	int index;
+
+	// get index of flag array from pointer
+	index = ((char*)p_mem_blk - (char*)memory[0]) / MEM_BLOCK_SIZE;
+	
+	// if index is invalid, return
+	if (index >= NUM_MEM_BLOCKS || index < 0) {
+		return RTX_ERR;
+	}
+	
+	//set flag array to be avaliable for block at index or if it doesn't belong to the process
+	if (flag[index] == 0) {
+		return RTX_ERR;
+	} else {
+		flag[index] = 0;
+	}	
+	
+	//remove first process in blockedQ, and check for preemption
+	pid = popBlockedQ();
+	if (pid != -1) {
+		int qPid;		
+		gp_pcbs[pid-1]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid-1]->m_priority);		
 		k_release_processor();
 		
 	}
