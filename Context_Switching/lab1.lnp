@@ -1,4 +1,4 @@
---cpu Cortex-M3 "startup_lpc17xx.o" "system_lpc17xx.o" "uart_polling.o" "printf.o" "main_svc.o" "hal.o" "k_rtx_init.o" "k_memory.o" "k_process.o" "list.o" "usr_proc.o" 
+--cpu Cortex-M3 "startup_lpc17xx.o" "system_lpc17xx.o" "uart_polling.o" "printf.o" "main_svc.o" "hal.o" "k_rtx_init.o" "k_memory.o" "k_process.o" "list.o" "timer.o" "kernel_procs.o" "usr_proc.o" 
 --strict --scatter "lab1.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 

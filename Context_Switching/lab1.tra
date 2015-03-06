@@ -11,9 +11,11 @@
 ### List of Objects: adding '"k_memory.o"'
 ### List of Objects: adding '"k_process.o"'
 ### List of Objects: adding '"list.o"'
+### List of Objects: adding '"timer.o"'
+### List of Objects: adding '"kernel_procs.o"'
 ### List of Objects: adding '"usr_proc.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 "startup_lpc17xx.o" "system_lpc17xx.o" "uart_polling.o" "printf.o" "main_svc.o" "hal.o" "k_rtx_init.o" "k_memory.o" "k_process.o" "list.o" "usr_proc.o" 
+--cpu Cortex-M3 "startup_lpc17xx.o" "system_lpc17xx.o" "uart_polling.o" "printf.o" "main_svc.o" "hal.o" "k_rtx_init.o" "k_memory.o" "k_process.o" "list.o" "timer.o" "kernel_procs.o" "usr_proc.o" 
 --strict --scatter "lab1.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
@@ -21,7 +23,7 @@
 ### ADS-LD Output File: 'lab1.axf'
 ### ADS-LD Command File: 'lab1.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'lab1.lnp', Handle=0x000002D8
+### Creating CmdFile 'lab1.lnp', Handle=0x00000598
 ### Writing '.lnp' file
 ### ADS-LD Command file 'lab1.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

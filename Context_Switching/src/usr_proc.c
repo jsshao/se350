@@ -68,11 +68,11 @@ void proc2(void)
 	msg->mtype = DEFAULT;
 	strcpy(msg->mtext, "Sent from proc 2");
 	send_message(1, mem);
-	set_priority(1, HIGH);
+	set_process_priority(1, HIGH);
 
 	release_memory_block(mem);
 
-	while(true) {
+	while(1) {
 		release_processor();
 	}
 }
@@ -86,12 +86,12 @@ void proc1(void)
 	mem = receive_message(&sender);
 	msg = (MSG_BUF*)mem;
 
-	if (2 == sender && strcmp(msg->mtext, "Sent from proc 2") == 0) {
+	if (2 == sender && strcmp(msg->mtext, "Sent from procjg 2") == 0) {
 		printf("Test 1 Passed");
-	}
-
-	set_priority(1, LOW);
-	while(true) {
+	} 
+	
+	set_process_priority(1, LOW);
+	while(1) {
 		release_processor();
 	}
 }

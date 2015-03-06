@@ -9,3 +9,4 @@ main_svc.o: src\rtx.h
 main_svc.o: src\uart_polling.h
 main_svc.o: src\printf.h
 main_svc.o: C:\Software\Keil\ARM\ARMCC\bin\..\include\stdarg.h
+main_svc.o: src\timer.h

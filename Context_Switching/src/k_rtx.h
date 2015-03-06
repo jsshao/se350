@@ -40,6 +40,7 @@ typedef struct msg_t{
 	struct msg_t* next;
 	int dest_pid;
 	int sender_pid;	
+	int expiry;
 } MSG_T;
 
 typedef struct pcb 

@@ -18,6 +18,7 @@
 #ifdef DEBUG_0
 #include "uart_polling.h"
 #include "printf.h"
+#include "timer.h"
 #endif /* DEBUG_0 */
 
 int main() 
@@ -28,7 +29,9 @@ int main()
 	init_printf(NULL, putc);
 #endif /* DEBUG_0 */	
 	/* start the RTX and built-in processes */
+	timer_init(0);
 	rtx_init();  
+
  
 	/* We should never reach here!!! */
 	return RTX_ERR;  
