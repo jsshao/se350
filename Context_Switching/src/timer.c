@@ -9,11 +9,12 @@
 #include <LPC17xx.h>
 #include "timer.h"
 #include "printf.h"
-
+#include "kernel_procs.h"
 #define BIT(X) (1<<X)
 
 volatile uint32_t g_timer_count = 0; // increment every 1 ms
-
+extern void* gp_current_process;
+extern void **gp_pcbs; 
 /**
  * @brief: initialize timer. Only timer 0 is supported
  */
@@ -112,12 +113,17 @@ __asm void TIMER0_IRQHandler(void)
  */
 void c_TIMER0_IRQHandler(void)
 {
+	void* old_proc = gp_current_process;
 	/* ack inttrupt, see section  21.6.1 on pg 493 of LPC17XX_UM */
 	LPC_TIM0->IR = BIT(0);  
 	
 	g_timer_count++;
-		
-	timer_i_process();
 	
+	gp_current_process = gp_pcbs[TIMER_PID - 1];
+	process_switch(old_proc);
+	timer_i_process();
+		
+	gp_current_process = old_proc;
+	process_switch(gp_pcbs[TIMER_PID-1]);
 }
 

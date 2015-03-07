@@ -17,7 +17,7 @@
 #include <system_LPC17xx.h>
 #include "uart_polling.h"
 #include "k_process.h"
-
+#include "kernel_procs.h"
 #ifdef DEBUG_0
 #include "printf.h"
 #endif /* DEBUG_0 */
@@ -27,8 +27,9 @@ PCB **gp_pcbs;                  /* array of pcbs */
 PCB *gp_current_process = NULL; /* always point to the current RUN process */
 
 /* process initialization table */
-PROC_INIT g_proc_table[NUM_TEST_PROCS];
+PROC_INIT g_proc_table[NUM_TEST_PROCS + NUM_KERNEL_PROCS];
 extern PROC_INIT g_test_procs[NUM_TEST_PROCS];
+extern PROC_INIT g_kernel_procs[NUM_KERNEL_PROCS];
 
 
 /**
@@ -223,13 +224,23 @@ void process_init()
 		
 		addQ(g_test_procs[i].m_pid, g_test_procs[i].m_priority);
 	}
+	
+	set_kernel_procs();
+	for ( i = 0; i < NUM_KERNEL_PROCS; i++ ) {
+		g_proc_table[i + NUM_TEST_PROCS].m_pid = g_kernel_procs[i].m_pid;
+		g_proc_table[i + NUM_TEST_PROCS].m_stack_size = g_kernel_procs[i].m_stack_size;
+		g_proc_table[i + NUM_TEST_PROCS].mpf_start_pc = g_kernel_procs[i].mpf_start_pc;
+		g_proc_table[i + NUM_TEST_PROCS].m_priority = g_kernel_procs[i].m_priority;			
+	}
   
 	/* initilize exception stack frame (i.e. initial context) for each process */
-	for ( i = 0; i < NUM_TEST_PROCS; i++ ) {
+	for ( i = 0; i < NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++ ) {
 		int j;
 		(gp_pcbs[i])->m_pid = (g_proc_table[i]).m_pid;
 		(gp_pcbs[i])->m_priority = (g_proc_table[i]).m_priority;
 		(gp_pcbs[i])->m_state = NEW;
+		(gp_pcbs[i])->head = NULL;
+		(gp_pcbs[i])->tail = NULL;
 		
 		sp = alloc_stack((g_proc_table[i]).m_stack_size);
 		*(--sp)  = INITIAL_xPSR;      // user process initial xPSR  
@@ -367,26 +378,43 @@ int k_send_message(int pid, void *p_msg) {
 	}
 }
 
+void send_message_t(MSG_T* msg) {
+	int pid = msg->dest_pid;
+	PCB * dest = gp_pcbs[pid-1];
+	
+ //push to the tail of the queue
+	msg->next = NULL;				
+	if (gp_pcbs[pid-1]->tail != NULL) {			
+		gp_pcbs[pid-1]->tail->next = msg;
+	} else {
+		gp_pcbs[pid-1]->head = msg;
+	}
+	//assign new tail
+	gp_pcbs[pid-1]->tail = msg;
+	
+	if (BLOCKED_ON_RECEIVE == gp_pcbs[pid-1]->m_state) {
+		gp_pcbs[pid-1]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid-1]->m_priority);	
+	}
+}
+
 /* send message to process defined by pid with a delay */
-int k_delayed_send(int pid, void *p_msg, int delay) {
+int k_delayed_send(int pid, void *p_msg, int delay) {	
 	MSG_T* msg = (MSG_T*)k_request_memory_block();
 	msg->sender_pid = gp_current_process->m_pid;
 	msg->dest_pid = pid;	
 	msg->msg = p_msg;
-	msg->m_state = RDY;
 	msg->delay = delay;
 	
 	//push to the tail of the queue
-	msg->next = NULL;				
-	if (timer_pcb->tail != NULL) {			
-		timer_pcb->tail->next = msg;
+	msg->next = NULL;		
+	if (gp_pcbs[TIMER_PID - 1]->tail != NULL) {			
+		gp_pcbs[TIMER_PID - 1]->tail->next = msg;
 	} else {
-		timer_pcb->head = msg;
+		gp_pcbs[TIMER_PID - 1]->head = msg;
 	}
 	//assign new tail
-	timer_pcb->tail = msg;
-	
-	//do we release processor?????
+	gp_pcbs[TIMER_PID - 1]->tail = msg;	
 }
 
 /* This is a blocking receive */
@@ -410,17 +438,17 @@ void *k_receive_message(int *p_pid) {
 }
 
 /* non-blocking recieve for delayed messages that returns a MSG_T */
+/* pre-cond: expected current_process is the timer interupt process */
 void *k_receive_message_t() {
 		
 	//deqeue the head
 	MSG_T* msg_t = gp_current_process->head;
-	if (NULL == msg_t) return;
+	if (NULL == msg_t) return NULL;				//return null (instead of block) if no msg on queue
+	
 	gp_current_process->head = gp_current_process->head->next;
 	if (gp_current_process->head == NULL) {
 		gp_current_process->tail = NULL;
 	}
-	
-	//how to delete??
 	
 	return msg_t;
 }

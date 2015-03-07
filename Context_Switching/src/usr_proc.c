@@ -30,7 +30,7 @@ char GROUP_PREFIX[] = "G016_test: ";
 int LAST_PROC = -1; 
 
 void set_test_procs() {	
-	int i;	
+	int i;		
 	for( i = 0; i < NUM_TEST_PROCS; i++ ) {
 		g_test_procs[i].m_pid=(U32)(i+1);
 		g_test_procs[i].m_priority=LOWEST;

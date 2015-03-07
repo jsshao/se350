@@ -15,6 +15,7 @@
 
 #define NULL 0
 #define NUM_TEST_PROCS 6
+#define NUM_KERNEL_PROCS 1
 
 #ifdef DEBUG_0
 #define USR_SZ_STACK 0x200         /* user proc stack size 512B   */
@@ -40,7 +41,7 @@ typedef struct msg_t{
 	struct msg_t* next;
 	int dest_pid;
 	int sender_pid;	
-	int expiry;
+	int delay;
 } MSG_T;
 
 typedef struct pcb 

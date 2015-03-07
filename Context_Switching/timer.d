@@ -8,3 +8,5 @@ timer.o: C:\Software\Keil\ARM\Inc\NXP\LPC17xx\system_LPC17xx.h
 timer.o: src\timer.h
 timer.o: src\printf.h
 timer.o: C:\Software\Keil\ARM\ARMCC\bin\..\include\stdarg.h
+timer.o: src\kernel_procs.h
+timer.o: src\k_rtx.h
