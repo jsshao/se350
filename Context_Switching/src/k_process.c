@@ -304,8 +304,11 @@ int process_switch(PCB *p_pcb_old)
 	/* The following will only execute if the if block above is FALSE */
 
 	if (gp_current_process != p_pcb_old) {
-		if (state == RDY){ 					
-			p_pcb_old->m_state = RDY; 
+		if (state == RDY){ 
+			//frank's non-legit hack
+			if(BLOCKED_ON_RECEIVE != p_pcb_old->m_state)
+				p_pcb_old->m_state = RDY;
+			
 			p_pcb_old->mp_sp = (U32 *) __get_MSP(); // save the old process's sp
 			gp_current_process->m_state = RUN;
 			__set_MSP((U32) gp_current_process->mp_sp); //switch to the new proc's stack    
@@ -421,8 +424,7 @@ int k_delayed_send(int pid, void *p_msg, int delay) {
 		gp_pcbs[TIMER_PID - 1]->head = msg;
 	}
 	//assign new tail
-	gp_pcbs[TIMER_PID - 1]->tail = msg;	
-	printf("delayed send");
+	gp_pcbs[TIMER_PID - 1]->tail = msg;		
 }
 
 /* This is a blocking receive */

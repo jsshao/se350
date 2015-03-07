@@ -68,7 +68,7 @@ void proc2(void)
 	msg->mtype = DEFAULT;
 	strcpy(msg->mtext, "Sent from proc 2");
 	//send_message(1, mem);
-	printf("sending delayed message 2000");
+	printf("sending delayed message 2000\n");
 	delayed_send(1, mem, 2000);	
 	set_process_priority(1, HIGH);
 
