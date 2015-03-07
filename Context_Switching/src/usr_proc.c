@@ -67,7 +67,9 @@ void proc2(void)
 	msg = (MSG_BUF*)mem;
 	msg->mtype = DEFAULT;
 	strcpy(msg->mtext, "Sent from proc 2");
-	send_message(1, mem);
+	//send_message(1, mem);
+	printf("sending delayed message 2000");
+	delayed_send(1, mem, 2000);	
 	set_process_priority(1, HIGH);
 
 	release_memory_block(mem);
@@ -86,7 +88,7 @@ void proc1(void)
 	mem = receive_message(&sender);
 	msg = (MSG_BUF*)mem;
 
-	if (2 == sender && strcmp(msg->mtext, "Sent from procjg 2") == 0) {
+	if (2 == sender && strcmp(msg->mtext, "Sent from proc 2") == 0) {
 		printf("Test 1 Passed");
 	} 
 	

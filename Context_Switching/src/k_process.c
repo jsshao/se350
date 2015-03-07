@@ -206,7 +206,7 @@ void process_init()
 	int i;
 	int j;
 	U32 *sp;
-  printf("hiiiiiiiiiii \n\r");
+  
 	for (i = 0; i < 5; i++) {
 		for (j = 0; j < NUM_TEST_PROCS; j++) {
 			processQueue[i][j] = -1;
@@ -234,10 +234,10 @@ void process_init()
 		g_proc_table[i + NUM_TEST_PROCS].m_priority = g_kernel_procs[i].m_priority;			
 	}
   
-	for (i = 0; i <  NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++) {
-		printf("new pid: %d priority: %d \n\r", (g_proc_table[i]).m_pid,(g_proc_table[i]).m_priority); 
-		printf("is null: %d", NULL == gp_pcbs[i]);
-	}
+	//for (i = 0; i <  NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++) {
+		//printf("new pid: %d priority: %d \n\r", (g_proc_table[i]).m_pid,(g_proc_table[i]).m_priority); 
+		//printf("is null: %d", NULL == gp_pcbs[i]);
+	//}
 	
 	/* initilize exception stack frame (i.e. initial context) for each process */
 	for ( i = 0; i < NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++ ) {
@@ -330,7 +330,7 @@ int k_release_processor(void)
 {		
 	PCB *p_pcb_old = gp_current_process;
 	
-	printQ();
+	//printQ();
 	
 	// UNLESS system just started(gp_current_process is NULL) or current process is blocked
 	// add current process to ready queue
@@ -422,6 +422,7 @@ int k_delayed_send(int pid, void *p_msg, int delay) {
 	}
 	//assign new tail
 	gp_pcbs[TIMER_PID - 1]->tail = msg;	
+	printf("delayed send");
 }
 
 /* This is a blocking receive */
@@ -450,6 +451,7 @@ void *k_receive_message_t() {
 		
 	//deqeue the head
 	MSG_T* msg_t = gp_current_process->head;
+	int pid = gp_current_process->m_pid;
 	if (NULL == msg_t) return NULL;				//return null (instead of block) if no msg on queue
 	
 	gp_current_process->head = gp_current_process->head->next;

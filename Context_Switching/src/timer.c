@@ -113,18 +113,18 @@ __asm void TIMER0_IRQHandler(void)
  */
 void c_TIMER0_IRQHandler(void)
 {
-	void* old_proc = gp_current_process;
+	void* old_proc;
 	/* ack inttrupt, see section  21.6.1 on pg 493 of LPC17XX_UM */
 	LPC_TIM0->IR = BIT(0);  
 	
 	g_timer_count++;
 	
-	
+	old_proc = gp_current_process;
 	gp_current_process = gp_pcbs[TIMER_PID - 1];
-	process_switch(old_proc);
+	
 	timer_i_process();
-		
+	
 	gp_current_process = old_proc;
-	process_switch(gp_pcbs[TIMER_PID-1]); 
+	
 }
 
