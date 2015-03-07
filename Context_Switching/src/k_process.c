@@ -348,6 +348,7 @@ int k_send_message(int pid, void *p_msg) {
 	msg->sender_pid = gp_current_process->m_pid;
 	msg->dest_pid = pid;	
 	msg->msg = p_msg;			
+	msg->delay = -1;
 	
 	//push to the tail of the queue
 	msg->next = NULL;				
@@ -364,6 +365,28 @@ int k_send_message(int pid, void *p_msg) {
 		addQ(pid, gp_pcbs[pid-1]->m_priority);			
 		k_release_processor();
 	}
+}
+
+/* send message to process defined by pid with a delay */
+int k_delayed_send(int pid, void *p_msg, int delay) {
+	MSG_T* msg = (MSG_T*)k_request_memory_block();
+	msg->sender_pid = gp_current_process->m_pid;
+	msg->dest_pid = pid;	
+	msg->msg = p_msg;
+	msg->m_state = RDY;
+	msg->delay = delay;
+	
+	//push to the tail of the queue
+	msg->next = NULL;				
+	if (timer_pcb->tail != NULL) {			
+		timer_pcb->tail->next = msg;
+	} else {
+		timer_pcb->head = msg;
+	}
+	//assign new tail
+	timer_pcb->tail = msg;
+	
+	//do we release processor?????
 }
 
 /* This is a blocking receive */
@@ -384,4 +407,20 @@ void *k_receive_message(int *p_pid) {
 	msg = msg_t->msg;
 	k_super_delete((void*)msg_t);		
 	return msg;
+}
+
+/* non-blocking recieve for delayed messages that returns a MSG_T */
+void *k_receive_message_t() {
+		
+	//deqeue the head
+	MSG_T* msg_t = gp_current_process->head;
+	if (NULL == msg_t) return;
+	gp_current_process->head = gp_current_process->head->next;
+	if (gp_current_process->head == NULL) {
+		gp_current_process->tail = NULL;
+	}
+	
+	//how to delete??
+	
+	return msg_t;
 }

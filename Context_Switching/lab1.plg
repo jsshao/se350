@@ -279,3 +279,39 @@ src\kernel_procs.c(18): warning:  #1-D: last line of file ends without a newline
 linking...
 Program Size: Code=4684 RO-data=236 RW-data=28 ZI-data=2004  
 "lab1.axf" - 0 Error(s), 2 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(197): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(154): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(347): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(367): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(372): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(390): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(397): error:  #20: identifier "timer_pcb" is undefined
+src\k_process.c(406): warning:  #1-D: last line of file ends without a newline
+compiling timer.c...
+src\timer.c(120): warning:  #223-D: function "timer_i_process" declared implicitly
+compiling kernel_procs.c...
+src\kernel_procs.h(4): warning:  #1-D: last line of file ends without a newline
+src\kernel_procs.c(19): error:  #268: declaration may not appear after executable statement in block
+src\kernel_procs.c(19): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(19): error:  #144: a value of type "int" cannot be used to initialize an entity of type "MSG_T *"
+src\kernel_procs.c(46): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(197): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(154): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(347): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(367): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(372): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(390): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(397): error:  #20: identifier "timer_pcb" is undefined
+src\k_process.c(406): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\kernel_procs.h(4): warning:  #1-D: last line of file ends without a newline
+src\kernel_procs.c(19): error:  #268: declaration may not appear after executable statement in block
+src\kernel_procs.c(19): warning:  #223-D: function "receive_message_t" declared implicitly
+src\kernel_procs.c(19): error:  #144: a value of type "int" cannot be used to initialize an entity of type "MSG_T *"
+src\kernel_procs.c(46): warning:  #1-D: last line of file ends without a newline
+Target not created
