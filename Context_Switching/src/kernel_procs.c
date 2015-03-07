@@ -28,9 +28,11 @@ void set_kernel_procs() {
 }
 
 void timer_i_process() {
+
 	MSG_T* it;
 	MSG_T* node;
 	MSG_T* msg_t = (MSG_T*)k_receive_message_t();
+		printf("timerz");
 	while(msg_t) {
 		msg_t->delay = msg_t->delay + g_timer_count;
 		

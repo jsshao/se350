@@ -3,204 +3,269 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-N:\Git\se350\Context_Switching\context_switching.uvproj
-Project File Date:  03/06/2015
+N:\se3500\se350\Context_Switching\context_switching.uvproj
+Project File Date:  03/07/2015
 
 <h2>Output:</h2>
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\kernel_procs.h(9): warning:  #1-D: last line of file ends without a newline
-src\timer.c(122): error:  #20: identifier "NUM_TEST_PROCS" is undefined
-src\timer.c(123): warning:  #223-D: function "process_switch" declared implicitly
-compiling kernel_procs.c...
-src\kernel_procs.h(9): warning:  #1-D: last line of file ends without a newline
-src\rtx.h(45): error:  #101: "proc_init" has already been declared in the current scope
-src\rtx.h(51): error:  #256: invalid redeclaration of type name "PROC_INIT" (declared at line 65 of "src\k_rtx.h")
-src\kernel_procs.h(9): warning:  #1-D: last line of file ends without a newline
-src\kernel_procs.c(31): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(31): error:  #144: a value of type "int" cannot be used to initialize an entity of type "MSG_T *"
-src\kernel_procs.c(33): error:  #20: identifier "g_timer_count" is undefined
-src\kernel_procs.c(35): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(54): error:  #513: a value of type "int" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(57): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(58): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(59): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(64): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(358): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(379): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(383): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(403): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(418): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(436): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(454): warning:  #1-D: last line of file ends without a newline
-compiling timer.c...
-src\timer.c(122): error:  #20: identifier "NUM_TEST_PROCS" is undefined
-src\timer.c(123): warning:  #223-D: function "process_switch" declared implicitly
-compiling kernel_procs.c...
-src\rtx.h(45): error:  #101: "proc_init" has already been declared in the current scope
-src\rtx.h(51): error:  #256: invalid redeclaration of type name "PROC_INIT" (declared at line 65 of "src\k_rtx.h")
-src\kernel_procs.c(31): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(31): error:  #144: a value of type "int" cannot be used to initialize an entity of type "MSG_T *"
-src\kernel_procs.c(33): error:  #20: identifier "g_timer_count" is undefined
-src\kernel_procs.c(35): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(54): error:  #513: a value of type "int" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(57): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(58): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(59): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(64): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(358): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(379): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(383): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(403): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(418): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(436): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(454): warning:  #1-D: last line of file ends without a newline
-compiling timer.c...
-src\timer.c(123): warning:  #223-D: function "process_switch" declared implicitly
-compiling kernel_procs.c...
-src\rtx.h(45): error:  #101: "proc_init" has already been declared in the current scope
-src\rtx.h(51): error:  #256: invalid redeclaration of type name "PROC_INIT" (declared at line 65 of "src\k_rtx.h")
-src\kernel_procs.c(31): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(31): error:  #144: a value of type "int" cannot be used to initialize an entity of type "MSG_T *"
-src\kernel_procs.c(33): error:  #20: identifier "g_timer_count" is undefined
-src\kernel_procs.c(35): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(54): error:  #513: a value of type "int" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(57): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(58): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(59): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(64): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(21): error:  #20: identifier "LOWEST" is undefined
-src\kernel_procs.c(30): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(30): error:  #144: a value of type "int" cannot be used to initialize an entity of type "MSG_T *"
-src\kernel_procs.c(32): error:  #20: identifier "g_timer_count" is undefined
-src\kernel_procs.c(34): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(53): error:  #513: a value of type "int" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(56): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(57): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(58): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(63): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(30): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(30): error:  #144: a value of type "int" cannot be used to initialize an entity of type "MSG_T *"
-src\kernel_procs.c(32): error:  #20: identifier "g_timer_count" is undefined
-src\kernel_procs.c(34): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(53): error:  #513: a value of type "int" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(56): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(57): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(58): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(63): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(30): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(32): error:  #20: identifier "g_timer_count" is undefined
-src\kernel_procs.c(34): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(53): error:  #513: a value of type "int" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(56): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(57): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(58): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(63): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(32): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(36): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(55): error:  #513: a value of type "int" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(58): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(59): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(60): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(65): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(32): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(55): error:  #513: a value of type "int" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(58): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(59): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(60): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(65): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(32): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(58): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(59): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(60): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(65): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(32): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(58): error:  #513: a value of type "MSG_T *" cannot be assigned to an entity of type "MSG_T"
-src\kernel_procs.c(59): error:  #44: expression must have pointer type
-src\kernel_procs.c(59): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(59): error:  #41: expression must have arithmetic or pointer type
-src\kernel_procs.c(60): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(61): error:  #513: a value of type "MSG_T" cannot be assigned to an entity of type "MSG_T *"
-src\kernel_procs.c(62): error:  #44: expression must have pointer type
-src\kernel_procs.c(65): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): error:  #65: expected a ";"
-src\kernel_procs.c(34): error:  #20: identifier "msg_t" is undefined
-src\kernel_procs.c(56): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(60): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(61): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(66): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(60): error:  #20: identifier "g_current_time" is undefined
-src\kernel_procs.c(61): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(66): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(61): warning:  #223-D: function "send_msg_t" declared implicitly
-src\kernel_procs.c(66): warning:  #1-D: last line of file ends without a newline
-linking...
-lab1.axf: Error: L6218E: Undefined symbol send_msg_t (referred from kernel_procs.o).
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(61): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(66): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5252 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
-Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000158FH
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000159BH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000158FH
+No Algorithm found for: 10000000H - 1000159BH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling main_svc.c...
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(359): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(380): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(384): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(404): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(419): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(437): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(455): warning:  #1-D: last line of file ends without a newline
 linking...
-Program Size: Code=5264 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000159BH
+Program Size: Code=5316 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100015CFH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000159BH
+No Algorithm found for: 10000000H - 100015CFH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(361): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(382): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(386): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(406): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(421): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(439): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(457): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=5372 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001607H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001607H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(361): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(382): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(386): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(406): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(421): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(439): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(457): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=5344 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100015EBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100015EBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(361): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(382): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(386): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(406): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(421): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(439): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(457): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=5344 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100015EBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100015EBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=5380 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000160FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 1000160FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(364): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(385): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(389): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(409): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(424): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(442): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(460): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=5360 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100015FBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100015FBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(239): error:  #167: argument of type "int" is incompatible with parameter of type "char *"
+src\k_process.c(239): error:  #65: expected a ";"
+src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(239): error:  #65: expected a ";"
+src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=5396 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000161FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 1000161FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(139): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(140): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(173): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(178): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(188): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(175): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(215): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(220): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(217): warning:  #177-D: variable "qPid" was declared but never referenced
+linking...
+Program Size: Code=5396 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 10 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000161FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 1000161FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(332): error:  #268: declaration may not appear after executable statement in block
+src\k_process.c(366): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(387): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(391): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(411): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(426): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(444): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(462): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=5376 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000160BH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 1000160BH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\kernel_procs.c(32): error:  #268: declaration may not appear after executable statement in block
+src\kernel_procs.c(33): error:  #268: declaration may not appear after executable statement in block
+src\kernel_procs.c(34): error:  #268: declaration may not appear after executable statement in block
+src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(62): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(68): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=5392 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 3 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000161BH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 1000161BH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling timer.c...
+src\timer.c(116): warning:  #177-D: variable "old_proc" was declared but never referenced
+linking...
+Program Size: Code=5360 RO-data=236 RW-data=36 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100015FBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100015FBH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)

@@ -65,7 +65,7 @@ void memory_init(void)
 	gp_pcbs = (PCB **)p_end;
 	p_end += (NUM_TEST_PROCS + NUM_KERNEL_PROCS) * sizeof(PCB *);
   
-	for ( i = 0; i < NUM_TEST_PROCS; i++ ) {
+	for ( i = 0; i < NUM_TEST_PROCS + NUM_KERNEL_PROCS; i++ ) {
 		gp_pcbs[i] = (PCB *)p_end;
 		gp_pcbs[i]->head = NULL;
 		gp_pcbs[i]->tail = NULL;

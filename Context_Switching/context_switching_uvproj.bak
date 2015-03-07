@@ -451,6 +451,16 @@
               <FileType>1</FileType>
               <FilePath>.\src\list.c</FilePath>
             </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>kernel_procs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\kernel_procs.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

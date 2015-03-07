@@ -206,7 +206,7 @@ void process_init()
 	int i;
 	int j;
 	U32 *sp;
-  
+  printf("hiiiiiiiiiii \n\r");
 	for (i = 0; i < 5; i++) {
 		for (j = 0; j < NUM_TEST_PROCS; j++) {
 			processQueue[i][j] = -1;
@@ -226,6 +226,7 @@ void process_init()
 	}
 	
 	set_kernel_procs();
+	
 	for ( i = 0; i < NUM_KERNEL_PROCS; i++ ) {
 		g_proc_table[i + NUM_TEST_PROCS].m_pid = g_kernel_procs[i].m_pid;
 		g_proc_table[i + NUM_TEST_PROCS].m_stack_size = g_kernel_procs[i].m_stack_size;
@@ -233,11 +234,16 @@ void process_init()
 		g_proc_table[i + NUM_TEST_PROCS].m_priority = g_kernel_procs[i].m_priority;			
 	}
   
+	for (i = 0; i <  NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++) {
+		printf("new pid: %d priority: %d \n\r", (g_proc_table[i]).m_pid,(g_proc_table[i]).m_priority); 
+		printf("is null: %d", NULL == gp_pcbs[i]);
+	}
+	
 	/* initilize exception stack frame (i.e. initial context) for each process */
 	for ( i = 0; i < NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++ ) {
 		int j;
 		(gp_pcbs[i])->m_pid = (g_proc_table[i]).m_pid;
-		(gp_pcbs[i])->m_priority = (g_proc_table[i]).m_priority;
+		(gp_pcbs[i])->m_priority = (g_proc_table[i]).m_priority;		
 		(gp_pcbs[i])->m_state = NEW;
 		(gp_pcbs[i])->head = NULL;
 		(gp_pcbs[i])->tail = NULL;
@@ -250,6 +256,7 @@ void process_init()
 		}
 		(gp_pcbs[i])->mp_sp = sp;
 	}
+	
 }
 
 /*@brief: scheduler, pick the pid of the next to run process
@@ -320,10 +327,10 @@ int process_switch(PCB *p_pcb_old)
 	take the first element in the priorityQueue
 */
 int k_release_processor(void)
-{	
+{		
 	PCB *p_pcb_old = gp_current_process;
 	
-	//printQ();
+	printQ();
 	
 	// UNLESS system just started(gp_current_process is NULL) or current process is blocked
 	// add current process to ready queue
