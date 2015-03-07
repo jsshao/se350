@@ -29,12 +29,14 @@ void set_kernel_procs() {
 
 void timer_i_process() {
 	MSG_T* it;
-	MSG_T* node;
+	MSG_T* node;	
+	MSG_T* temp;
 	MSG_T* msg_t = (MSG_T*)k_receive_message_t();
 	
-	while(msg_t) {		
+	while(msg_t) {				
 		msg_t->delay = msg_t->delay + g_timer_count;
 		it = timer_head;
+		msg_t->next = NULL;
 		
 		if (NULL == timer_head) {				//0 nodes
 			timer_head = msg_t;
@@ -55,15 +57,18 @@ void timer_i_process() {
 			}
 		}				
 		printf("put message on delayed queue for time %d\r\n", msg_t->delay);
+		
 		msg_t = (MSG_T*) k_receive_message_t();		
 	}
 	
 	node = timer_head;
-	while (node && node->delay <= g_timer_count) {
-		printf("got message on delayed queue \r\n");
-		send_message_t(node);				
-		printf("sent message on delayed queue \r\n");		
-		node = node->next;			
+	while (node && node->delay <= g_timer_count) {		
+		MSG_T* next = node->next;
+		printf("sending node %d\r\n", node->delay);		
+		send_message_t(node);						
+		node = next;				
 	}
+	
+	
 	timer_head = node;		
 }

@@ -103,11 +103,12 @@ uint32_t timer_init(uint8_t n_timer)
 __asm void TIMER0_IRQHandler(void)
 {
 	PRESERVE8
-	IMPORT c_TIMER0_IRQHandler
+	IMPORT c_TIMER0_IRQHandler	
 	PUSH{r4-r11, lr}
 	BL c_TIMER0_IRQHandler
 	POP{r4-r11, pc}
 } 
+
 /**
  * @brief: c TIMER0 IRQ Handler
  */
@@ -122,6 +123,7 @@ void c_TIMER0_IRQHandler(void)
 	old_proc = gp_current_process;
 	gp_current_process = gp_pcbs[TIMER_PID - 1];
 	
+	if (g_timer_count % 100 == 0)
 	timer_i_process();
 	
 	gp_current_process = old_proc;

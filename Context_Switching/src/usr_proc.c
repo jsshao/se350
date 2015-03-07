@@ -37,7 +37,9 @@ void set_test_procs() {
 		g_test_procs[i].m_stack_size=0x100;
 	}
 	
-	g_test_procs[1].m_priority=HIGH;
+	g_test_procs[0].m_priority=HIGH;
+	g_test_procs[1].m_priority=MEDIUM;
+	g_test_procs[2].m_priority=MEDIUM;
 
 	g_test_procs[0].mpf_start_pc = &proc1;
 	g_test_procs[1].mpf_start_pc = &proc2;
@@ -57,42 +59,99 @@ void null_proccess(void)
 	}
 }
 
+/**
+Test 1: proc 1 gets blocked on receive, then unblocked by proc 2 sending
+Test 2: after gets unblocked, send 2s delayed message to proc 3
+Test 3: then sends 1s delayed message to proc 2
 
-/* Test 1: Send message from proc2 to proc1 */
-void proc2(void)
-{	
+**/
+void proc1(void)
+{
+	void *mem;
+	void *mem2;
 	MSG_BUF *msg;
-	void *mem = request_memory_block();
+	int sender;
 	
+	mem = receive_message(&sender);
+	msg = (MSG_BUF*)mem;
+
+	if (2 == sender && strcmp(msg->mtext, "Sent from proc 2") == 0) {
+		TEST_BIT_PASSED |= (1 << 0);		//test case 1 passed
+		TOTAL_TESTS_PASSED++;
+	}
+		
+	mem = request_memory_block();	
 	msg = (MSG_BUF*)mem;
 	msg->mtype = DEFAULT;
-	strcpy(msg->mtext, "Sent from proc 2");
-	//send_message(1, mem);
-	printf("sending delayed message 2000\n");
-	delayed_send(1, mem, 2000);	
-	set_process_priority(1, HIGH);
-
-	release_memory_block(mem);
-
+	strcpy(msg->mtext, "Delayed 2s from 1 to 3");
+	delayed_send(3, msg, 2000);
+	
+	mem2 = request_memory_block();	
+	msg = (MSG_BUF*)mem;
+	msg->mtype = DEFAULT;
+	strcpy(msg->mtext, "Delayed 1s from 1 to 2");
+	delayed_send(2, msg, 1000);
+	
+	set_process_priority(1, LOW);
 	while(1) {
 		release_processor();
 	}
 }
 
-void proc1(void)
-{
-	void *mem;
+/* Test 1: Send message from proc2 to proc1 
+	 Test 3: gets message from proc1
+*/
+void proc2(void)
+{	
 	MSG_BUF *msg;
-	int sender;
-
-	mem = receive_message(&sender);
-	msg = (MSG_BUF*)mem;
-
-	if (2 == sender && strcmp(msg->mtext, "Sent from proc 2") == 0) {
-		printf("Test 1 Passed");
-	} 
+	void *mem = request_memory_block();
+	int sender;	
 	
-	set_process_priority(1, LOW);
+	msg = (MSG_BUF*)mem;
+	msg->mtype = DEFAULT;
+	strcpy(msg->mtext, "Sent from proc 2");
+	send_message(1, mem);	
+	release_memory_block(mem);
+	
+	mem = receive_message(&sender);	
+	msg = (MSG_BUF*)mem;
+	if (1 == sender && strcmp(msg->mtext, "Delayed 1s from 1 to 2") == 0 
+		&& TOTAL_TESTS_PASSED == 1) {			
+		TEST_BIT_PASSED |= (1 << 2);		//test case 3 passed
+		TOTAL_TESTS_PASSED++;
+	}
+	
+	while(1) {
+		release_processor();
+	}
+}
+
+/*
+	Test case 2: gets delayed message from process 1 (Should be after case 3 passes)
+*/
+void proc3(void)
+{	
+	MSG_BUF *msg;
+	void *mem = request_memory_block();
+	int sender;
+	int i;
+	
+	mem = receive_message(&sender);	
+	msg = (MSG_BUF*)mem;
+	if (1 == sender && strcmp(msg->mtext, "Delayed 1s from 1 to 2") == 0 
+		&& TOTAL_TESTS_PASSED == 2) {			
+		TEST_BIT_PASSED |= (1 << 1);		//test case 2 passed
+		TOTAL_TESTS_PASSED++;
+	}
+	
+	for (i = 0; i < 6; i++) {
+		if (TEST_BIT_PASSED & (1 << i)) {
+			printf("%stest %d OK\n\r", GROUP_PREFIX, i+1);
+		} else {
+			printf("%stest %d FAIL\n\r", GROUP_PREFIX, i+1);
+		}
+	}
+	
 	while(1) {
 		release_processor();
 	}
@@ -103,10 +162,6 @@ void proc6(void)
 }
 
 
-void proc3(void)
-{	
-	
-}
 
 void proc4(void)
 {
