@@ -63,9 +63,9 @@ void memory_init(void)
 
 	/* allocate memory for pcb pointers   */
 	gp_pcbs = (PCB **)p_end;
-	p_end += (NUM_TEST_PROCS + NUM_KERNEL_PROCS) * sizeof(PCB *);
+	p_end += (NUM_PROCS) * sizeof(PCB *);
   
-	for ( i = 0; i < NUM_TEST_PROCS + NUM_KERNEL_PROCS; i++ ) {
+	for ( i = 0; i < NUM_PROCS; i++ ) {
 		gp_pcbs[i] = (PCB *)p_end;
 		gp_pcbs[i]->head = NULL;
 		gp_pcbs[i]->tail = NULL;
@@ -162,7 +162,7 @@ int k_release_memory_block(void *p_mem_blk) {
 	}
 	
 	//set flag array to be avaliable for block at index or if it doesn't belong to the process
-	if (flag[index] == 0 || flag[index] != gp_current_process->m_pid) {
+	if (flag[index] == 0) { //|| flag[index] != gp_current_process->m_pid) {
 		return RTX_ERR;
 	} else {
 		flag[index] = 0;

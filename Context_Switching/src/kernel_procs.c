@@ -2,7 +2,6 @@
 #include "kernel_procs.h"
 #include "k_process.h"
 #include "k_rtx.h"
-#include "kernel_procs.h"
 #ifdef DEBUG_0
 #include "printf.h"
 
@@ -19,12 +18,14 @@ MSG_T* timer_tail = NULL;
 void set_kernel_procs() {	
 	int i;
 	for( i = 0; i < NUM_KERNEL_PROCS; i++ ) {
-		g_kernel_procs[i].m_pid=(U32)(i+1 + NUM_TEST_PROCS);
 		g_kernel_procs[i].m_priority=0;
 		g_kernel_procs[i].m_stack_size=0x100;
 	}
 	
 	g_kernel_procs[0].mpf_start_pc = &timer_i_process;
+	g_kernel_procs[0].m_pid = TIMER_PID;
+	g_kernel_procs[1].mpf_start_pc = &uart_i_process;
+	g_kernel_procs[0].m_pid = UART_PID;
 }
 
 void timer_i_process() {
@@ -67,8 +68,14 @@ void timer_i_process() {
 		printf("sending node %d\r\n", node->delay);		
 		send_message_t(node);						
 		node = next;				
-	}
-	
+	}	
 	
 	timer_head = node;		
 }
+
+void uart_i_process(void) {
+	
+}
+
+
+

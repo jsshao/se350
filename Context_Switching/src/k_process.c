@@ -18,6 +18,7 @@
 #include "uart_polling.h"
 #include "k_process.h"
 #include "kernel_procs.h"
+#include "system_proc.h"
 #ifdef DEBUG_0
 #include "printf.h"
 #endif /* DEBUG_0 */
@@ -27,9 +28,10 @@ PCB **gp_pcbs;                  /* array of pcbs */
 PCB *gp_current_process = NULL; /* always point to the current RUN process */
 
 /* process initialization table */
-PROC_INIT g_proc_table[NUM_TEST_PROCS + NUM_KERNEL_PROCS];
+PROC_INIT g_proc_table[NUM_PROCS];
 extern PROC_INIT g_test_procs[NUM_TEST_PROCS];
 extern PROC_INIT g_kernel_procs[NUM_KERNEL_PROCS];
+extern PROC_INIT g_system_procs[NUM_SYSTEM_PROCS];
 
 
 /**
@@ -38,12 +40,12 @@ extern PROC_INIT g_kernel_procs[NUM_KERNEL_PROCS];
  */
  
  //ready queue and blocked queue (each priority has a queue)
-int processQueue[5][NUM_TEST_PROCS] = {0}; 
-int blockedQueue[5][NUM_TEST_PROCS] = {0};
+int processQueue[5][NUM_PROCS] = {0}; 
+int blockedQueue[5][NUM_PROCS] = {0};
 
 void addBlockedQ(int pid, int priority) {
 	int i=0;
-	for (i = 0; i < NUM_TEST_PROCS; i++) {		
+	for (i = 0; i < NUM_PROCS; i++) {		
 		if (blockedQueue[priority][i] == -1) {
 			blockedQueue[priority][i] = pid;
 			break;
@@ -57,7 +59,7 @@ void printQ() {
 		
 	printf("\r\n");
 	for (i = 0; i < 5; i++) {
-		for (k = 0; k < NUM_TEST_PROCS; k++) {		
+		for (k = 0; k < NUM_PROCS; k++) {		
 			printf("%d", processQueue[i][k]);
 		}
 		printf("\r\n");
@@ -76,11 +78,11 @@ int popBlockedQ() {
 		}
 		// iterate through and shift
 		pid = blockedQueue[i][0];
-		for (k = 1; k < NUM_TEST_PROCS; k++) {
+		for (k = 1; k < NUM_PROCS; k++) {
 			blockedQueue[i][k-1] = blockedQueue[i][k];
 		}
 		
-		blockedQueue[i][NUM_TEST_PROCS-1] = -1;	
+		blockedQueue[i][NUM_PROCS-1] = -1;	
 		break;
 	}
 		
@@ -91,7 +93,7 @@ int popBlockedQ() {
 void addQ(int pid, int priority) {
 	int i = 0;
 	
-	for (i = 0; i < NUM_TEST_PROCS; i++) {		
+	for (i = 0; i < NUM_PROCS; i++) {		
 		if (processQueue[priority][i] == -1) {
 			processQueue[priority][i] = pid;
 			break;
@@ -111,12 +113,12 @@ int popQ() {
 		}
 		// iterate through and shift
 		pid = processQueue[i][0];
-		for (k = 1; k < NUM_TEST_PROCS; k++) {
+		for (k = 1; k < NUM_PROCS; k++) {
 			processQueue[i][k-1] = processQueue[i][k];
 		}
 		
 		// Set last pid to -1 
-		processQueue[i][NUM_TEST_PROCS-1] = -1;
+		processQueue[i][NUM_PROCS-1] = -1;
 
 		return pid;	// highest priority proc
 	}	
@@ -139,7 +141,7 @@ int peekQ() {
 **/
 int k_get_process_priority(int pid) {
 	//return -1 if pid is invalid
-	if (pid < 0 || pid > NUM_TEST_PROCS) {
+	if (pid < 0 || pid > NUM_PROCS) {
 		return -1;
 	}
 	
@@ -156,7 +158,7 @@ int k_set_process_priority(int pid, int priority) {
 	
 	//printQ();
 	
-	if (pid < 1 || pid > NUM_TEST_PROCS || priority < 0 || priority > 3) {
+	if (pid < 1 || pid > NUM_PROCS || priority < 0 || priority > 3) {
 		return -1;
 	}
 	
@@ -167,24 +169,24 @@ int k_set_process_priority(int pid, int priority) {
 		return 0;
 	}
 
-	for (i=0; i<NUM_TEST_PROCS; i++) {
+	for (i=0; i<NUM_PROCS; i++) {
 		if (processQueue[oldPriority][i] == pid) {
-			for (j=i; j<NUM_TEST_PROCS-1; j++) {
+			for (j=i; j<NUM_PROCS-1; j++) {
 				processQueue[oldPriority][j] = processQueue[oldPriority][j+1];
 			}				
-			processQueue[oldPriority][NUM_TEST_PROCS-1] = -1;
+			processQueue[oldPriority][NUM_PROCS-1] = -1;
 
 			addQ(pid, priority);
 			break;
 		}
 	}
 	
-	for (i=0; i<NUM_TEST_PROCS; i++) {
+	for (i=0; i<NUM_PROCS; i++) {
 		if (blockedQueue[oldPriority][i] == pid) {
-			for (j=i; j<NUM_TEST_PROCS-1; j++) {
+			for (j=i; j<NUM_PROCS-1; j++) {
 				blockedQueue[oldPriority][j] = blockedQueue[oldPriority][j+1];
 			}
-			blockedQueue[oldPriority][NUM_TEST_PROCS-1] = -1;
+			blockedQueue[oldPriority][NUM_PROCS-1] = -1;
 			addBlockedQ(pid, priority);
 			break;
 		}
@@ -208,7 +210,7 @@ void process_init()
 	U32 *sp;
   
 	for (i = 0; i < 5; i++) {
-		for (j = 0; j < NUM_TEST_PROCS; j++) {
+		for (j = 0; j < NUM_PROCS; j++) {
 			processQueue[i][j] = -1;
 			blockedQueue[i][j] = -1;
 		}
@@ -225,22 +227,36 @@ void process_init()
 		addQ(g_test_procs[i].m_pid, g_test_procs[i].m_priority);
 	}
 	
-	set_kernel_procs();
+	set_system_procs();
+	for ( i = 0; i < NUM_SYSTEM_PROCS; i++ ) {
+		g_proc_table[i + NUM_TEST_PROCS].m_pid = g_system_procs[i].m_pid;
+		g_proc_table[i + NUM_TEST_PROCS].m_stack_size = g_system_procs[i].m_stack_size;
+		g_proc_table[i + NUM_TEST_PROCS].mpf_start_pc = g_system_procs[i].mpf_start_pc;
+		g_proc_table[i + NUM_TEST_PROCS].m_priority = g_system_procs[i].m_priority;						
+	}
+	addQ(CRT_PID, 0);
+	addQ(KCD_PID, 0);
 	
+	set_kernel_procs();
 	for ( i = 0; i < NUM_KERNEL_PROCS; i++ ) {
-		g_proc_table[i + NUM_TEST_PROCS].m_pid = g_kernel_procs[i].m_pid;
-		g_proc_table[i + NUM_TEST_PROCS].m_stack_size = g_kernel_procs[i].m_stack_size;
-		g_proc_table[i + NUM_TEST_PROCS].mpf_start_pc = g_kernel_procs[i].mpf_start_pc;
-		g_proc_table[i + NUM_TEST_PROCS].m_priority = g_kernel_procs[i].m_priority;			
+		g_proc_table[i + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_pid = g_kernel_procs[i].m_pid;
+		g_proc_table[i + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_stack_size = g_kernel_procs[i].m_stack_size;
+		g_proc_table[i + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].mpf_start_pc = g_kernel_procs[i].mpf_start_pc;
+		g_proc_table[i + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_priority = g_kernel_procs[i].m_priority;			
 	}
   
+	
+	
+	
+	
+	
 	//for (i = 0; i <  NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++) {
 		//printf("new pid: %d priority: %d \n\r", (g_proc_table[i]).m_pid,(g_proc_table[i]).m_priority); 
 		//printf("is null: %d", NULL == gp_pcbs[i]);
 	//}
 	
 	/* initilize exception stack frame (i.e. initial context) for each process */
-	for ( i = 0; i < NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++ ) {
+	for ( i = 0; i < 16; i++ ) {
 		int j;
 		(gp_pcbs[i])->m_pid = (g_proc_table[i]).m_pid;
 		(gp_pcbs[i])->m_priority = (g_proc_table[i]).m_priority;		

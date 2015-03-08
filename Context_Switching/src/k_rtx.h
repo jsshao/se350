@@ -15,7 +15,9 @@
 
 #define NULL 0
 #define NUM_TEST_PROCS 6
-#define NUM_KERNEL_PROCS 1
+#define NUM_KERNEL_PROCS 2
+#define NUM_SYSTEM_PROCS 7
+#define NUM_PROCS 16		//everything above(15) + null proc(1)
 
 #ifdef DEBUG_0
 #define USR_SZ_STACK 0x200         /* user proc stack size 512B   */
@@ -63,5 +65,17 @@ typedef struct proc_init
 	int m_stack_size;       /* size of stack in words */
 	void (*mpf_start_pc) ();/* entry point of the process */    
 } PROC_INIT;
+
+//kernel copy
+/* message buffer */
+typedef struct msgbuf
+{
+	int mtype;              /* user defined message type */
+	char mtext[32];          /* body of the message */	
+} MSG_BUF;
+
+/* Message Types */
+#define DEFAULT 0
+#define KCD_REG 1
 
 #endif // ! K_RTX_H_

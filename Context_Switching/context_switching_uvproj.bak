@@ -461,6 +461,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\kernel_procs.c</FilePath>
             </File>
+            <File>
+              <FileName>uart_irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\uart_irq.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

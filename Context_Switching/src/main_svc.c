@@ -15,6 +15,7 @@
 #include <LPC17xx.h>
 #include <system_LPC17xx.h>
 #include "rtx.h"
+#include "uart.h"
 #ifdef DEBUG_0
 #include "uart_polling.h"
 #include "printf.h"
@@ -30,6 +31,10 @@ int main()
 #endif /* DEBUG_0 */	
 	/* start the RTX and built-in processes */
 	timer_init(0);
+	
+	__disable_irq();
+	uart0_irq_init();
+	__enable_irq();
 	rtx_init();  
 
  

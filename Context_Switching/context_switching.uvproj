@@ -421,6 +421,16 @@
               <FileType>1</FileType>
               <FilePath>.\src\main_svc.c</FilePath>
             </File>
+            <File>
+              <FileName>system_proc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\system_proc.c</FilePath>
+            </File>
+            <File>
+              <FileName>system_proc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\system_proc.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -460,6 +470,11 @@
               <FileName>kernel_procs.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\kernel_procs.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart_irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\uart_irq.c</FilePath>
             </File>
           </Files>
         </Group>

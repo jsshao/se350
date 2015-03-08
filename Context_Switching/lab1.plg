@@ -3,184 +3,23 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-N:\se3500\se350\Context_Switching\context_switching.uvproj
+N:\jojo\se350\Context_Switching\context_switching.uvproj
 Project File Date:  03/07/2015
 
 <h2>Output:</h2>
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000159BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000159BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(359): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(380): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(384): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(404): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(419): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(437): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(455): warning:  #1-D: last line of file ends without a newline
 linking...
-Program Size: Code=5316 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015CFH
+Program Size: Code=6212 RO-data=236 RW-data=84 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000197FH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015CFH
+No Algorithm found for: 10000000H - 1000197FH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(361): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(382): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(386): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(406): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(421): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(439): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(457): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5372 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001607H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001607H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(361): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(382): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(386): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(406): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(421): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(439): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(457): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5344 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015EBH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015EBH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(361): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(382): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(386): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(406): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(421): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(439): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(457): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5344 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015EBH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015EBH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5380 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000160FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000160FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(364): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(385): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(389): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(409): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(424): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(442): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(460): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5360 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015FBH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015FBH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(239): error:  #167: argument of type "int" is incompatible with parameter of type "char *"
-src\k_process.c(239): error:  #65: expected a ";"
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(239): error:  #65: expected a ";"
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5396 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000161FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000161FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
+compiling main_svc.c...
+src\main_svc.c(35): warning:  #223-D: function "uart0_irq_init" declared implicitly
 compiling k_memory.c...
 src\k_memory.c(139): warning:  #223-D: function "addBlockedQ" declared implicitly
 src\k_memory.c(140): warning:  #223-D: function "k_release_processor" declared implicitly
@@ -192,753 +31,6 @@ src\k_memory.c(215): warning:  #223-D: function "popBlockedQ" declared implicitl
 src\k_memory.c(219): warning:  #223-D: function "addQ" declared implicitly
 src\k_memory.c(220): warning:  #223-D: function "k_release_processor" declared implicitly
 src\k_memory.c(217): warning:  #177-D: variable "qPid" was declared but never referenced
-linking...
-Program Size: Code=5396 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 10 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000161FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000161FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(332): error:  #268: declaration may not appear after executable statement in block
-src\k_process.c(366): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(387): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(391): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(411): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(426): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(444): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(462): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5376 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000160BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000160BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(32): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(33): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(34): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(62): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(67): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(68): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5392 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000161BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000161BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(116): warning:  #177-D: variable "old_proc" was declared but never referenced
-linking...
-Program Size: Code=5360 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015FBH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015FBH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(116): warning:  #177-D: variable "old_proc" was declared but never referenced
-linking...
-Program Size: Code=5352 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015F3H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015F3H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5348 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015EFH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015EFH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=5328 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015DBH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015DBH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5328 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015DBH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015DBH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(116): warning:  #177-D: variable "old_proc" was declared but never referenced
-linking...
-Program Size: Code=5336 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015E3H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015E3H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(68): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5320 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015D3H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015D3H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=5324 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015D7H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015D7H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5324 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100015D7H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100015D7H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
-compiling usr_proc.c...
-linking...
-Program Size: Code=5224 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(461): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5200 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 9 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000155BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000155BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=5204 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000155FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000155FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(124): warning:  #223-D: function "process_switch" declared implicitly
-compiling usr_proc.c...
-linking...
-Program Size: Code=5232 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000157BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000157BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(124): warning:  #223-D: function "process_switch" declared implicitly
-linking...
-Program Size: Code=5232 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5232 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000157BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000157BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5232 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000157BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000157BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5232 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000157BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000157BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5232 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000157BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000157BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(116): warning:  #177-D: variable "old_proc" was declared but never referenced
-linking...
-Program Size: Code=5192 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001553H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001553H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(124): warning:  #223-D: function "process_switch" declared implicitly
-linking...
-Program Size: Code=5232 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000157BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000157BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(124): warning:  #223-D: function "process_switch" declared implicitly
-linking...
-Program Size: Code=5228 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001577H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001577H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5228 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001577H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001577H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5228 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001577H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001577H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(124): warning:  #223-D: function "process_switch" declared implicitly
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(68): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(68): error:  #20: identifier "gp_current_process" is undefined
-src\kernel_procs.c(70): warning:  #223-D: function "process_switch" declared implicitly
-src\kernel_procs.c(71): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(32): error:  #65: expected a ";"
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(39): error:  #20: identifier "it" is undefined
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(68): error:  #20: identifier "gp_current_process" is undefined
-src\kernel_procs.c(70): warning:  #223-D: function "process_switch" declared implicitly
-src\kernel_procs.c(71): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(32): error:  #65: expected a ";"
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(39): error:  #20: identifier "it" is undefined
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(70): warning:  #223-D: function "process_switch" declared implicitly
-src\kernel_procs.c(71): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(70): warning:  #223-D: function "process_switch" declared implicitly
-src\kernel_procs.c(71): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5244 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 4 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001587H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001587H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-assembling startup_LPC17xx.s...
-compiling timer.c...
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(67): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=5216 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5216 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000156BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000156BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=5220 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000156FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000156FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=5220 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000156FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000156FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5220 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000156FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000156FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=5216 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000156BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000156BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-compiling usr_proc.c...
-linking...
-Program Size: Code=5220 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000156FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000156FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(453): error:  #136: struct "pcb" has no field "pid"
-src\k_process.c(462): warning:  #1-D: last line of file ends without a newline
-Target not created
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-_____^
-*** error 56: cannot open file
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-_____^
-*** error 56: cannot open file
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(453): error:  #136: struct "pcb" has no field "pid"
-src\k_process.c(462): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(462): warning:  #1-D: last line of file ends without a newline
-src\k_process.c(453): warning:  #177-D: variable "pid" was declared but never referenced
-linking...
-Program Size: Code=5228 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 10 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001577H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001577H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5228 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001577H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001577H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=5224 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001573H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001573H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(426): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(444): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(463): warning:  #1-D: last line of file ends without a newline
-src\k_process.c(454): warning:  #177-D: variable "pid" was declared but never referenced
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-compiling usr_proc.c...
-linking...
-Program Size: Code=5428 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 12 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000163FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000163FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(65): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5484 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001677H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001677H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(462): warning:  #1-D: last line of file ends without a newline
-src\k_process.c(453): warning:  #177-D: variable "pid" was declared but never referenced
-linking...
-Program Size: Code=5436 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 10 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001647H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001647H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(65): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5436 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001647H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001647H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(63): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5396 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000161FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000161FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(365): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(386): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(390): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(410): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(425): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(443): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(462): warning:  #1-D: last line of file ends without a newline
-src\k_process.c(453): warning:  #177-D: variable "pid" was declared but never referenced
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(64): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5400 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 12 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001623H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001623H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(64): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5396 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000161FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000161FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5396 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000161FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000161FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling k_process.c...
-src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
-src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
-src\k_process.c(368): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(389): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
-src\k_process.c(393): warning:  #177-D: variable "dest" was declared but never referenced
-src\k_process.c(413): warning:  #223-D: function "k_request_memory_block" declared implicitly
-src\k_process.c(428): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
-src\k_process.c(446): warning:  #223-D: function "k_super_delete" declared implicitly
-src\k_process.c(465): warning:  #1-D: last line of file ends without a newline
-src\k_process.c(456): warning:  #177-D: variable "pid" was declared but never referenced
-linking...
-Program Size: Code=5404 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 10 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001627H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001627H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(115): warning:  #223-D: function "release_processor" declared implicitly
-linking...
-lab1.axf: Error: L6218E: Undefined symbol release_processor (referred from timer.o).
-Target not created
-Build target 'Context Switching SIM'
-compiling timer.c...
-src\timer.c(115): warning:  #223-D: function "k_release_processor" declared implicitly
-linking...
-Program Size: Code=5416 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Build target 'Context Switching SIM'
-linking...
-Program Size: Code=5416 RO-data=236 RW-data=36 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001633H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001633H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-compiling usr_proc.c...
-src\usr_proc.c(94): error:  #20: identifier "i" is undefined
-Target not created
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-linking...
-Program Size: Code=5472 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 0 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001683H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001683H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling timer.c...
-compiling usr_proc.c...
-src\usr_proc.c(71): warning:  #550-D: variable "mem2" was set but never used
-src\usr_proc.c(124): error:  #20: identifier "i" is undefined
-Target not created
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-src\usr_proc.c(71): warning:  #550-D: variable "mem2" was set but never used
-linking...
-Program Size: Code=5712 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001773H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001773H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
 compiling k_process.c...
 src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
 src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
@@ -951,255 +43,661 @@ src\k_process.c(449): warning:  #223-D: function "k_super_delete" declared impli
 src\k_process.c(468): warning:  #1-D: last line of file ends without a newline
 src\k_process.c(459): warning:  #177-D: variable "pid" was declared but never referenced
 compiling timer.c...
-compiling usr_proc.c...
-src\usr_proc.c(71): warning:  #550-D: variable "mem2" was set but never used
+compiling kernel_procs.c...
+src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(68): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(33): warning:  #177-D: variable "temp" was declared but never referenced
 linking...
-Program Size: Code=5716 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 11 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001777H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001777H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-src\usr_proc.c(71): warning:  #550-D: variable "mem2" was set but never used
-src\usr_proc.c(109): warning:  #177-D: variable "i" was declared but never referenced
-src\usr_proc.c(147): error:  #20: identifier "i" is undefined
-Target not created
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-_____^
-*** error 56: cannot open file
-Build target 'Context Switching SIM'
-compiling usr_proc.c...
-src\usr_proc.c(71): warning:  #550-D: variable "mem2" was set but never used
-src\usr_proc.c(109): warning:  #177-D: variable "i" was declared but never referenced
-src\usr_proc.c(147): error:  #20: identifier "i" is undefined
+lab1.axf: Error: L6218E: Undefined symbol uart0_irq_init (referred from main_svc.o).
 Target not created
 Build target 'Context Switching SIM'
-compiling usr_proc.c...
-src\usr_proc.c(71): warning:  #550-D: variable "mem2" was set but never used
+compiling main_svc.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
 linking...
-Program Size: Code=5716 RO-data=236 RW-data=60 ZI-data=2036  
+Program Size: Code=6212 RO-data=236 RW-data=84 ZI-data=2036  
 "lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001777H
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=6212 RO-data=236 RW-data=84 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000197FH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001777H
+No Algorithm found for: 10000000H - 1000197FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c - 0 Error(s), 1 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000197FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 1000197FH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling usr_proc.c...
-src\usr_proc.c(71): warning:  #550-D: variable "mem2" was set but never used
+compiling main_svc.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
 linking...
-Program Size: Code=5716 RO-data=236 RW-data=60 ZI-data=2036  
+Program Size: Code=6228 RO-data=236 RW-data=84 ZI-data=2036  
 "lab1.axf" - 0 Error(s), 1 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001777H
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000198FH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001777H
+No Algorithm found for: 10000000H - 1000198FH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(66): warning:  #223-D: function "send_message_t" declared implicitly
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
 linking...
-Program Size: Code=5680 RO-data=236 RW-data=60 ZI-data=2036  
+Program Size: Code=6228 RO-data=236 RW-data=84 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000198FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 1000198FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling main_svc.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+linking...
+Program Size: Code=6272 RO-data=236 RW-data=84 ZI-data=2036  
 "lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001753H
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019BBH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001753H
+No Algorithm found for: 10000000H - 100019BBH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(71): warning:  #223-D: function "send_message_t" declared implicitly
 linking...
-Program Size: Code=5672 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000174BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000174BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
+Program Size: Code=6272 RO-data=236 RW-data=84 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(72): warning:  #223-D: function "send_message_t" declared implicitly
 linking...
-Program Size: Code=5676 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000174FH
+Program Size: Code=6272 RO-data=236 RW-data=84 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019BBH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000174FH
+No Algorithm found for: 10000000H - 100019BBH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(73): warning:  #223-D: function "send_message_t" declared implicitly
-compiling usr_proc.c...
-src\usr_proc.c(71): warning:  #550-D: variable "mem2" was set but never used
-linking...
-Program Size: Code=5676 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000174FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000174FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(74): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5684 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001757H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001757H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-Build target 'Context Switching SIM'
+compiling main_svc.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+compiling system_proc.c...
+src\system_proc.c(12): warning:  #177-D: variable "index" was declared but never referenced
+src\system_proc.c(22): warning:  #1-D: last line of file ends without a newline
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(371): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(392): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(396): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(416): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(431): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(449): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(468): warning:  #1-D: last line of file ends without a newline
+src\k_process.c(459): warning:  #177-D: variable "pid" was declared but never referenced
 compiling timer.c...
 compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(66): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5696 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001763H
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001763H
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
+src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(32): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(181): error:  #20: identifier "MSG_BUF" is undefined
+src\uart_irq.c(181): error:  #20: identifier "msg" is undefined
+src\uart_irq.c(186): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(186): error:  #513: a value of type "int" cannot be assigned to an entity of type "void *"
+src\uart_irq.c(187): error:  #29: expected an expression
+src\uart_irq.c(187): error:  #65: expected a ";"
+src\uart_irq.c(188): error:  #20: identifier "KCD_REG" is undefined
+src\uart_irq.c(190): warning:  #223-D: function "send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(180): warning:  #550-D: variable "mem" was set but never used
+Target not created
 Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(12): warning:  #177-D: variable "index" was declared but never referenced
+src\system_proc.c(22): warning:  #1-D: last line of file ends without a newline
+compiling k_rtx_init.c...
+compiling k_memory.c...
+src\k_memory.c(139): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(140): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(173): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(178): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(188): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(175): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(215): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(220): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(217): warning:  #177-D: variable "qPid" was declared but never referenced
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(371): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(392): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(396): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(416): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(431): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(449): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(468): warning:  #1-D: last line of file ends without a newline
+src\k_process.c(459): warning:  #177-D: variable "pid" was declared but never referenced
+compiling timer.c...
 compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
 src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5724 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000177FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000177FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000177FH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000177FH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
+src\kernel_procs.c(32): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(181): error:  #20: identifier "MSG_T" is undefined
+src\uart_irq.c(181): error:  #20: identifier "msg" is undefined
+src\uart_irq.c(186): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(186): error:  #513: a value of type "int" cannot be assigned to an entity of type "void *"
+src\uart_irq.c(187): error:  #20: identifier "MSG_BUF" is undefined
+src\uart_irq.c(187): error:  #29: expected an expression
+src\uart_irq.c(187): error:  #65: expected a ";"
+src\uart_irq.c(188): error:  #20: identifier "KCD_REG" is undefined
+src\uart_irq.c(190): warning:  #223-D: function "send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(180): warning:  #550-D: variable "mem" was set but never used
+Target not created
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
-linking...
-Program Size: Code=5688 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000175BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000175BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(181): error:  #20: identifier "MSG_BUF" is undefined
+src\uart_irq.c(181): error:  #20: identifier "msg" is undefined
+src\uart_irq.c(186): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(186): error:  #513: a value of type "int" cannot be assigned to an entity of type "void *"
+src\uart_irq.c(187): error:  #29: expected an expression
+src\uart_irq.c(187): error:  #65: expected a ";"
+src\uart_irq.c(188): error:  #20: identifier "KCD_REG" is undefined
+src\uart_irq.c(190): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(180): warning:  #550-D: variable "mem" was set but never used
+Target not created
 Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(188): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(188): error:  #513: a value of type "int" cannot be assigned to an entity of type "void *"
+src\uart_irq.c(190): error:  #136: struct "msgbuf" has no field "m_type"
+src\uart_irq.c(190): error:  #20: identifier "KCD_REG" is undefined
+src\uart_irq.c(191): error:  #136: struct "msgbuf" has no field "m_text"
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(192): error:  #20: identifier "KCD_PID" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(187): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(188): error:  #136: struct "msgbuf" has no field "m_type"
+src\uart_irq.c(188): error:  #20: identifier "KCD_REG" is undefined
+src\uart_irq.c(189): error:  #136: struct "msgbuf" has no field "m_text"
+src\uart_irq.c(190): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(187): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(188): error:  #20: identifier "KCD_REG" is undefined
+src\uart_irq.c(189): error:  #137: expression must be a modifiable lvalue
+src\uart_irq.c(190): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling k_rtx_init.c...
+compiling k_memory.c...
+src\k_memory.c(139): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(140): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(173): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(178): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(188): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(175): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(215): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(220): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(217): warning:  #177-D: variable "qPid" was declared but never referenced
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(371): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(392): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(396): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(416): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(431): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(449): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(468): warning:  #1-D: last line of file ends without a newline
+src\k_process.c(459): warning:  #177-D: variable "pid" was declared but never referenced
+compiling timer.c...
 compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(33): warning:  #223-D: function "k_receive_message_t" declared implicitly
 src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(33): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(32): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(187): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(189): error:  #137: expression must be a modifiable lvalue
+src\uart_irq.c(190): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(187): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(189): error:  #137: expression must be a modifiable lvalue
+src\uart_irq.c(190): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(187): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(189): error:  #513: a value of type "char *" cannot be assigned to an entity of type "char"
+src\uart_irq.c(190): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(187): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(190): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(12): warning:  #177-D: variable "index" was declared but never referenced
+src\system_proc.c(22): warning:  #1-D: last line of file ends without a newline
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(187): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(190): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(190): error:  #20: identifier "KCD_PID" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(15): error:  #5: cannot open source input file "system.h": No such file or directory
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(188): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(191): warning:  #223-D: function "k_send_message" declared implicitly
 linking...
-Program Size: Code=5688 RO-data=236 RW-data=60 ZI-data=2036  
+Program Size: Code=6012 RO-data=236 RW-data=84 ZI-data=2036  
 "lab1.axf" - 0 Error(s), 3 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000175BH
-Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000175BH
-Partial Programming Done (areas with no algorithms skipped!)
-Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(75): warning:  #223-D: function "send_message_t" declared implicitly
 linking...
-Program Size: Code=5724 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000177FH
+Program Size: Code=6012 RO-data=236 RW-data=84 ZI-data=2036  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100018B7H
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000177FH
+No Algorithm found for: 10000000H - 100018B7H
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(11): error:  #20: identifier "NUM_SYSTEM_PROCS" is undefined
+src\system_proc.c(12): error:  #20: identifier "g_kernel_procs" is undefined
+src\system_proc.c(16): error:  #20: identifier "g_kernel_procs" is undefined
+src\system_proc.c(41): warning:  #177-D: variable "index" was declared but never referenced
+src\system_proc.c(54): warning:  #1-D: last line of file ends without a newline
+compiling k_rtx_init.c...
+compiling k_memory.c...
+src\k_memory.c(139): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(140): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(173): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(178): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(188): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(175): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(215): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(220): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(217): warning:  #177-D: variable "qPid" was declared but never referenced
+compiling k_process.c...
+src\k_process.c(198): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(155): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(228): warning:  #223-D: function "set_system_procs" declared implicitly
+src\k_process.c(383): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(404): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(408): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(428): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(443): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(461): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(480): warning:  #1-D: last line of file ends without a newline
+src\k_process.c(471): warning:  #177-D: variable "pid" was declared but never referenced
+compiling timer.c...
 compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
 src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(188): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(191): warning:  #223-D: function "k_send_message" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(12): error:  #20: identifier "g_kernel_procs" is undefined
+src\system_proc.c(16): error:  #20: identifier "g_kernel_procs" is undefined
+src\system_proc.c(41): warning:  #177-D: variable "index" was declared but never referenced
+src\system_proc.c(54): warning:  #1-D: last line of file ends without a newline
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(188): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(191): warning:  #223-D: function "k_send_message" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(13): error:  #20: identifier "g_kernel_procs" is undefined
+src\system_proc.c(17): error:  #20: identifier "g_kernel_procs" is undefined
+src\system_proc.c(42): warning:  #177-D: variable "index" was declared but never referenced
+src\system_proc.c(55): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(42): warning:  #177-D: variable "index" was declared but never referenced
+src\system_proc.c(55): warning:  #1-D: last line of file ends without a newline
 linking...
-Program Size: Code=5724 RO-data=236 RW-data=60 ZI-data=2036  
+lab1.axf: Error: L6218E: Undefined symbol a_process (referred from system_proc.o).
+lab1.axf: Error: L6218E: Undefined symbol b_process (referred from system_proc.o).
+lab1.axf: Error: L6218E: Undefined symbol c_process (referred from system_proc.o).
+lab1.axf: Error: L6218E: Undefined symbol clock_process (referred from system_proc.o).
+lab1.axf: Error: L6218E: Undefined symbol set_priority_process (referred from system_proc.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(42): warning:  #177-D: variable "index" was declared but never referenced
+src\system_proc.c(61): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=6276 RO-data=236 RW-data=84 ZI-data=2180  
 "lab1.axf" - 0 Error(s), 2 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 1000177FH
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019BFH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 1000177FH
+No Algorithm found for: 10000000H - 100019BFH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(33): warning:  #177-D: variable "temp" was declared but never referenced
+compiling system_proc.c...
+src\system_proc.c(48): error:  #513: a value of type "char *" cannot be assigned to an entity of type "char"
+src\system_proc.c(63): warning:  #1-D: last line of file ends without a newline
+compiling k_process.c...
+src\k_process.c(199): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(156): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(229): warning:  #223-D: function "set_system_procs" declared implicitly
+src\k_process.c(384): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(405): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(409): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(429): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(444): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(462): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(481): warning:  #1-D: last line of file ends without a newline
+src\k_process.c(472): warning:  #177-D: variable "pid" was declared but never referenced
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(63): warning:  #1-D: last line of file ends without a newline
 linking...
-Program Size: Code=5668 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001747H
+Program Size: Code=6212 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 1000197FH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001747H
+No Algorithm found for: 10000000H - 1000197FH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(67): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(68): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(33): warning:  #177-D: variable "temp" was declared but never referenced
-Target not created
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-_____^
-*** error 56: cannot open file
-Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(67): error:  #268: declaration may not appear after executable statement in block
-src\kernel_procs.c(68): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(33): warning:  #177-D: variable "temp" was declared but never referenced
+compiling system_proc.c...
+src\system_proc.c(56): error:  #20: identifier "true" is undefined
+src\system_proc.c(66): error:  #20: identifier "pUart" is undefined
+src\system_proc.c(66): error:  #20: identifier "IER_THRE" is undefined
+src\system_proc.c(66): error:  #20: identifier "IER_RLS" is undefined
+src\system_proc.c(66): error:  #20: identifier "IER_RBR" is undefined
+src\system_proc.c(74): warning:  #1-D: last line of file ends without a newline
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(188): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(191): warning:  #223-D: function "k_send_message" declared implicitly
 Target not created
 Build target 'Context Switching SIM'
-compiling kernel_procs.c...
-src\kernel_procs.c(34): warning:  #223-D: function "k_receive_message_t" declared implicitly
-src\kernel_procs.c(68): warning:  #223-D: function "send_message_t" declared implicitly
-src\kernel_procs.c(33): warning:  #177-D: variable "temp" was declared but never referenced
+compiling system_proc.c...
+src\system_proc.c(66): error:  #20: identifier "pUart" is undefined
+src\system_proc.c(66): error:  #20: identifier "IER_THRE" is undefined
+src\system_proc.c(66): error:  #20: identifier "IER_RLS" is undefined
+src\system_proc.c(66): error:  #20: identifier "IER_RBR" is undefined
+src\system_proc.c(74): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(67): error:  #20: identifier "pUart" is undefined
+src\system_proc.c(67): error:  #20: identifier "IER_THRE" is undefined
+src\system_proc.c(67): error:  #20: identifier "IER_RLS" is undefined
+src\system_proc.c(67): error:  #20: identifier "IER_RBR" is undefined
+src\system_proc.c(76): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(68): error:  #20: identifier "pUart" is undefined
+src\system_proc.c(77): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(58): error:  #20: identifier "LPC_UART_TypeDef" is undefined
+src\system_proc.c(58): error:  #20: identifier "pUart" is undefined
+src\system_proc.c(78): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(58): error:  #20: identifier "LPC_UART_TypeDef" is undefined
+src\system_proc.c(58): error:  #20: identifier "pUart" is undefined
+src\system_proc.c(58): error:  #29: expected an expression
+src\system_proc.c(58): error:  #65: expected a ";"
+src\system_proc.c(78): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\system_proc.c(59): error:  #20: identifier "LPC_UART_TypeDef" is undefined
+src\system_proc.c(59): error:  #20: identifier "pUart" is undefined
+src\system_proc.c(59): error:  #29: expected an expression
+src\system_proc.c(59): error:  #65: expected a ";"
+src\system_proc.c(79): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\system_proc.c(81): warning:  #1-D: last line of file ends without a newline
 linking...
-Program Size: Code=5696 RO-data=236 RW-data=60 ZI-data=2036  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
-Load "N:\\se3500\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 10001763H
+lab1.axf: Error: L6200E: Symbol crt_buffer multiply defined (by uart_irq.o and system_proc.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(80): warning:  #1-D: last line of file ends without a newline
+linking...
+lab1.axf: Error: L6200E: Symbol crt_buffer multiply defined (by uart_irq.o and system_proc.o).
+Target not created
+Build target 'Context Switching SIM'
+linking...
+lab1.axf: Error: L6200E: Symbol crt_buffer multiply defined (by uart_irq.o and system_proc.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(81): warning:  #1-D: last line of file ends without a newline
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+linking...
+Program Size: Code=6288 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 4 Warning(s).
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=6288 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019CBH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 10001763H
+No Algorithm found for: 10000000H - 100019CBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(199): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(156): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(229): warning:  #223-D: function "set_system_procs" declared implicitly
+src\k_process.c(236): error:  #20: identifier "CRT_PID" is undefined
+src\k_process.c(236): error:  #20: identifier "HIGH" is undefined
+src\k_process.c(237): error:  #20: identifier "KCD_PID" is undefined
+src\k_process.c(386): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(407): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(411): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(431): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(446): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(464): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(483): warning:  #1-D: last line of file ends without a newline
+src\k_process.c(474): warning:  #177-D: variable "pid" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(21): error:  #5: cannot open source input file "system_procs.h": No such file or directory
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(21): error:  #5: cannot open source input file "system_procs.h": No such file or directory
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(200): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(157): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(237): error:  #20: identifier "HIGH" is undefined
+src\k_process.c(387): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(408): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(412): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(432): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(447): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(465): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(484): warning:  #1-D: last line of file ends without a newline
+src\k_process.c(475): warning:  #177-D: variable "pid" was declared but never referenced
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(200): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(157): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_process.c(387): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(408): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(412): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(432): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(447): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(465): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(484): warning:  #1-D: last line of file ends without a newline
+src\k_process.c(475): warning:  #177-D: variable "pid" was declared but never referenced
+linking...
+Program Size: Code=6308 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 10 Warning(s).
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=6308 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019DFH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100019DFH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(199): error:  #167: argument of type "char" is incompatible with parameter of type "char *"
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+linking...
+Program Size: Code=6328 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 3 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019F3H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100019F3H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+linking...
+Program Size: Code=6264 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 3 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019B3H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100019B3H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+linking...
+Program Size: Code=6288 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 3 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019CBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100019CBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(82): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=6296 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019D3H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100019D3H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=6296 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019D3H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100019D3H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(83): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=6308 RO-data=236 RW-data=84 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100019DFH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100019DFH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)

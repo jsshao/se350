@@ -1,0 +1,13 @@
+system_proc.o: src\system_proc.c
+system_proc.o: src\rtx.h
+system_proc.o: src\uart.h
+system_proc.o: C:\Software\Keil\ARM\ARMCC\bin\..\include\stdint.h
+system_proc.o: src\uart_def.h
+system_proc.o: src\system_proc.h
+system_proc.o: C:\Software\Keil\ARM\Inc\NXP\LPC17xx\LPC17xx.h
+system_proc.o: C:\Software\Keil\ARM\CMSIS\Include\core_cm3.h
+system_proc.o: C:\Software\Keil\ARM\CMSIS\Include\core_cmInstr.h
+system_proc.o: C:\Software\Keil\ARM\CMSIS\Include\core_cmFunc.h
+system_proc.o: C:\Software\Keil\ARM\Inc\NXP\LPC17xx\system_LPC17xx.h
+system_proc.o: src\printf.h
+system_proc.o: C:\Software\Keil\ARM\ARMCC\bin\..\include\stdarg.h
