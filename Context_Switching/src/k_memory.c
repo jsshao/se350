@@ -174,8 +174,8 @@ int k_release_memory_block(void *p_mem_blk) {
 	if (pid != -1) {
 		int qPid;
 		
-		gp_pcbs[pid-1]->m_state = RDY;
-		addQ(pid, gp_pcbs[pid-1]->m_priority);
+		gp_pcbs[pid]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid]->m_priority);
 		/*
 		qPid = peekQ();
 		if(qPid != -1) {
@@ -215,8 +215,8 @@ int k_super_delete(void *p_mem_blk) {
 	pid = popBlockedQ();
 	if (pid != -1) {
 		int qPid;		
-		gp_pcbs[pid-1]->m_state = RDY;
-		addQ(pid, gp_pcbs[pid-1]->m_priority);		
+		gp_pcbs[pid]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid]->m_priority);		
 		k_release_processor();
 		
 	}

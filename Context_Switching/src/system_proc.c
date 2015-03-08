@@ -40,6 +40,12 @@ void set_system_procs() {
 	g_system_procs[6].m_pid=CRT_PID;
 }
 
+void null_process(void) {
+	while(1) {
+			release_processor();
+	}
+}
+
 //system processes 
 void kcd_process(void){
 	char* buffer = (char*)k_request_memory_block();
@@ -48,15 +54,13 @@ void kcd_process(void){
 	while (1) {
 		int sender;
 		MSG_BUF* msg = (MSG_BUF*) receive_message(&sender);			
-		send_message(CRT_PID, msg);
+		//send_message(CRT_PID, msg);
 		buffer[index] = (msg->mtext)[0];
 		index++;
 		if (index > 32) index = 0;
 		release_processor();
 	}	
 }
-
-
 
 void crt_process(void){ 
 	LPC_UART_TypeDef *pUart = (LPC_UART_TypeDef *) LPC_UART0;

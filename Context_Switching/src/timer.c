@@ -121,7 +121,7 @@ void c_TIMER0_IRQHandler(void)
 	g_timer_count++;
 	
 	old_proc = gp_current_process;
-	gp_current_process = gp_pcbs[TIMER_PID - 1];
+	gp_current_process = gp_pcbs[TIMER_PID];
 	
 	timer_i_process();
 	

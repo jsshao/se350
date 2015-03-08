@@ -56,14 +56,51 @@ void addBlockedQ(int pid, int priority) {
 void printQ() {
 	int i = 0;
 	int k = 0;		
-		
-	printf("\r\n");
+	
+	printf("Process Ready Queue \r\n");
 	for (i = 0; i < 5; i++) {
 		for (k = 0; k < NUM_PROCS; k++) {		
-			printf("%d", processQueue[i][k]);
+			if (processQueue[i][k] == -1) {
+				printf("_  ");
+			} else if (processQueue[i][k] / 10 >= 1){
+				printf("%d ", processQueue[i][k]);
+			} else {
+				printf("%d  ", processQueue[i][k]);
+			}
 		}
 		printf("\r\n");
 	}
+}
+
+void printBlockedQ() {
+	int i = 0;
+	int k = 0;		
+	
+	printf("Process Blocked Queue \r\n");
+	for (i = 0; i < 5; i++) {
+		for (k = 0; k < NUM_PROCS; k++) {		
+			if (blockedQueue[i][k] == -1) {
+				printf("_  ");
+			} else if (blockedQueue[i][k] / 10 >= 1){
+				printf("%d ", blockedQueue[i][k]);
+			} else {
+				printf("%d  ", blockedQueue[i][k]);
+			}
+		}
+		printf("\r\n");
+	}
+}
+
+void printBlockedOnReceiveQ() {
+	int k = 0;		
+	
+	printf("Process Blocked On Receive Queue \r\n");
+	for (k = 0; k < NUM_PROCS; k++) {		
+		if (gp_pcbs[k]->m_state == BLOCKED_ON_RECEIVE) {
+			printf("pid: %d priority: %d \r\n", gp_pcbs[k]->m_pid, gp_pcbs[k]->m_priority);
+		}
+	}
+	printf("\r\n");
 }
 
 
@@ -145,7 +182,7 @@ int k_get_process_priority(int pid) {
 		return -1;
 	}
 	
-	return gp_pcbs[pid-1]->m_priority;
+	return gp_pcbs[pid]->m_priority;
 }
 
 /** set process priority
@@ -154,7 +191,6 @@ int k_set_process_priority(int pid, int priority) {
 	int i;
 	int j;
 	int oldPriority;
-	int qPid;
 	
 	//printQ();
 	
@@ -162,7 +198,7 @@ int k_set_process_priority(int pid, int priority) {
 		return -1;
 	}
 	
-	oldPriority = (gp_pcbs[pid-1])->m_priority;
+	oldPriority = (gp_pcbs[pid])->m_priority;
 	
 	//if setting to the same priority, just return
 	if (oldPriority == priority) {
@@ -192,10 +228,10 @@ int k_set_process_priority(int pid, int priority) {
 		}
 	}
 	
-	(gp_pcbs[pid-1])->m_priority = priority;
+	(gp_pcbs[pid])->m_priority = priority;
 
 
-	//printQ();
+	
 	
 	k_release_processor();
 	
@@ -217,32 +253,42 @@ void process_init()
 	}
 	
   /* fill out the initialization table */
+	
+	//null process
+	g_proc_table[0].m_pid = NULL_PID;
+	g_proc_table[0].m_stack_size = 0x100;
+	g_proc_table[0].mpf_start_pc = &null_process;
+	g_proc_table[0].m_priority = 4;
+	addQ(NULL_PID, 4);
+	
+	//test process
 	set_test_procs();
 	for ( i = 0; i < NUM_TEST_PROCS; i++ ) {
-		g_proc_table[i].m_pid = g_test_procs[i].m_pid;
-		g_proc_table[i].m_stack_size = g_test_procs[i].m_stack_size;
-		g_proc_table[i].mpf_start_pc = g_test_procs[i].mpf_start_pc;
-		g_proc_table[i].m_priority = g_test_procs[i].m_priority;
+		g_proc_table[i + NUM_NULL_PROCS].m_pid = g_test_procs[i].m_pid;
+		g_proc_table[i + NUM_NULL_PROCS].m_stack_size = g_test_procs[i].m_stack_size;
+		g_proc_table[i + NUM_NULL_PROCS].mpf_start_pc = g_test_procs[i].mpf_start_pc;
+		g_proc_table[i + NUM_NULL_PROCS].m_priority = g_test_procs[i].m_priority;
 		
-		addQ(g_test_procs[i].m_pid, g_test_procs[i].m_priority);
+		addQ(g_proc_table[i + NUM_NULL_PROCS].m_pid, g_proc_table[i + NUM_NULL_PROCS].m_priority);
+		printQ();
 	}
 	
 	set_system_procs();
 	for ( i = 0; i < NUM_SYSTEM_PROCS; i++ ) {
-		g_proc_table[i + NUM_TEST_PROCS].m_pid = g_system_procs[i].m_pid;
-		g_proc_table[i + NUM_TEST_PROCS].m_stack_size = g_system_procs[i].m_stack_size;
-		g_proc_table[i + NUM_TEST_PROCS].mpf_start_pc = g_system_procs[i].mpf_start_pc;
-		g_proc_table[i + NUM_TEST_PROCS].m_priority = g_system_procs[i].m_priority;						
+		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS].m_pid = g_system_procs[i].m_pid;
+		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS].m_stack_size = g_system_procs[i].m_stack_size;
+		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS].mpf_start_pc = g_system_procs[i].mpf_start_pc;
+		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS].m_priority = g_system_procs[i].m_priority;						
 	}
 	addQ(CRT_PID, 0);
 	addQ(KCD_PID, 0);
 	
 	set_kernel_procs();
 	for ( i = 0; i < NUM_KERNEL_PROCS; i++ ) {
-		g_proc_table[i + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_pid = g_kernel_procs[i].m_pid;
-		g_proc_table[i + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_stack_size = g_kernel_procs[i].m_stack_size;
-		g_proc_table[i + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].mpf_start_pc = g_kernel_procs[i].mpf_start_pc;
-		g_proc_table[i + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_priority = g_kernel_procs[i].m_priority;			
+		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_pid = g_kernel_procs[i].m_pid;
+		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_stack_size = g_kernel_procs[i].m_stack_size;
+		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].mpf_start_pc = g_kernel_procs[i].mpf_start_pc;
+		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_priority = g_kernel_procs[i].m_priority;			
 	}
   
 	
@@ -273,6 +319,8 @@ void process_init()
 		(gp_pcbs[i])->mp_sp = sp;
 	}
 	
+	
+	printQ();
 }
 
 /*@brief: scheduler, pick the pid of the next to run process
@@ -290,7 +338,7 @@ PCB *scheduler(void)
 	pid = popQ();	
 	if(pid == -1)
 		return NULL;	
-	return gp_pcbs[pid-1];
+	return gp_pcbs[pid];
 }
 
 /*@brief: switch out old pcb (p_pcb_old), run the new pcb (gp_current_process)
@@ -392,38 +440,38 @@ int k_send_message(int pid, void *p_msg) {
 	
 	//push to the tail of the queue
 	msg->next = NULL;				
-	if (gp_pcbs[pid-1]->tail != NULL) {			
-		gp_pcbs[pid-1]->tail->next = msg;
+	if (gp_pcbs[pid]->tail != NULL) {			
+		gp_pcbs[pid]->tail->next = msg;
 	} else {
-		gp_pcbs[pid-1]->head = msg;
+		gp_pcbs[pid]->head = msg;
 	}
 	//assign new tail
-	gp_pcbs[pid-1]->tail = msg;
+	gp_pcbs[pid]->tail = msg;
 	
-	if (BLOCKED_ON_RECEIVE == gp_pcbs[pid-1]->m_state) {
-		gp_pcbs[pid-1]->m_state = RDY;
-		addQ(pid, gp_pcbs[pid-1]->m_priority);			
+	if (BLOCKED_ON_RECEIVE == gp_pcbs[pid]->m_state) {
+		gp_pcbs[pid]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid]->m_priority);			
 		k_release_processor();
 	}
 }
 
 void send_message_t(MSG_T* msg) {
 	int pid = msg->dest_pid;
-	PCB * dest = gp_pcbs[pid-1];
+	PCB * dest = gp_pcbs[pid];
 	
  //push to the tail of the queue
 	msg->next = NULL;				
-	if (gp_pcbs[pid-1]->tail != NULL) {			
-		gp_pcbs[pid-1]->tail->next = msg;
+	if (gp_pcbs[pid]->tail != NULL) {			
+		gp_pcbs[pid]->tail->next = msg;
 	} else {
-		gp_pcbs[pid-1]->head = msg;
+		gp_pcbs[pid]->head = msg;
 	}
 	//assign new tail
-	gp_pcbs[pid-1]->tail = msg;
+	gp_pcbs[pid]->tail = msg;
 	
-	if (BLOCKED_ON_RECEIVE == gp_pcbs[pid-1]->m_state) {
-		gp_pcbs[pid-1]->m_state = RDY;
-		addQ(pid, gp_pcbs[pid-1]->m_priority);	
+	if (BLOCKED_ON_RECEIVE == gp_pcbs[pid]->m_state) {
+		gp_pcbs[pid]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid]->m_priority);	
 	}
 }
 
@@ -437,13 +485,13 @@ int k_delayed_send(int pid, void *p_msg, int delay) {
 	
 	//push to the tail of the queue
 	msg->next = NULL;		
-	if (gp_pcbs[TIMER_PID - 1]->tail != NULL) {			
-		gp_pcbs[TIMER_PID - 1]->tail->next = msg;
+	if (gp_pcbs[TIMER_PID]->tail != NULL) {			
+		gp_pcbs[TIMER_PID]->tail->next = msg;
 	} else {
-		gp_pcbs[TIMER_PID - 1]->head = msg;
+		gp_pcbs[TIMER_PID]->head = msg;
 	}
 	//assign new tail
-	gp_pcbs[TIMER_PID - 1]->tail = msg;		
+	gp_pcbs[TIMER_PID]->tail = msg;		
 }
 
 /* This is a blocking receive */
@@ -451,14 +499,14 @@ void *k_receive_message(int *p_pid) {
 	int current_pid = gp_current_process->m_pid;	
 	void* msg;
 	MSG_T * msg_t;
-	while (NULL == gp_pcbs[current_pid - 1]->head ||	NULL == gp_pcbs[current_pid - 1]->tail) {
+	while (NULL == gp_pcbs[current_pid]->head ||	NULL == gp_pcbs[current_pid]->tail) {
 		gp_current_process->m_state = BLOCKED_ON_RECEIVE;		
 		k_release_processor();		
 	}
-	msg_t = gp_pcbs[current_pid - 1]->head;
-	gp_pcbs[current_pid - 1]->head = gp_pcbs[current_pid - 1]->head->next;
-	if (gp_pcbs[current_pid - 1]->head == NULL) {
-		gp_pcbs[current_pid - 1]->tail = NULL;
+	msg_t = gp_pcbs[current_pid]->head;
+	gp_pcbs[current_pid]->head = gp_pcbs[current_pid]->head->next;
+	if (gp_pcbs[current_pid]->head == NULL) {
+		gp_pcbs[current_pid]->tail = NULL;
 	}	
 	*p_pid = msg_t->sender_pid;
 	msg = msg_t->msg;
@@ -472,7 +520,6 @@ void *k_receive_message_t() {
 		
 	//deqeue the head
 	MSG_T* msg_t = gp_current_process->head;
-	int pid = gp_current_process->m_pid;
 	if (NULL == msg_t) return NULL;				//return null (instead of block) if no msg on queue
 	
 	gp_current_process->head = gp_current_process->head->next;

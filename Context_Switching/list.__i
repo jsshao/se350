@@ -2,4 +2,4 @@
 -I C:\Software\Keil\ARM\RV31\INC 
 -I C:\Software\Keil\ARM\CMSIS\Include 
 -I C:\Software\Keil\ARM\Inc\NXP\LPC17xx 
--DDEBUG_0 -o "list.o" --omf_browse "list.crf" --depend "list.d" "src\list.c"
+-DDEBUG_0 -D_DEBUG_HOTKEYS -o "list.o" --omf_browse "list.crf" --depend "list.d" "src\list.c"
