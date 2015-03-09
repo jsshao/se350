@@ -282,6 +282,7 @@ void process_init()
 	}
 	addQ(CRT_PID, 0);
 	addQ(KCD_PID, 0);
+	addQ(CLOCK_PID, 0);
 	
 	set_kernel_procs();
 	for ( i = 0; i < NUM_KERNEL_PROCS; i++ ) {

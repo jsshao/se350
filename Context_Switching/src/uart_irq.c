@@ -187,7 +187,7 @@ void c_UART0_IRQHandler(void)
 		g_char_in = pUart->RBR;		
 		/*************************/	
 		msg = (MSG_BUF*)k_request_memory_block();
-		msg->mtype = KCD_REG;
+		msg->mtype = DEFAULT;
 		*(msg->mtext) = g_char_in;
 		k_send_message(KCD_PID, msg);		
 		/*************************/
@@ -198,6 +198,8 @@ void c_UART0_IRQHandler(void)
 	} else if (IIR_IntId & IIR_THRE) {
 	/* THRE Interrupt, transmit holding register becomes empty */
 		/*************************/
+		
+		k_receive_message_non_blocking();
 		
 		#ifdef _DEBUG_HOTKEYS
 		if (crt_buffer[0] == '!') {
@@ -211,10 +213,10 @@ void c_UART0_IRQHandler(void)
 			printBlockedOnReceiveQ();
 		}
 		#endif
-		
-		
-		
-		
+		printf("%c", crt_buffer[0]);						
+		if (crt_buffer[0] == '\r') {
+			printf("\n");
+		}
 		
 		/*************************/
 		/*if (*gp_buffer != '\0' ) {

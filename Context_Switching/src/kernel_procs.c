@@ -57,15 +57,13 @@ void timer_i_process() {
 				timer_tail = it;
 			}
 		}				
-		printf("put message on delayed queue for time %d\r\n", msg_t->delay);
 		
 		msg_t = (MSG_T*) k_receive_message_t();		
 	}
 	
 	node = timer_head;
 	while (node && node->delay <= g_timer_count) {		
-		MSG_T* next = node->next;
-		printf("sending node %d\r\n", node->delay);		
+		MSG_T* next = node->next;	
 		send_message_t(node);						
 		node = next;				
 	}	

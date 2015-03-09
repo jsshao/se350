@@ -9,6 +9,9 @@
 #define RTX_ERR -1
 #define NULL 0
 #define NUM_TEST_PROCS 6
+#define NUM_KERNEL_PROCS 2
+#define NUM_SYSTEM_PROCS 7
+#define NUM_PROCS 16		//everything above(15) + null proc(1)
 
 /* Process Priority. The bigger the number is, the lower the priority is*/
 #define HIGH    0
