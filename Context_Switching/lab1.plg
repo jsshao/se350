@@ -1488,3 +1488,33 @@ Partial Erase Done (areas with no algorithms skipped!)
 No Algorithm found for: 10000000H - 10001E4BH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(190): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(98): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(102): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(113): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(120): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(123): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(126): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(135): warning:  #223-D: function "k_release_memory_block" declared implicitly
+linking...
+Program Size: Code=7448 RO-data=236 RW-data=88 ZI-data=2736  
+"lab1.axf" - 0 Error(s), 12 Warning(s).
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(190): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=7452 RO-data=236 RW-data=88 ZI-data=2736  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E5BH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E5BH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)

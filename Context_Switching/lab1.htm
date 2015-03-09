@@ -3,7 +3,7 @@
 <title>Static Call Graph - [N:\jojo\se350\Context_Switching\lab1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image N:\jojo\se350\Context_Switching\lab1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Sun Mar 08 23:21:49 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Sun Mar 08 23:26:01 2015
 <BR><P>
 <H3>Maximum Stack Usage =        176 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -483,6 +483,7 @@ Global Symbols
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printBlockedOnReceiveQ
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printBlockedQ
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printQ
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clock_process
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;kcd_process
 </UL>
 
@@ -515,10 +516,11 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> system_proc.o(.text)
 </UL>
-<P><STRONG><a name="[62]"></a>clock_process</STRONG> (Thumb, 374 bytes, Stack size 8 bytes, system_proc.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = clock_process &rArr; k_request_memory_block &rArr; k_release_processor &rArr; scheduler &rArr; popQ
+<P><STRONG><a name="[62]"></a>clock_process</STRONG> (Thumb, 382 bytes, Stack size 16 bytes, system_proc.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = clock_process &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_request_memory_block
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> system_proc.o(.text)
 </UL>

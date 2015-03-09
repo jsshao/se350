@@ -79,7 +79,7 @@ uint8_t g_send_char = 0;
 uint8_t g_char_in;
 uint8_t g_char_out;
 
-uint8_t bBuffer[32];
+char bBuffer[32];
 uint8_t bPtr;
 uint8_t bChar;
 

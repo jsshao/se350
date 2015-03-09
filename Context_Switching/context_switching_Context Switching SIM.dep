@@ -33,7 +33,7 @@ I (src\uart_polling.h)(0x54FB81C7)
 I (src\printf.h)(0x54FB81C7)
 I (C:\Software\Keil\ARM\ARMCC\bin\..\include\stdarg.h)(0x4EB17B3C)
 I (src\timer.h)(0x54FB81C7)
-F (.\src\system_proc.c)(0x54FD11BF)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Software\Keil\ARM\RV31\INC -I C:\Software\Keil\ARM\CMSIS\Include -I C:\Software\Keil\ARM\Inc\NXP\LPC17xx -DDEBUG_0 -D_DEBUG_HOTKEYS -o "system_proc.o" --omf_browse "system_proc.crf" --depend "system_proc.d")
+F (.\src\system_proc.c)(0x54FD12C5)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Software\Keil\ARM\RV31\INC -I C:\Software\Keil\ARM\CMSIS\Include -I C:\Software\Keil\ARM\Inc\NXP\LPC17xx -DDEBUG_0 -D_DEBUG_HOTKEYS -o "system_proc.o" --omf_browse "system_proc.crf" --depend "system_proc.d")
 I (src\rtx.h)(0x54FCB8D4)
 I (src\uart.h)(0x54D12228)
 I (C:\Software\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x4EB17B44)
@@ -90,7 +90,7 @@ I (src\printf.h)(0x54FB81C7)
 I (C:\Software\Keil\ARM\ARMCC\bin\..\include\stdarg.h)(0x4EB17B3C)
 I (src\kernel_procs.h)(0x54FCFA9E)
 I (src\k_rtx.h)(0x54FCFB12)
-F (.\src\kernel_procs.c)(0x54FD11CB)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Software\Keil\ARM\RV31\INC -I C:\Software\Keil\ARM\CMSIS\Include -I C:\Software\Keil\ARM\Inc\NXP\LPC17xx -DDEBUG_0 -D_DEBUG_HOTKEYS -o "kernel_procs.o" --omf_browse "kernel_procs.crf" --depend "kernel_procs.d")
+F (.\src\kernel_procs.c)(0x54FD1278)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Software\Keil\ARM\RV31\INC -I C:\Software\Keil\ARM\CMSIS\Include -I C:\Software\Keil\ARM\Inc\NXP\LPC17xx -DDEBUG_0 -D_DEBUG_HOTKEYS -o "kernel_procs.o" --omf_browse "kernel_procs.crf" --depend "kernel_procs.d")
 I (C:\Software\Keil\ARM\Inc\NXP\LPC17xx\LPC17xx.h)(0x4FF5A98C)
 I (C:\Software\Keil\ARM\CMSIS\Include\core_cm3.h)(0x5006D242)
 I (C:\Software\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x4EB17B44)

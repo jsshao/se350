@@ -164,7 +164,7 @@ void clock_process(void) {
 				msg->mtext[9] = '\n';
 				msg->mtext[10] = '\0';
 				//msg->mtext = message;
-				//printf("%s", msg->mtext);
+				//printf("\r\n%s\r\n", msg->mtext);
 				send_message(PID_CRT, msg);
 			}
 			second++;
