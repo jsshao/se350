@@ -15,8 +15,8 @@
 #include "system_proc.h"
 #include "k_rtx.h"
 
-extern void* gp_current_process;
-extern void **gp_pcbs; 
+extern PCB* gp_current_process;
+extern PCB **gp_pcbs; 
 
 /**
  * @brief: initialize the n_uart
@@ -162,20 +162,28 @@ __asm void UART0_IRQHandler(void)
 	PRESERVE8
 	IMPORT c_UART0_IRQHandler
 	PUSH{r4-r11, lr}
-	BL c_UART0_IRQHandler
+	BL c_UART0_IRQHandler	
 	POP{r4-r11, pc}
 } 
+
+
+
 /**
  * @brief: c UART0 IRQ Handler
  */
 void c_UART0_IRQHandler(void)
 {
 	void* old_proc;	
-	
+	int k;
 	old_proc = gp_current_process;
 	gp_current_process = gp_pcbs[PID_UART_IPROC];
 	
 	uart_i_process();
 	
 	gp_current_process = old_proc;
+	
+	k = peekQ();	
+	if (k != -1 && (gp_pcbs[k]->m_priority) > (gp_current_process->m_priority)) {
+		k_release_processor();
+	}	
 }

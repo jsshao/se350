@@ -122,7 +122,7 @@ U32 *alloc_stack(U32 size_b)
 void *k_request_memory_block(void) {
 	int i;
 	int available = 0;
-	
+
 	while (!available) {
 		//check for if there is available memory
 		for (i = 0; i < NUM_MEM_BLOCKS; i++) {	
@@ -134,11 +134,13 @@ void *k_request_memory_block(void) {
 		}
 		
 		//if there is no memory, add current process to blocked queue, and release processor
-		if (!available) {
+		if (!available && gp_current_process->m_pid != PID_UART_IPROC) {
 			gp_current_process->m_state = BLOCKED;
 			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);			
 			k_release_processor();		
-		}		
+		} else if (!available && gp_current_process->m_pid == PID_UART_IPROC) {
+			return NULL;
+		}
 	}
 	
 	flag[i] = gp_current_process->m_pid;

@@ -270,7 +270,6 @@ void process_init()
 		g_proc_table[i + NUM_NULL_PROCS].m_priority = g_test_procs[i].m_priority;
 		
 		addQ(g_proc_table[i + NUM_NULL_PROCS].m_pid, g_proc_table[i + NUM_NULL_PROCS].m_priority);
-		printQ();
 	}
 	
 	set_system_procs();
@@ -319,9 +318,6 @@ void process_init()
 		}
 		(gp_pcbs[i])->mp_sp = sp;
 	}
-	
-	
-	printQ();
 }
 
 /*@brief: scheduler, pick the pid of the next to run process
@@ -449,10 +445,11 @@ int k_send_message(int pid, void *p_msg) {
 	//assign new tail
 	gp_pcbs[pid]->tail = msg;
 	
-	if (BLOCKED_ON_RECEIVE == gp_pcbs[pid]->m_state) {
+	if ( BLOCKED_ON_RECEIVE == gp_pcbs[pid]->m_state) {
 		gp_pcbs[pid]->m_state = RDY;
 		addQ(pid, gp_pcbs[pid]->m_priority);			
-		k_release_processor();
+		if(gp_current_process->m_pid != PID_UART_IPROC)
+			k_release_processor();
 	}
 }
 

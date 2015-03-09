@@ -63,7 +63,6 @@ void kcd_process(void){
 			char* msg_str = msg->mtext;
 			if (msg_str[0] == '%' && msg_str[1] != '\0') {
 				commands[sender] = msg_str[1];
-				printf("HI THERE: %d\r\n", sender);
 			}						
 		} else if (msg->mtype == DEFAULT) {		//single character msg
 			char* msg_str = msg->mtext;	
@@ -71,11 +70,24 @@ void kcd_process(void){
 			if (index >= 126) {
 				index = 0;
 				buffer[0] = '\0';
-			}					
+			}
+
+			if(msg->mtext[0] == '\r') {
+				msg->mtext[1] = '\n';
+				msg->mtext[2] = '\0';
+			}
+			
 			send_message(PID_CRT, msg);
-			buffer[index] = (msg->mtext)[0];
-			buffer[index + 1] = '\0';
-			index++;
+			
+			if(msg->mtext[0] == '\b' && index != 0) {
+				buffer[index] = '\0';
+				index--;
+			} else {
+				buffer[index] = (msg->mtext)[0];
+				buffer[index + 1] = '\0';
+				index++;
+			}
+				
 			
 			if (msg_str[0] == '\r') {					// if is new line, check if buffer is a valid command
 				int i;				

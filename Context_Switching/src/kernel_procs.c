@@ -79,14 +79,17 @@ uint8_t g_send_char = 0;
 uint8_t g_char_in;
 uint8_t g_char_out;
 
-char bBuffer[32];
-uint8_t bPtr;
+uint8_t bBuffer[32];
+uint8_t *bPtr;
 uint8_t bChar;
 
 void uart_i_process(void) {
+	
 	uint8_t IIR_IntId;	    // Interrupt ID from IIR 		 
 	LPC_UART_TypeDef *pUart = (LPC_UART_TypeDef *)LPC_UART0;
 
+	__disable_irq();
+	
 	/* Reading IIR automatically acknowledges the interrupt */
 	IIR_IntId = (pUart->IIR) >> 1 ; // skip pending bit in IIR 
 	if (IIR_IntId & IIR_RDA) { // Receive Data Avaialbe
@@ -95,7 +98,11 @@ void uart_i_process(void) {
 		/* read UART. Read RBR will clear the interrupt */
 		g_char_in = pUart->RBR;		
 		/*************************/	
-		msg = (MSG_BUF*)k_request_memory_block();
+		msg = (MSG_BUF*)k_request_memory_block();		
+		if (msg == NULL) {
+			return;
+		}
+		
 		msg->mtype = DEFAULT;
 		(msg->mtext)[0] = g_char_in;
 		(msg->mtext)[1] = '\0';
@@ -111,6 +118,7 @@ void uart_i_process(void) {
 		int sender;
 		int i;
 		MSG_BUF* msg = (MSG_BUF*) k_receive_message_nb(&sender);	
+		
 		if (msg != NULL) {
 			char* msg_str = msg->mtext;
 			
@@ -135,9 +143,8 @@ void uart_i_process(void) {
 			k_release_memory_block(msg);
 		}
 		
-		
-		printf("%s", bBuffer);						
-		
+		for(bPtr = bBuffer; *bPtr != '\0'; bPtr++)
+			pUart->THR = *bPtr;
 		/*************************/
 		/*if (*gp_buffer != '\0' ) {
 			g_char_out = *gp_buffer;
@@ -150,9 +157,8 @@ void uart_i_process(void) {
 			gp_buffer = g_buffer;		
 		//}
 	      
-	} else {  /* not implemented yet */
-		return;
-	}		
+	}
+	__enable_irq();	
 }
 
 
