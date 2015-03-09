@@ -8,7 +8,7 @@
 #ifndef K_RTX_H_
 #define K_RTX_H_
 
-/*----- Definitations -----*/
+/*----- Definitions -----*/
 
 #define RTX_ERR -1
 #define RTX_OK  0
@@ -18,6 +18,24 @@
 #define NUM_KERNEL_PROCS 2
 #define NUM_SYSTEM_PROCS 7
 #define NUM_PROCS 16		//everything above(15) + null proc(1)
+
+/* Process IDs */
+#define PID_NULL 0
+#define PID_P1   1
+#define PID_P2   2
+#define PID_P3   3
+#define PID_P4   4
+#define PID_P5   5
+#define PID_P6   6
+#define PID_A    7
+#define PID_B    8
+#define PID_C    9
+#define PID_SET_PRIO     10
+#define PID_CLOCK        11
+#define PID_KCD          12
+#define PID_CRT          13
+#define PID_TIMER_IPROC  14
+#define PID_UART_IPROC   15
 
 #ifdef DEBUG_0
 #define USR_SZ_STACK 0x200         /* user proc stack size 512B   */

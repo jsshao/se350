@@ -4,15 +4,6 @@
 #define NUM_NULL_PROCS 1
 #define NUM_SYSTEM_PROCS 7
 
-#define NULL_PID 0
-#define A_PID 7
-#define B_PID 8
-#define C_PID 9
-#define SET_PRIORITY_PID 10
-#define CLOCK_PID 11
-#define KCD_PID 12
-#define CRT_PID 13
-
 void set_system_procs(void);
 
 

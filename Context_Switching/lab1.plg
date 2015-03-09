@@ -662,3 +662,829 @@ src\system_proc.c(197): warning:  #1-D: last line of file ends without a newline
 linking...
 Program Size: Code=7288 RO-data=236 RW-data=84 ZI-data=2740  
 "lab1.axf" - 0 Error(s), 1 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(217): warning:  #223-D: function "uart_put_string0" declared implicitly
+linking...
+lab1.axf: Error: L6218E: Undefined symbol uart_put_string0 (referred from uart_irq.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(115): error:  #20: identifier "UART_PID" is undefined
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(21): error:  #20: identifier "A_PID" is undefined
+src\system_proc.c(24): error:  #20: identifier "B_PID" is undefined
+src\system_proc.c(27): error:  #20: identifier "C_PID" is undefined
+src\system_proc.c(30): error:  #20: identifier "SET_PRIORITY_PID" is undefined
+src\system_proc.c(33): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(36): error:  #20: identifier "KCD_PID" is undefined
+src\system_proc.c(39): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(75): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(115): error:  #20: identifier "UART_PID" is undefined
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(137): error:  #20: identifier "KCD_PID" is undefined
+src\system_proc.c(141): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(169): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling k_rtx_init.c...
+compiling k_memory.c...
+src\k_memory.c(139): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(140): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(173): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(178): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(188): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(175): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(215): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(220): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(217): warning:  #177-D: variable "qPid" was declared but never referenced
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(258): error:  #20: identifier "NULL_PID" is undefined
+src\k_process.c(283): error:  #20: identifier "CRT_PID" is undefined
+src\k_process.c(284): error:  #20: identifier "KCD_PID" is undefined
+src\k_process.c(285): error:  #20: identifier "CLOCK_PID" is undefined
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(489): error:  #20: identifier "TIMER_PID" is undefined
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+compiling timer.c...
+src\timer.c(124): error:  #20: identifier "TIMER_PID" is undefined
+compiling kernel_procs.c...
+src\kernel_procs.c(26): error:  #20: identifier "TIMER_PID" is undefined
+src\kernel_procs.c(28): error:  #20: identifier "UART_PID" is undefined
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(192): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+compiling usr_proc.c...
+src\usr_proc.c(362): warning:  #550-D: variable "mem2" was set but never used
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(21): error:  #20: identifier "A_PID" is undefined
+src\system_proc.c(24): error:  #20: identifier "B_PID" is undefined
+src\system_proc.c(27): error:  #20: identifier "C_PID" is undefined
+src\system_proc.c(30): error:  #20: identifier "SET_PRIORITY_PID" is undefined
+src\system_proc.c(33): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(36): error:  #20: identifier "KCD_PID" is undefined
+src\system_proc.c(39): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(75): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(115): error:  #20: identifier "UART_PID" is undefined
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(137): error:  #20: identifier "KCD_PID" is undefined
+src\system_proc.c(141): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(169): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling k_rtx_init.c...
+compiling k_memory.c...
+src\k_memory.c(139): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(140): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(173): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(178): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(188): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(175): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(215): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(220): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(217): warning:  #177-D: variable "qPid" was declared but never referenced
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(258): error:  #20: identifier "NULL_PID" is undefined
+src\k_process.c(283): error:  #20: identifier "CRT_PID" is undefined
+src\k_process.c(284): error:  #20: identifier "KCD_PID" is undefined
+src\k_process.c(285): error:  #20: identifier "CLOCK_PID" is undefined
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(489): error:  #20: identifier "TIMER_PID" is undefined
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+compiling timer.c...
+src\timer.c(124): error:  #20: identifier "TIMER_PID" is undefined
+compiling kernel_procs.c...
+src\kernel_procs.c(26): error:  #20: identifier "TIMER_PID" is undefined
+src\kernel_procs.c(28): error:  #20: identifier "UART_PID" is undefined
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(192): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(21): error:  #20: identifier "A_PID" is undefined
+src\system_proc.c(24): error:  #20: identifier "B_PID" is undefined
+src\system_proc.c(27): error:  #20: identifier "C_PID" is undefined
+src\system_proc.c(30): error:  #20: identifier "SET_PRIORITY_PID" is undefined
+src\system_proc.c(33): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(36): error:  #20: identifier "KCD_PID" is undefined
+src\system_proc.c(39): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(75): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(115): error:  #20: identifier "UART_PID" is undefined
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(137): error:  #20: identifier "KCD_PID" is undefined
+src\system_proc.c(141): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(169): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(258): error:  #20: identifier "NULL_PID" is undefined
+src\k_process.c(283): error:  #20: identifier "CRT_PID" is undefined
+src\k_process.c(284): error:  #20: identifier "KCD_PID" is undefined
+src\k_process.c(285): error:  #20: identifier "CLOCK_PID" is undefined
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+compiling timer.c...
+compiling kernel_procs.c...
+src\kernel_procs.c(28): error:  #20: identifier "UART_PID" is undefined
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(192): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(75): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(115): error:  #20: identifier "UART_PID" is undefined
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(137): error:  #20: identifier "KCD_PID" is undefined
+src\system_proc.c(141): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(169): error:  #20: identifier "CRT_PID" is undefined
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(258): error:  #20: identifier "NULL_PID" is undefined
+src\k_process.c(283): error:  #20: identifier "CRT_PID" is undefined
+src\k_process.c(284): error:  #20: identifier "KCD_PID" is undefined
+src\k_process.c(285): error:  #20: identifier "CLOCK_PID" is undefined
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\kernel_procs.c(28): error:  #20: identifier "UART_PID" is undefined
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(192): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(147): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(262): error:  #20: identifier "NULL_PID" is undefined
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\kernel_procs.c(28): error:  #20: identifier "UART_PID" is undefined
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(192): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(172): error:  #20: identifier "CLOCK_PID" is undefined
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(262): error:  #20: identifier "NULL_PID" is undefined
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\kernel_procs.c(28): error:  #20: identifier "UART_PID" is undefined
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(192): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\kernel_procs.c(28): error:  #20: identifier "UART_PID" is undefined
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(192): error:  #20: identifier "KCD_PID" is undefined
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "release_memory_block" declared implicitly
+linking...
+lab1.axf: Error: L6218E: Undefined symbol release_memory_block (referred from uart_irq.o).
+Target not created
+Build target 'Context Switching SIM'
+linking...
+lab1.axf: Error: L6218E: Undefined symbol release_memory_block (referred from uart_irq.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(189): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\uart_irq.c(192): warning:  #223-D: function "k_send_message" declared implicitly
+src\uart_irq.c(201): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\uart_irq.c(208): warning:  #223-D: function "printQ" declared implicitly
+src\uart_irq.c(211): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\uart_irq.c(214): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\uart_irq.c(222): warning:  #223-D: function "k_release_memory_block" declared implicitly
+linking...
+Program Size: Code=7388 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 8 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E17H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E17H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\kernel_procs.c(35): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(67): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(34): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(76): error:  #20: identifier "LPC_UART_TypeDef" is undefined
+src\kernel_procs.c(76): error:  #20: identifier "pUart" is undefined
+src\kernel_procs.c(76): error:  #29: expected an expression
+src\kernel_procs.c(76): error:  #65: expected a ";"
+src\kernel_procs.c(80): error:  #20: identifier "IIR_RDA" is undefined
+src\kernel_procs.c(84): error:  #20: identifier "g_char_in" is undefined
+src\kernel_procs.c(86): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(89): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(91): error:  #20: identifier "g_buffer" is undefined
+src\kernel_procs.c(92): error:  #20: identifier "g_send_char" is undefined
+src\kernel_procs.c(95): error:  #20: identifier "IIR_THRE" is undefined
+src\kernel_procs.c(98): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(105): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(108): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(111): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(119): warning:  #223-D: function "k_release_memory_block" declared implicitly
+src\kernel_procs.c(126): error:  #20: identifier "IER_THRE" is undefined
+src\kernel_procs.c(128): error:  #20: identifier "g_send_char" is undefined
+src\kernel_procs.c(129): error:  #20: identifier "gp_buffer" is undefined
+src\kernel_procs.c(129): error:  #20: identifier "g_buffer" is undefined
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+Target not created
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(78): error:  #20: identifier "LPC_UART_TypeDef" is undefined
+src\kernel_procs.c(78): error:  #20: identifier "pUart" is undefined
+src\kernel_procs.c(78): error:  #29: expected an expression
+src\kernel_procs.c(78): error:  #65: expected a ";"
+src\kernel_procs.c(86): error:  #20: identifier "g_char_in" is undefined
+src\kernel_procs.c(88): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(91): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(93): error:  #20: identifier "g_buffer" is undefined
+src\kernel_procs.c(94): error:  #20: identifier "g_send_char" is undefined
+src\kernel_procs.c(100): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(107): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(110): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(113): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(121): warning:  #223-D: function "k_release_memory_block" declared implicitly
+src\kernel_procs.c(130): error:  #20: identifier "g_send_char" is undefined
+src\kernel_procs.c(131): error:  #20: identifier "gp_buffer" is undefined
+src\kernel_procs.c(131): error:  #20: identifier "g_buffer" is undefined
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+Target not created
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(86): error:  #20: identifier "g_char_in" is undefined
+src\kernel_procs.c(88): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(91): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(93): error:  #20: identifier "g_buffer" is undefined
+src\kernel_procs.c(94): error:  #20: identifier "g_send_char" is undefined
+src\kernel_procs.c(100): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(107): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(110): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(113): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(121): warning:  #223-D: function "k_release_memory_block" declared implicitly
+src\kernel_procs.c(130): error:  #20: identifier "g_send_char" is undefined
+src\kernel_procs.c(131): error:  #20: identifier "gp_buffer" is undefined
+src\kernel_procs.c(131): error:  #20: identifier "g_buffer" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(94): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(97): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(106): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(113): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(116): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(119): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(127): warning:  #223-D: function "k_release_memory_block" declared implicitly
+linking...
+lab1.axf: Error: L6200E: Symbol g_buffer multiply defined (by uart_irq.o and kernel_procs.o).
+lab1.axf: Error: L6200E: Symbol gp_buffer multiply defined (by uart_irq.o and kernel_procs.o).
+lab1.axf: Error: L6200E: Symbol g_send_char multiply defined (by uart_irq.o and kernel_procs.o).
+lab1.axf: Error: L6200E: Symbol g_char_in multiply defined (by uart_irq.o and kernel_procs.o).
+lab1.axf: Error: L6200E: Symbol g_char_out multiply defined (by uart_irq.o and kernel_procs.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+linking...
+Program Size: Code=7396 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(174): error:  #20: identifier "gp_current_process" is undefined
+src\uart_irq.c(175): error:  #20: identifier "gp_pcbs" is undefined
+src\uart_irq.c(177): warning:  #223-D: function "uart_i_process" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(179): warning:  #223-D: function "uart_i_process" declared implicitly
+linking...
+Program Size: Code=7428 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 2 Warning(s).
+Build target 'Context Switching SIM'
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(178): warning:  #223-D: function "uart_i_process" declared implicitly
+linking...
+Program Size: Code=7428 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 2 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E3FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E3FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=7428 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 2 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E3FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E3FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=7428 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E3FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E3FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(94): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(98): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(107): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(114): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(117): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(120): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(128): warning:  #223-D: function "k_release_memory_block" declared implicitly
+linking...
+Program Size: Code=7432 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 11 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E43H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E43H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(535): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(554): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=7424 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E3BH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E3BH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(94): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(98): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(107): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(114): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(117): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(120): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(128): warning:  #223-D: function "k_release_memory_block" declared implicitly
+linking...
+Program Size: Code=7424 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 11 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E3BH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E3BH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(536): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(555): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=7416 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=7416 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E33H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E33H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(533): error:  #513: a value of type "MSG_T *" cannot be assigned to an entity of type "MSG_BUF *"
+src\k_process.c(536): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(537): error:  #20: identifier "msg" is undefined
+src\k_process.c(522): warning:  #550-D: variable "msg_buf" was set but never used
+src\k_process.c(555): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(533): error:  #513: a value of type "MSG_T *" cannot be assigned to an entity of type "MSG_BUF *"
+src\k_process.c(536): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(555): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(533): error:  #513: a value of type "MSG_T *" cannot be assigned to an entity of type "MSG_BUF *"
+src\k_process.c(536): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(555): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(536): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(555): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=7412 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E2FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E2FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(536): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(555): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=7412 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Build target 'Context Switching SIM'
+linking...
+Program Size: Code=7412 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E2FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E2FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(94): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(98): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(107): warning:  #223-D: function "k_receive_message" declared implicitly
+src\kernel_procs.c(114): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(117): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(120): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(128): warning:  #223-D: function "k_release_memory_block" declared implicitly
+linking...
+Program Size: Code=7412 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 11 Warning(s).
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(94): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(98): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(108): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(115): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(118): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(121): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(129): warning:  #223-D: function "k_release_memory_block" declared implicitly
+linking...
+Program Size: Code=7408 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 11 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E2BH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E2BH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(236): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(436): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(457): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(461): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(481): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(496): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(514): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(536): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(555): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=7412 RO-data=236 RW-data=84 ZI-data=2708  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E2FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E2FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(112): warning:  #177-D: variable "i" was declared but never referenced
+src\system_proc.c(191): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(98): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(102): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(113): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(120): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(123): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(126): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(133): error:  #20: identifier "buffer" is undefined
+src\kernel_procs.c(135): warning:  #223-D: function "k_release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(190): warning:  #1-D: last line of file ends without a newline
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(98): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(102): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(113): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(120): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(123): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(126): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(133): error:  #20: identifier "buffer" is undefined
+src\kernel_procs.c(135): warning:  #223-D: function "k_release_memory_block" declared implicitly
+Target not created
+Build target 'Context Switching SIM'
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(37): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(69): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(36): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(98): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(102): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(113): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(120): warning:  #223-D: function "printQ" declared implicitly
+src\kernel_procs.c(123): warning:  #223-D: function "printBlockedQ" declared implicitly
+src\kernel_procs.c(126): warning:  #223-D: function "printBlockedOnReceiveQ" declared implicitly
+src\kernel_procs.c(135): warning:  #223-D: function "k_release_memory_block" declared implicitly
+linking...
+Program Size: Code=7436 RO-data=236 RW-data=88 ZI-data=2736  
+"lab1.axf" - 0 Error(s), 11 Warning(s).
+Load "N:\\jojo\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10001E4BH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10001E4BH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)

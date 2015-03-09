@@ -2,9 +2,6 @@
 #define KERNEL_PROC_H_   
 #include "k_rtx.h"
 
-#define TIMER_PID 14
-#define UART_PID 15
-
 void set_kernel_procs(void);
 
 //kernel interrupt processes

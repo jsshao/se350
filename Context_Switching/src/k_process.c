@@ -255,11 +255,11 @@ void process_init()
   /* fill out the initialization table */
 	
 	//null process
-	g_proc_table[0].m_pid = NULL_PID;
+	g_proc_table[0].m_pid = PID_NULL;
 	g_proc_table[0].m_stack_size = 0x100;
 	g_proc_table[0].mpf_start_pc = &null_process;
 	g_proc_table[0].m_priority = 4;
-	addQ(NULL_PID, 4);
+	addQ(PID_NULL, 4);
 	
 	//test process
 	set_test_procs();
@@ -280,9 +280,9 @@ void process_init()
 		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS].mpf_start_pc = g_system_procs[i].mpf_start_pc;
 		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS].m_priority = g_system_procs[i].m_priority;						
 	}
-	addQ(CRT_PID, 0);
-	addQ(KCD_PID, 0);
-	addQ(CLOCK_PID, 0);
+	addQ(PID_CRT, 0);
+	addQ(PID_KCD, 0);
+	addQ(PID_CLOCK, 0);
 	
 	set_kernel_procs();
 	for ( i = 0; i < NUM_KERNEL_PROCS; i++ ) {
@@ -486,13 +486,13 @@ int k_delayed_send(int pid, void *p_msg, int delay) {
 	
 	//push to the tail of the queue
 	msg->next = NULL;		
-	if (gp_pcbs[TIMER_PID]->tail != NULL) {			
-		gp_pcbs[TIMER_PID]->tail->next = msg;
+	if (gp_pcbs[PID_TIMER_IPROC]->tail != NULL) {			
+		gp_pcbs[PID_TIMER_IPROC]->tail->next = msg;
 	} else {
-		gp_pcbs[TIMER_PID]->head = msg;
+		gp_pcbs[PID_TIMER_IPROC]->head = msg;
 	}
 	//assign new tail
-	gp_pcbs[TIMER_PID]->tail = msg;		
+	gp_pcbs[PID_TIMER_IPROC]->tail = msg;		
 }
 
 /* This is a blocking receive */
@@ -514,6 +514,29 @@ void *k_receive_message(int *p_pid) {
 	k_super_delete((void*)msg_t);		
 	return msg;
 }
+
+/* This is a non-blocking receive */
+//returns NULL if no memory available
+void *k_receive_message_nb(int *p_pid) {
+	int current_pid = gp_current_process->m_pid;	
+	void* msg_buf;	
+	MSG_T * msg_t;
+	if (NULL == gp_pcbs[current_pid]->head ||	NULL == gp_pcbs[current_pid]->tail) {
+		return NULL;
+	}
+	msg_t = gp_pcbs[current_pid]->head;
+	gp_pcbs[current_pid]->head = gp_pcbs[current_pid]->head->next;
+	if (gp_pcbs[current_pid]->head == NULL) {
+		gp_pcbs[current_pid]->tail = NULL;
+	}	
+	*p_pid = msg_t->sender_pid;
+	msg_buf = msg_t->msg;
+	//msg_buf = msg_t->msg;
+	
+	k_super_delete((void*)msg_t);		
+	return msg_buf;
+}
+
 
 /* non-blocking recieve for delayed messages that returns a MSG_T */
 /* pre-cond: expected current_process is the timer interupt process */

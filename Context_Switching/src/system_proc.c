@@ -8,7 +8,6 @@
 
 #endif /* DEBUG_0 */
 
-char crt_buffer[32];
 PROC_INIT g_system_procs[NUM_SYSTEM_PROCS];
 
 void set_system_procs() {	
@@ -19,25 +18,25 @@ void set_system_procs() {
 	}
 	
 	g_system_procs[0].mpf_start_pc = &a_process;
-	g_system_procs[0].m_pid=A_PID;
+	g_system_procs[0].m_pid=PID_A;
 	
 	g_system_procs[1].mpf_start_pc = &b_process;
-	g_system_procs[1].m_pid=B_PID;
+	g_system_procs[1].m_pid=PID_B;
 	
 	g_system_procs[2].mpf_start_pc = &c_process;
-	g_system_procs[2].m_pid=C_PID;
+	g_system_procs[2].m_pid=PID_C;
 	
 	g_system_procs[3].mpf_start_pc = &set_priority_process;
-	g_system_procs[3].m_pid=SET_PRIORITY_PID;
+	g_system_procs[3].m_pid=PID_SET_PRIO;
 	
 	g_system_procs[4].mpf_start_pc = &clock_process;
-	g_system_procs[4].m_pid=CLOCK_PID;
+	g_system_procs[4].m_pid=PID_CLOCK;
 	
 	g_system_procs[5].mpf_start_pc = &kcd_process;
-	g_system_procs[5].m_pid=KCD_PID;
+	g_system_procs[5].m_pid=PID_KCD;
 	
 	g_system_procs[6].mpf_start_pc = &crt_process;
-	g_system_procs[6].m_pid=CRT_PID;
+	g_system_procs[6].m_pid=PID_CRT;
 }
 
 void null_process(void) {
@@ -73,7 +72,7 @@ void kcd_process(void){
 				index = 0;
 				buffer[0] = '\0';
 			}					
-			send_message(CRT_PID, msg);
+			send_message(PID_CRT, msg);
 			buffer[index] = (msg->mtext)[0];
 			buffer[index + 1] = '\0';
 			index++;
@@ -110,15 +109,9 @@ void kcd_process(void){
 void crt_process(void){ 
 	LPC_UART_TypeDef *pUart = (LPC_UART_TypeDef *) LPC_UART0;
 	while (1) {
-		int i;
 		int sender;
 		MSG_BUF* msg = (MSG_BUF*) receive_message(&sender);
-		
-		for(i = 0; i<31; i++)
-			if ((msg->mtext)[i] != '\0')
-				crt_buffer[i] = (msg->mtext)[i];
-		crt_buffer[i] = '\0';
-		release_memory_block(msg);
+		send_message(PID_UART_IPROC, msg);
 			
 		pUart->IER = IER_THRE | IER_RLS | IER_RBR;			
 		release_processor();
@@ -140,17 +133,17 @@ void clock_process(void) {
 	reg->mtype = KCD_REG;
 	reg->mtext[0] = '%';
 	reg->mtext[1] = 'W';
-	send_message(KCD_PID, reg);
+	send_message(PID_KCD, reg);
 	
 	self_msg->mtype = DEFAULT;
 	self_msg->mtext[0] = 'S';
-	send_message(CLOCK_PID, self_msg);	
+	send_message(PID_CLOCK, self_msg);	
 	
 	while (1) {
 		MSG_BUF* msg;
 		int sender;
 		msg = receive_message(&sender);
-		if(sender == CLOCK_PID) {
+		if(sender == PID_CLOCK) {
 			if (state == 1) {
 				//print
 				//printf("%d \n\r", second);	
@@ -172,10 +165,10 @@ void clock_process(void) {
 				msg->mtext[10] = '\0';
 				//msg->mtext = message;
 				//printf("%s", msg->mtext);
-				send_message(CRT_PID, msg);
+				send_message(PID_CRT, msg);
 			}
 			second++;
-			delayed_send(CLOCK_PID, self_msg, 1000);			
+			delayed_send(PID_CLOCK, self_msg, 1000);			
 		} else {
 			char* msg_str = msg->mtext;
 			if (msg_str[0] == '%' && msg_str[2] == 'T'){
