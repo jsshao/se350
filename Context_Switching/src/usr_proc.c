@@ -146,8 +146,8 @@ void proc3(void)
 	
 	
 	set_process_priority(1, LOW);
-	set_process_priority(2, LOW);
-	set_process_priority(4, MEDIUM);
+	set_process_priority(2, LOW);	
+	set_process_priority(4, HIGH);	
 	set_process_priority(3, LOW);
 	 
 	while(1) {
@@ -169,34 +169,16 @@ void proc4(void)
 	
 	reg->mtype = KCD_REG;
 	reg->mtext[0] = '%';
-	reg->mtext[1] = 197;
+	reg->mtext[1] = 'T';
 	send_message(PID_KCD, reg);
 	
-	keyboard1->mtype = DEFAULT;
-	keyboard1->mtext[0] = '%';
-	send_message(PID_KCD, keyboard1);
-	
-	keyboard2->mtype = DEFAULT;
-	keyboard2->mtext[0] = 197;
-	send_message(PID_KCD, keyboard2);
-	
-	keyboard3->mtype = DEFAULT;
-	keyboard3->mtext[0] = 'B';
-	send_message(PID_KCD, keyboard3);
-	
-	keyboard4->mtype = DEFAULT;
-	keyboard4->mtext[0] = '\r';
-	send_message(PID_KCD, keyboard4);
-	
-	reply = (MSG_BUF*) receive_message(&sender);
-	if (reply->mtext[0] == '%' && reply->mtext[1] == 197 && reply->mtext[2] == 'B') {
-	  TEST_BIT_PASSED |= (1 << 3);		//test case 4 passed
-		TOTAL_TESTS_PASSED++;
-	}
-	
-	release_memory_block((void*)reply);
+	set_process_priority(5, LOWEST);
+	set_process_priority(6, LOWEST);
+	printf("Please enter %%T to continue the tests\r\n");
+	(MSG_BUF*) receive_message(&sender);
+	TEST_BIT_PASSED |= (1 << 3);
+	TOTAL_TESTS_PASSED++;	
 	set_process_priority(6, HIGH);
-
 	while (1) {
 		release_processor();
 	}
@@ -250,6 +232,8 @@ void proc5(void)
 	printf("%s%d/6 tests OK\n\r", GROUP_PREFIX, TOTAL_TESTS_PASSED);
 	printf("%s%d/6 tests FAIL\n\r", GROUP_PREFIX, 6 - TOTAL_TESTS_PASSED);
 	printf("%sEND\n\r", GROUP_PREFIX);
+	set_process_priority(6, LOW);
+	set_process_priority(5, LOW);
 	
 	while(1) {
 		release_processor();

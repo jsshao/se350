@@ -129,7 +129,7 @@ void c_TIMER0_IRQHandler(void)
 	gp_current_process = old_proc;
 	
 	k = peekQ();	
-	if (k != -1 && (gp_pcbs[k]->m_priority) > (gp_current_process->m_priority)) {
+	if (k != -1 && (gp_pcbs[k]->m_priority) < (gp_current_process->m_priority)) {
 		k_release_processor();
 	}	
 }

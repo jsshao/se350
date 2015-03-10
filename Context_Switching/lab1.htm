@@ -3,7 +3,7 @@
 <title>Static Call Graph - [N:\se3500\meh\se350\Context_Switching\lab1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image N:\se3500\meh\se350\Context_Switching\lab1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Tue Mar 10 16:24:07 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Tue Mar 10 17:17:36 2015
 <BR><P>
 <H3>Maximum Stack Usage =        184 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -93,10 +93,10 @@ Function Pointers
  <LI><a href="#[40]">k_set_process_priority</a> from k_process.o(.text) referenced from usr_proc.o(.text)
  <LI><a href="#[61]">kcd_process</a> from system_proc.o(.text) referenced from system_proc.o(.text)
  <LI><a href="#[3f]">null_process</a> from system_proc.o(.text) referenced from k_process.o(.text)
- <LI><a href="#[88]">proc1</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
- <LI><a href="#[86]">proc2</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
- <LI><a href="#[84]">proc3</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
- <LI><a href="#[89]">proc4</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
+ <LI><a href="#[89]">proc1</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
+ <LI><a href="#[87]">proc2</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
+ <LI><a href="#[85]">proc3</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
+ <LI><a href="#[84]">proc4</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
  <LI><a href="#[83]">proc5</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
  <LI><a href="#[8a]">proc6</a> from usr_proc.o(.text) referenced from usr_proc.o(.text)
  <LI><a href="#[37]">putc</a> from uart_polling.o(.text) referenced from main_svc.o(.text)
@@ -478,6 +478,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_format
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;null_proccess
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc4
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc5
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_i_process
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printBlockedOnReceiveQ
@@ -880,38 +881,40 @@ Global Symbols
 <P><STRONG><a name="[8a]"></a>proc6</STRONG> (Thumb, 106 bytes, Stack size 0 bytes, usr_proc.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[83]"></a>proc5</STRONG> (Thumb, 112 bytes, Stack size 0 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[83]"></a>proc5</STRONG> (Thumb, 132 bytes, Stack size 0 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = proc5 &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[89]"></a>proc4</STRONG> (Thumb, 222 bytes, Stack size 8 bytes, usr_proc.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = proc4
+<P><STRONG><a name="[84]"></a>proc4</STRONG> (Thumb, 132 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = proc4 &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
+</UL>
+<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[84]"></a>proc3</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[85]"></a>proc3</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = proc3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[86]"></a>proc2</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[87]"></a>proc2</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = proc2 &rArr; strcpy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[88]"></a>proc1</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[89]"></a>proc1</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = proc1 &rArr; strcpy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
@@ -923,17 +926,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 
-<P><STRONG><a name="[87]"></a>strcpy</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, strcpy.o(.text))
+<P><STRONG><a name="[88]"></a>strcpy</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, strcpy.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = strcpy
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
 </UL>
 
-<P><STRONG><a name="[85]"></a>strcmp</STRONG> (Thumb, 128 bytes, Stack size 0 bytes, strcmpv7m.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc3
+<P><STRONG><a name="[86]"></a>strcmp</STRONG> (Thumb, 128 bytes, Stack size 0 bytes, strcmpv7m.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc1
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc2
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;proc3
 </UL>
 
 <P><STRONG><a name="[b2]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
