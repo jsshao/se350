@@ -1,5 +1,0 @@
--c --cpu Cortex-M3 -g -O0 --apcs=interwork 
--I C:\Software\Keil\ARM\RV31\INC 
--I C:\Software\Keil\ARM\CMSIS\Include 
--I C:\Software\Keil\ARM\Inc\NXP\LPC17xx 
--DDEBUG_0 -D_DEBUG_HOTKEYS -o "kernel_procs.o" --omf_browse "kernel_procs.crf" --depend "kernel_procs.d" "src\kernel_procs.c"

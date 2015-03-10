@@ -196,8 +196,7 @@ void proc4(void)
 	
 	release_memory_block((void*)reply);
 	set_process_priority(6, HIGH);
-	set_process_priority(4, LOW);
-	
+
 	while (1) {
 		release_processor();
 	}
@@ -205,29 +204,26 @@ void proc4(void)
 
 void proc6(void)
 {
-	int i = 0;
-
-	set_process_priority(5, MEDIUM);
-
-	for (i = 0; i < 121; i++) {
-		if (LAST_PROC == 5) {
-			break;
-		}
-		stress_requests[i] = request_memory_block();
+	void* temp;
+	int release_ret_val;
+	
+	set_process_priority(4, LOW);
+	
+	// Test 5: Get memory block and see if it's a valid address
+	temp = request_memory_block();
+	if (NULL != temp) {
+		TEST_BIT_PASSED |= (1 << 4);
+		TOTAL_TESTS_PASSED++;
 	}
-	
-	// Test 5: this proc has successfully UNBLOCKED by proc 5
-	TEST_BIT_PASSED |= (1 << 4);
-	TOTAL_TESTS_PASSED++;
-	
-	set_process_priority(6, LOWEST);
-	
-	for (i = 0; i < 121; i++) {
-		if (NULL != stress_requests[i]) {
-			release_memory_block(stress_requests[i]);
-		}
+
+	// Test 6: Release memory block and try to release the same block (should be error)
+	release_memory_block(temp);
+	release_ret_val = release_memory_block(temp);
+	if (release_ret_val == RTX_ERR) {
+		TEST_BIT_PASSED |= (1 << 5);
+		TOTAL_TESTS_PASSED++;
 	}
-	
+
 	set_process_priority(5, HIGH);
 	
 	while(1) {
@@ -240,14 +236,9 @@ void proc5(void)
 {
 	int i;
 	
-	LAST_PROC = 5;
-	
-	/* Test 6: proc 5 has successfully BLOCKED */
-	TEST_BIT_PASSED |= (1 << 5);
-	TOTAL_TESTS_PASSED++;
-	release_memory_block(stress_requests[0]);
-	
 	printf("\r\n");
+	printf("%sSTART\n\r", GROUP_PREFIX);
+	printf("%stotal 6 tests\n\r", GROUP_PREFIX);
 	for (i = 0; i < 6; i++) {
 		if (TEST_BIT_PASSED & (1 << i)) {
 			printf("%stest %d OK\n\r", GROUP_PREFIX, i+1);
