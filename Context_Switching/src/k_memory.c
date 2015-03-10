@@ -123,6 +123,8 @@ void *k_request_memory_block(void) {
 	int i;
 	int available = 0;
 
+	atomic_on();
+	
 	while (!available) {
 		//check for if there is available memory
 		for (i = 0; i < NUM_MEM_BLOCKS; i++) {	
@@ -136,14 +138,20 @@ void *k_request_memory_block(void) {
 		//if there is no memory, add current process to blocked queue, and release processor
 		if (!available && gp_current_process->m_pid != PID_UART_IPROC) {
 			gp_current_process->m_state = BLOCKED;
-			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);			
+			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);	
+			atomic_off();			
 			k_release_processor();		
+			atomic_on();
 		} else if (!available && gp_current_process->m_pid == PID_UART_IPROC) {
+			atomic_off();
 			return NULL;
 		}
 	}
 	
 	flag[i] = gp_current_process->m_pid;
+	
+	atomic_off();
+	
 	return memory[i];	
 }
 
@@ -154,17 +162,21 @@ void *k_request_memory_block(void) {
 int k_release_memory_block(void *p_mem_blk) {
 	int pid;
 	int index;
+	
+	atomic_on();
 
 	// get index of flag array from pointer
 	index = ((char*)p_mem_blk - (char*)memory[0]) / MEM_BLOCK_SIZE;
 	
 	// if index is invalid, return
 	if (index >= NUM_MEM_BLOCKS || index < 0) {
+		atomic_off();
 		return RTX_ERR;
 	}
 	
 	//set flag array to be avaliable for block at index or if it doesn't belong to the process
 	if (flag[index] == 0) { //|| flag[index] != gp_current_process->m_pid) {
+		atomic_off();
 		return RTX_ERR;
 	} else {
 		flag[index] = 0;
@@ -187,9 +199,13 @@ int k_release_memory_block(void *p_mem_blk) {
 				k_release_processor();
 			}
 		} */
+		atomic_off();
 		k_release_processor();
-		
+		atomic_on();
+
 	}
+	
+	atomic_off();
 	
 	return RTX_OK;
 }
@@ -198,16 +214,20 @@ int k_super_delete(void *p_mem_blk) {
 	int pid;
 	int index;
 
+	atomic_on();
+	
 	// get index of flag array from pointer
 	index = ((char*)p_mem_blk - (char*)memory[0]) / MEM_BLOCK_SIZE;
 	
 	// if index is invalid, return
 	if (index >= NUM_MEM_BLOCKS || index < 0) {
+		atomic_off();
 		return RTX_ERR;
 	}
 	
 	//set flag array to be avaliable for block at index or if it doesn't belong to the process
 	if (flag[index] == 0) {
+		atomic_off();
 		return RTX_ERR;
 	} else {
 		flag[index] = 0;
@@ -218,10 +238,12 @@ int k_super_delete(void *p_mem_blk) {
 	if (pid != -1) {
 		int qPid;		
 		gp_pcbs[pid]->m_state = RDY;
-		addQ(pid, gp_pcbs[pid]->m_priority);		
+		addQ(pid, gp_pcbs[pid]->m_priority);
+		atomic_off();
 		k_release_processor();
-		
+		atomic_on();
 	}
+	atomic_off();
 	
 	return RTX_OK;
 }

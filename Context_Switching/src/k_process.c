@@ -43,6 +43,23 @@ extern PROC_INIT g_system_procs[NUM_SYSTEM_PROCS];
 int processQueue[5][NUM_PROCS] = {0}; 
 int blockedQueue[5][NUM_PROCS] = {0};
 
+int atomic_counter = 0;
+
+void atomic_on() {
+	atomic_counter++;
+	//if (atomic_counter == 1) {
+		__disable_irq();
+	//}
+}
+
+void atomic_off() {
+	atomic_counter--;
+	if (atomic_counter <= 0) {
+		__enable_irq();
+		atomic_counter = 0;
+	}
+}
+
 void addBlockedQ(int pid, int priority) {
 	int i=0;
 	for (i = 0; i < NUM_PROCS; i++) {		
@@ -230,9 +247,6 @@ int k_set_process_priority(int pid, int priority) {
 	
 	(gp_pcbs[pid])->m_priority = priority;
 
-
-	
-	
 	k_release_processor();
 	
 	return 0;
@@ -291,11 +305,6 @@ void process_init()
 		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_priority = g_kernel_procs[i].m_priority;			
 	}
   
-	
-	
-	
-	
-	
 	//for (i = 0; i <  NUM_KERNEL_PROCS + NUM_TEST_PROCS; i++) {
 		//printf("new pid: %d priority: %d \n\r", (g_proc_table[i]).m_pid,(g_proc_table[i]).m_priority); 
 		//printf("is null: %d", NULL == gp_pcbs[i]);
@@ -429,7 +438,12 @@ int k_release_processor(void)
 
 /* Send p_msg to the process defined at pid */
 int k_send_message(int pid, void *p_msg) {	
-	MSG_T* msg = (MSG_T*)k_request_memory_block();
+	MSG_T* msg;
+	
+	atomic_on();
+	
+	msg = (MSG_T*)k_request_memory_block();
+	
 	msg->sender_pid = gp_current_process->m_pid;
 	msg->dest_pid = pid;	
 	msg->msg = p_msg;			
@@ -448,14 +462,21 @@ int k_send_message(int pid, void *p_msg) {
 	if ( BLOCKED_ON_RECEIVE == gp_pcbs[pid]->m_state) {
 		gp_pcbs[pid]->m_state = RDY;
 		addQ(pid, gp_pcbs[pid]->m_priority);			
-		if(gp_current_process->m_pid != PID_UART_IPROC)
+		if(gp_current_process->m_pid != PID_UART_IPROC) {
+			atomic_off();
 			k_release_processor();
+			atomic_on();
+		}
 	}
+	
+	atomic_off();
 }
 
 void send_message_t(MSG_T* msg) {
 	int pid = msg->dest_pid;
 	PCB * dest = gp_pcbs[pid];
+	
+	atomic_on();
 	
  //push to the tail of the queue
 	msg->next = NULL;				
@@ -471,11 +492,18 @@ void send_message_t(MSG_T* msg) {
 		gp_pcbs[pid]->m_state = RDY;
 		addQ(pid, gp_pcbs[pid]->m_priority);	
 	}
+	
+	atomic_off();
 }
 
 /* send message to process defined by pid with a delay */
 int k_delayed_send(int pid, void *p_msg, int delay) {	
-	MSG_T* msg = (MSG_T*)k_request_memory_block();
+	MSG_T* msg;
+	
+	atomic_on();
+	
+	msg = (MSG_T*)k_request_memory_block();
+	
 	msg->sender_pid = gp_current_process->m_pid;
 	msg->dest_pid = pid;	
 	msg->msg = p_msg;
@@ -490,6 +518,8 @@ int k_delayed_send(int pid, void *p_msg, int delay) {
 	}
 	//assign new tail
 	gp_pcbs[PID_TIMER_IPROC]->tail = msg;		
+	
+	atomic_off();
 }
 
 /* This is a blocking receive */
@@ -497,9 +527,14 @@ void *k_receive_message(int *p_pid) {
 	int current_pid = gp_current_process->m_pid;	
 	void* msg;
 	MSG_T * msg_t;
+	
+	atomic_on();
+	
 	while (NULL == gp_pcbs[current_pid]->head ||	NULL == gp_pcbs[current_pid]->tail) {
 		gp_current_process->m_state = BLOCKED_ON_RECEIVE;		
+		atomic_off();
 		k_release_processor();		
+		atomic_on();
 	}
 	msg_t = gp_pcbs[current_pid]->head;
 	gp_pcbs[current_pid]->head = gp_pcbs[current_pid]->head->next;
@@ -509,6 +544,9 @@ void *k_receive_message(int *p_pid) {
 	*p_pid = msg_t->sender_pid;
 	msg = msg_t->msg;
 	k_super_delete((void*)msg_t);		
+	
+	atomic_off();
+	
 	return msg;
 }
 
@@ -518,7 +556,11 @@ void *k_receive_message_nb(int *p_pid) {
 	int current_pid = gp_current_process->m_pid;	
 	void* msg_buf;	
 	MSG_T * msg_t;
+	
+	atomic_on();
+	
 	if (NULL == gp_pcbs[current_pid]->head ||	NULL == gp_pcbs[current_pid]->tail) {
+		atomic_off();
 		return NULL;
 	}
 	msg_t = gp_pcbs[current_pid]->head;
@@ -530,7 +572,10 @@ void *k_receive_message_nb(int *p_pid) {
 	msg_buf = msg_t->msg;
 	//msg_buf = msg_t->msg;
 	
-	k_super_delete((void*)msg_t);		
+	k_super_delete((void*)msg_t);	
+
+	atomic_off();
+	
 	return msg_buf;
 }
 
@@ -538,15 +583,22 @@ void *k_receive_message_nb(int *p_pid) {
 /* non-blocking recieve for delayed messages that returns a MSG_T */
 /* pre-cond: expected current_process is the timer interupt process */
 void *k_receive_message_t() {
-		
 	//deqeue the head
 	MSG_T* msg_t = gp_current_process->head;
-	if (NULL == msg_t) return NULL;				//return null (instead of block) if no msg on queue
+	
+	atomic_on();
+	
+	if (NULL == msg_t) {
+		atomic_off();
+		return NULL;				//return null (instead of block) if no msg on queue
+	}
 	
 	gp_current_process->head = gp_current_process->head->next;
 	if (gp_current_process->head == NULL) {
 		gp_current_process->tail = NULL;
 	}
+	
+	atomic_off();
 	
 	return msg_t;
 }

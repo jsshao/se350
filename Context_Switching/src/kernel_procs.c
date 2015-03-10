@@ -34,7 +34,11 @@ void timer_i_process() {
 	MSG_T* it;
 	MSG_T* node;	
 	MSG_T* temp;
-	MSG_T* msg_t = (MSG_T*)k_receive_message_t();
+	MSG_T* msg_t;
+	
+	atomic_on();
+	
+	msg_t = (MSG_T*)k_receive_message_t();
 	
 	while(msg_t) {				
 		msg_t->delay = msg_t->delay + g_timer_count;
@@ -71,6 +75,8 @@ void timer_i_process() {
 	}	
 	
 	timer_head = node;		
+	
+	atomic_off();
 }
 
 uint8_t g_buffer[]= "You Typed a Q\n\r";
@@ -88,7 +94,7 @@ void uart_i_process(void) {
 	uint8_t IIR_IntId;	    // Interrupt ID from IIR 		 
 	LPC_UART_TypeDef *pUart = (LPC_UART_TypeDef *)LPC_UART0;
 
-	__disable_irq();
+	atomic_on();
 	
 	/* Reading IIR automatically acknowledges the interrupt */
 	IIR_IntId = (pUart->IIR) >> 1 ; // skip pending bit in IIR 
@@ -100,6 +106,7 @@ void uart_i_process(void) {
 		/*************************/	
 		msg = (MSG_BUF*)k_request_memory_block();		
 		if (msg == NULL) {
+			atomic_off();
 			return;
 		}
 		
@@ -142,7 +149,7 @@ void uart_i_process(void) {
 			
 			k_release_memory_block(msg);
 		}
-		
+				
 		for(bPtr = bBuffer; *bPtr != '\0'; bPtr++)
 			pUart->THR = *bPtr;
 		/*************************/
@@ -158,7 +165,7 @@ void uart_i_process(void) {
 		//}
 	      
 	}
-	__enable_irq();	
+	atomic_off();	
 }
 
 

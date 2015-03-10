@@ -64,6 +64,7 @@ void kcd_process(void){
 			if (msg_str[0] == '%' && msg_str[1] != '\0') {
 				commands[sender] = msg_str[1];
 			}						
+			release_memory_block(msg);
 		} else if (msg->mtype == DEFAULT) {		//single character msg
 			char* msg_str = msg->mtext;	
 			
@@ -79,9 +80,11 @@ void kcd_process(void){
 			
 			send_message(PID_CRT, msg);
 			
-			if(msg->mtext[0] == '\b' && index != 0) {
+			if((msg->mtext[0] == '\b' || msg->mtext[0] == 0x7F) && index != 0) {
 				buffer[index] = '\0';
 				index--;
+			} else if ((msg->mtext[0] == '\b' || msg->mtext[0] == 0x7F) && index == 0) {
+				buffer[index] = '\0';
 			} else {
 				buffer[index] = (msg->mtext)[0];
 				buffer[index + 1] = '\0';
@@ -112,9 +115,8 @@ void kcd_process(void){
 				index = 0;
 				buffer[0] = '\0';
 			}								
-		}
-		release_memory_block(msg);
-		release_processor();
+		}		
+		//release_processor();
 	}	
 }
 
@@ -175,6 +177,7 @@ void clock_process(void) {
 				msg->mtext[8] = '\r';
 				msg->mtext[9] = '\n';
 				msg->mtext[10] = '\0';
+
 				//msg->mtext = message;
 				//printf("\r\n%s\r\n", msg->mtext);
 				send_message(PID_CRT, msg);

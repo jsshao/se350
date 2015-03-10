@@ -16,8 +16,6 @@
 #endif /* DEBUG_0 */
 
 PROC_INIT g_test_procs[NUM_TEST_PROCS];
-
-#ifdef JEW
 /* initialization table item */
 
 /* Keep track of tests passed (This int will be 6 bits in total 
@@ -27,6 +25,9 @@ PROC_INIT g_test_procs[NUM_TEST_PROCS];
 int TEST_BIT_PASSED = 0x0; 
 int TOTAL_TESTS_PASSED = 0;
 char GROUP_PREFIX[] = "G016_test: ";
+int LAST_PROC = 0;
+void *stress_requests[121] = {0};
+
 
 void set_test_procs() {	
 	int i;		
@@ -143,6 +144,110 @@ void proc3(void)
 		TOTAL_TESTS_PASSED++;
 	}
 	
+	
+	set_process_priority(1, LOW);
+	set_process_priority(2, LOW);
+	set_process_priority(4, MEDIUM);
+	set_process_priority(3, LOW);
+	 
+	while(1) {
+		release_processor();
+	}
+}
+
+/* Test case 4: Registering a command with KCD and receiving when invoking command */
+void proc4(void)
+{
+	MSG_BUF* reg = (MSG_BUF*) request_memory_block();
+	int sender;
+	int i;
+	MSG_BUF* keyboard1 = (MSG_BUF*) request_memory_block();
+	MSG_BUF* keyboard2 = (MSG_BUF*) request_memory_block();
+	MSG_BUF* keyboard3 = (MSG_BUF*) request_memory_block();
+	MSG_BUF* keyboard4 = (MSG_BUF*) request_memory_block();
+	MSG_BUF* reply;
+	
+	reg->mtype = KCD_REG;
+	reg->mtext[0] = '%';
+	reg->mtext[1] = 197;
+	send_message(PID_KCD, reg);
+	
+	keyboard1->mtype = DEFAULT;
+	keyboard1->mtext[0] = '%';
+	send_message(PID_KCD, keyboard1);
+	
+	keyboard2->mtype = DEFAULT;
+	keyboard2->mtext[0] = 197;
+	send_message(PID_KCD, keyboard2);
+	
+	keyboard3->mtype = DEFAULT;
+	keyboard3->mtext[0] = 'B';
+	send_message(PID_KCD, keyboard3);
+	
+	keyboard4->mtype = DEFAULT;
+	keyboard4->mtext[0] = '\r';
+	send_message(PID_KCD, keyboard4);
+	
+	reply = (MSG_BUF*) receive_message(&sender);
+	if (reply->mtext[0] == '%' && reply->mtext[1] == 197 && reply->mtext[2] == 'B') {
+	  TEST_BIT_PASSED |= (1 << 3);		//test case 4 passed
+		TOTAL_TESTS_PASSED++;
+	}
+	
+	release_memory_block((void*)reply);
+	set_process_priority(6, HIGH);
+	set_process_priority(4, LOW);
+	
+	while (1) {
+		release_processor();
+	}
+}
+
+void proc6(void)
+{
+	int i = 0;
+
+	set_process_priority(5, MEDIUM);
+
+	for (i = 0; i < 121; i++) {
+		if (LAST_PROC == 5) {
+			break;
+		}
+		stress_requests[i] = request_memory_block();
+	}
+	
+	// Test 5: this proc has successfully UNBLOCKED by proc 5
+	TEST_BIT_PASSED |= (1 << 4);
+	TOTAL_TESTS_PASSED++;
+	
+	set_process_priority(6, LOWEST);
+	
+	for (i = 0; i < 121; i++) {
+		if (NULL != stress_requests[i]) {
+			release_memory_block(stress_requests[i]);
+		}
+	}
+	
+	set_process_priority(5, HIGH);
+	
+	while(1) {
+		release_processor();
+	}
+}
+
+/* Final output for test passed and test failed */
+void proc5(void)
+{
+	int i;
+	
+	LAST_PROC = 5;
+	
+	/* Test 6: proc 5 has successfully BLOCKED */
+	TEST_BIT_PASSED |= (1 << 5);
+	TOTAL_TESTS_PASSED++;
+	release_memory_block(stress_requests[0]);
+	
+	printf("\r\n");
 	for (i = 0; i < 6; i++) {
 		if (TEST_BIT_PASSED & (1 << i)) {
 			printf("%stest %d OK\n\r", GROUP_PREFIX, i+1);
@@ -151,25 +256,15 @@ void proc3(void)
 		}
 	}
 	
+	printf("%s%d/6 tests OK\n\r", GROUP_PREFIX, TOTAL_TESTS_PASSED);
+	printf("%s%d/6 tests FAIL\n\r", GROUP_PREFIX, 6 - TOTAL_TESTS_PASSED);
+	printf("%sEND\n\r", GROUP_PREFIX);
+	
 	while(1) {
 		release_processor();
 	}
 }
 
-void proc6(void)
-{
-}
-
-
-
-void proc4(void)
-{
-}
-
-void proc5(void)
-{
-}
-#endif
 
 
 
@@ -180,7 +275,7 @@ void proc5(void)
 
 
 
-
+///---------------------------------------------------------------------------------
 
 #ifdef REG1
 /* initialization table item */
@@ -313,151 +408,3 @@ void proc6(void)
 	}
 }
 #endif
-
-int TEST_BIT_PASSED = 0x0; 
-int TOTAL_TESTS_PASSED = 0;
-char GROUP_PREFIX[] = "G016_test: ";
-
-/* Use this to observe previous proc */
-int LAST_PROC = -1; 
-
-void set_test_procs() {	
-	int i;		
-	for( i = 0; i < NUM_TEST_PROCS; i++ ) {
-		g_test_procs[i].m_pid=(U32)(i+1);
-		g_test_procs[i].m_priority=LOWEST;
-		g_test_procs[i].m_stack_size=0x100;
-	}
-	
-	g_test_procs[0].m_priority=HIGH;
-	g_test_procs[1].m_priority=MEDIUM;
-	g_test_procs[2].m_priority=MEDIUM;
-
-	g_test_procs[0].mpf_start_pc = &proc1;
-	g_test_procs[1].mpf_start_pc = &proc2;
-	g_test_procs[2].mpf_start_pc = &proc3;
-	g_test_procs[3].mpf_start_pc = &proc4;
-	g_test_procs[4].mpf_start_pc = &proc5;
-	g_test_procs[5].mpf_start_pc = &proc6;
-}
-
-/* The null process never terminates. Its priority should be lowest.
-*/
-void null_proccess(void)
-{	
-	while (1) {
-		printf("null process\n");
-		release_processor();
-	}
-}
-
-/**
-Test 1: proc 1 gets blocked on receive, then unblocked by proc 2 sending
-Test 2: after gets unblocked, send 2s delayed message to proc 3
-Test 3: then sends 1s delayed message to proc 2
-**/
-void proc1(void)
-{
-	void *mem;
-	void *mem2;
-	MSG_BUF *msg;
-	int sender;
-	
-	mem = receive_message(&sender);
-	msg = (MSG_BUF*)mem;
-
-	if (2 == sender && strcmp(msg->mtext, "Sent from proc 2") == 0) {
-		TEST_BIT_PASSED |= (1 << 0);		//test case 1 passed
-		TOTAL_TESTS_PASSED++;
-	}
-		
-	mem = request_memory_block();	
-	msg = (MSG_BUF*)mem;
-	msg->mtype = DEFAULT;
-	strcpy(msg->mtext, "Delayed 2s from 1 to 3");
-	delayed_send(3, msg, 2000);
-	
-	mem2 = request_memory_block();	
-	msg = (MSG_BUF*)mem;
-	msg->mtype = DEFAULT;
-	strcpy(msg->mtext, "Delayed 1s from 1 to 2");
-	delayed_send(2, msg, 1000);
-	
-	set_process_priority(1, LOW);
-	while(1) {
-		release_processor();
-	}
-}
-
-/* Test 1: Send message from proc2 to proc1 
-	 Test 3: gets message from proc1
-*/
-void proc2(void)
-{	
-	MSG_BUF *msg;
-	void *mem = request_memory_block();
-	int sender;	
-	
-	msg = (MSG_BUF*)mem;
-	msg->mtype = DEFAULT;
-	strcpy(msg->mtext, "Sent from proc 2");
-	send_message(1, mem);	
-	release_memory_block(mem);
-	
-	mem = receive_message(&sender);	
-	msg = (MSG_BUF*)mem;
-	if (1 == sender && strcmp(msg->mtext, "Delayed 1s from 1 to 2") == 0 
-		&& TOTAL_TESTS_PASSED == 1) {			
-		TEST_BIT_PASSED |= (1 << 2);		//test case 3 passed
-		TOTAL_TESTS_PASSED++;
-	}
-	
-	while(1) {
-		release_processor();
-	}
-}
-
-/*
-	Test case 2: gets delayed message from process 1 (Should be after case 3 passes)
-*/
-void proc3(void)
-{	
-	MSG_BUF *msg;
-	void *mem = request_memory_block();
-	int sender;
-	int i;
-	
-	mem = receive_message(&sender);	
-	msg = (MSG_BUF*)mem;
-	if (1 == sender && strcmp(msg->mtext, "Delayed 1s from 1 to 2") == 0 
-		&& TOTAL_TESTS_PASSED == 2) {			
-		TEST_BIT_PASSED |= (1 << 1);		//test case 2 passed
-		TOTAL_TESTS_PASSED++;
-	}
-	
-	for (i = 0; i < 6; i++) {
-		if (TEST_BIT_PASSED & (1 << i)) {
-			printf("%stest %d OK\n\r", GROUP_PREFIX, i+1);
-		} else {
-			printf("%stest %d FAIL\n\r", GROUP_PREFIX, i+1);
-		}
-	}
-	
-	while(1) {
-		release_processor();
-	}
-}
-
-void proc6(void)
-{
-}
-
-
-
-void proc4(void)
-{
-}
-
-void proc5(void)
-{
-}
