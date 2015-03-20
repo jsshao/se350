@@ -3,7 +3,7 @@
 <title>Static Call Graph - [N:\Git\se350\Context_Switching\lab1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image N:\Git\se350\Context_Switching\lab1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Thu Mar 19 22:18:27 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Fri Mar 20 19:51:56 2015
 <BR><P>
 <H3>Maximum Stack Usage =        168 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -567,7 +567,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_init
 </UL>
 
-<P><STRONG><a name="[3b]"></a>k_request_memory_block</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, k_memory.o(.text))
+<P><STRONG><a name="[3b]"></a>k_request_memory_block</STRONG> (Thumb, 166 bytes, Stack size 16 bytes, k_memory.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = k_request_memory_block &rArr; k_release_processor &rArr; scheduler &rArr; popQ
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atomic_on
@@ -730,7 +730,7 @@ Global Symbols
 <BR>[Address Reference Count : 2]<UL><LI> system_proc.o(.text)
 <LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[6a]"></a>process_init</STRONG> (Thumb, 526 bytes, Stack size 24 bytes, k_process.o(.text))
+<P><STRONG><a name="[6a]"></a>process_init</STRONG> (Thumb, 518 bytes, Stack size 24 bytes, k_process.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = process_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_test_procs
@@ -822,7 +822,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[81]"></a>uart_i_process</STRONG> (Thumb, 524 bytes, Stack size 32 bytes, kernel_procs.o(.text))
+<P><STRONG><a name="[81]"></a>uart_i_process</STRONG> (Thumb, 534 bytes, Stack size 32 bytes, kernel_procs.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = uart_i_process &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;k_receive_message_nb
@@ -874,28 +874,28 @@ Global Symbols
 <P><STRONG><a name="[8a]"></a>proc6</STRONG> (Thumb, 106 bytes, Stack size 0 bytes, usr_proc.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[83]"></a>proc5</STRONG> (Thumb, 112 bytes, Stack size 0 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[83]"></a>proc5</STRONG> (Thumb, 132 bytes, Stack size 0 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = proc5 &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[84]"></a>proc4</STRONG> (Thumb, 132 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[84]"></a>proc4</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = proc4 &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[85]"></a>proc3</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[85]"></a>proc3</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = proc3
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[87]"></a>proc2</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[87]"></a>proc2</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = proc2 &rArr; strcpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
@@ -903,7 +903,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[89]"></a>proc1</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[89]"></a>proc1</STRONG> (Thumb, 150 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = proc1 &rArr; strcpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp

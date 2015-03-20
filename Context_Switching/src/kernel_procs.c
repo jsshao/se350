@@ -169,7 +169,7 @@ void uart_i_process(void) {
 		
 	} 
 	if (IIR_IntId & IIR_THRE) {
-//	if (pUart->LSR & LSR_THRE) {
+	//if (pUart->LSR & LSR_THRE) {
 	/* THRE Interrupt, transmit holding register becomes empty */
 		/*************************/		
 		int sender;
@@ -200,7 +200,9 @@ void uart_i_process(void) {
 			pUart->THR = bBuffer[index];
 			ready_new = 1;
 			index = 0;
-			pUart->IER ^= IER_THRE; // toggle the IER_THRE bit 
+			if (gp_pcbs[PID_UART_IPROC]->head == NULL) {
+				pUart->IER ^= IER_THRE; // toggle the IER_THRE bit
+}				
 		}
 		
 			/*

@@ -50,6 +50,9 @@ const int MEM_BLOCK_SIZE = 128;
 void* memory[NUM_MEM_BLOCKS] = {0}; // addresses of available memory
 int flag[NUM_MEM_BLOCKS] = {0}; // 0 is ununsed memory block
 
+/* Debug variable to keep track of memory leaks */
+int memory_block_count = 0;
+
 extern PCB *gp_current_process;
 
 
@@ -122,7 +125,7 @@ U32 *alloc_stack(U32 size_b)
 */
 
 void *k_request_memory_block(void) {
-	int i;
+	int i, j;
 	int available = 0;
 
 	atomic_on();
@@ -153,6 +156,12 @@ void *k_request_memory_block(void) {
 	flag[i] = gp_current_process->m_pid;
 	
 	atomic_off();
+	
+	memory_block_count = 0;
+	for (j = 0; j < NUM_MEM_BLOCKS; j++) {
+		if (flag[j] == 0)
+			memory_block_count++;
+	}
 	
 	return memory[i];	
 }

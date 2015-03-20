@@ -80,6 +80,8 @@ void proc1(void)
 		TOTAL_TESTS_PASSED++;
 	}
 		
+	release_memory_block(mem);
+	
 	mem = request_memory_block();	
 	msg = (MSG_BUF*)mem;
 	msg->mtype = DEFAULT;
@@ -93,6 +95,9 @@ void proc1(void)
 	delayed_send(2, msg, 1000);
 	
 	set_process_priority(1, LOW);
+	
+	
+	
 	while(1) {
 		release_processor();
 	}
@@ -116,10 +121,12 @@ void proc2(void)
 	mem = receive_message(&sender);	
 	msg = (MSG_BUF*)mem;
 	if (1 == sender && strcmp(msg->mtext, "Delayed 1s from 1 to 2") == 0 
-		&& TOTAL_TESTS_PASSED == 1) {			
+		&& TOTAL_TESTS_PASSED == 1) {
 		TEST_BIT_PASSED |= (1 << 2);		//test case 3 passed
 		TOTAL_TESTS_PASSED++;
 	}
+	release_memory_block(mem);
+	
 	
 	while(1) {
 		release_processor();
@@ -143,7 +150,7 @@ void proc3(void)
 		TEST_BIT_PASSED |= (1 << 1);		//test case 2 passed
 		TOTAL_TESTS_PASSED++;
 	}
-	
+	release_memory_block(mem);
 	
 	set_process_priority(1, LOW);
 	set_process_priority(2, LOW);	
@@ -159,6 +166,7 @@ void proc3(void)
 void proc4(void)
 {
 	MSG_BUF* reg = (MSG_BUF*) request_memory_block();
+	void* mem;
 	int sender;
 	int i;
 	MSG_BUF* keyboard1 = (MSG_BUF*) request_memory_block();
@@ -173,9 +181,12 @@ void proc4(void)
 	send_message(PID_KCD, reg);
 	
 	set_process_priority(5, LOWEST);
-	set_process_priority(6, LOWEST);
+	set_process_priority(6, LOWEST);	
+	
 	printf("Please enter %%T to continue the tests\r\n");
-	(MSG_BUF*) receive_message(&sender);
+	mem = receive_message(&sender);
+	release_memory_block(mem);
+
 	TEST_BIT_PASSED |= (1 << 3);
 	TOTAL_TESTS_PASSED++;	
 	set_process_priority(6, HIGH);
@@ -232,14 +243,6 @@ void proc5(void)
 	printf("%s%d/6 tests OK\n\r", GROUP_PREFIX, TOTAL_TESTS_PASSED);
 	printf("%s%d/6 tests FAIL\n\r", GROUP_PREFIX, 6 - TOTAL_TESTS_PASSED);
 	printf("%sEND\n\r", GROUP_PREFIX);
-	
-	
-	
-	/* Stress tests */
-	while(1) {
-		request_memory_block();
-	}
-	
 
 	set_process_priority(6, LOW);
 	set_process_priority(5, LOW);
