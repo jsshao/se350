@@ -126,9 +126,7 @@ void crt_process(void){
 		int sender;
 		MSG_BUF* msg = (MSG_BUF*) receive_message(&sender);
 		send_message(PID_UART_IPROC, msg);
-			
 		pUart->IER = IER_THRE | IER_RLS | IER_RBR;			
-		release_processor();
 	}
 }
 
@@ -162,7 +160,7 @@ void clock_process(void) {
 				//print
 				//printf("%d \n\r", second);	
 				
-				int hours = second/3600;
+				int hours = (second/3600) % 24;				
 				int t = second%3600;
 				int minutes = t/60;
 				int seconds = t%60;
@@ -189,12 +187,39 @@ void clock_process(void) {
 			if (msg_str[0] == '%' && msg_str[2] == 'T'){
 				state = 0;
 			} else if (msg_str[0] == '%' && msg_str[2] == 'S'){
-				state = 1;
-				// hh:mm:ss
+				int error = 1;
+				// hh:mm:s  s
 				// 45:78:10 11
-				second = (msg_str[4] - '0') * 10 + (msg_str[5] - '0');
-				second = second * 60 + (msg_str[7] - '0') * 10 + (msg_str[8] - '0');
-				second = second * 60 + (msg_str[10] - '0') * 10 + (msg_str[11] - '0');			
+				if (msg_str[6] != ':' || msg_str[9] != ':' ) {								
+				}
+				else if ((msg_str[4] < '0') || (msg_str[4] > '9') || (msg_str[5] < '0') || (msg_str[5] > '9') || (msg_str[7] < '0') || (msg_str[7] > '9') || 
+					(msg_str[8] < '0') || (msg_str[8] > '9') || (msg_str[10] < '0') || (msg_str[10] > '9') || (msg_str[11] < '0') || (msg_str[11] > '9')) {					
+			  } else {
+					int tempSecond;
+					int hours;
+					int t;
+					int minutes;
+					int seconds; 
+					
+					tempSecond = (msg_str[4] - '0') * 10 + (msg_str[5] - '0');				
+					tempSecond = tempSecond * 60 + (msg_str[7] - '0') * 10 + (msg_str[8] - '0');
+					tempSecond = tempSecond * 60 + (msg_str[10] - '0') * 10 + (msg_str[11] - '0');			
+					
+					hours = tempSecond/3600;
+					t = tempSecond%3600;
+					minutes = t/60;
+					seconds = t%60;
+					
+					if (hours >= 24 || minutes >= 60 || seconds >= 60)  {
+					} else {			//valid input
+						second = tempSecond;
+						state = 1;
+						error = 0;
+					}
+				}
+				if (error) {
+					printf("Error - invalid input\r\n");
+				}				
 			} else if (msg_str[0] == '%' && msg_str[2] == 'R') {			
 				state = 1;
 				second = 0;

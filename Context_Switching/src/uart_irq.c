@@ -176,9 +176,13 @@ void c_UART0_IRQHandler(void)
 	void* old_proc;	
 	int k;
 	old_proc = gp_current_process;
+	
+	
 	gp_current_process = gp_pcbs[PID_UART_IPROC];
 	
+	atomic_on();
 	uart_i_process();
+	atomic_off();
 	
 	gp_current_process = old_proc;
 	

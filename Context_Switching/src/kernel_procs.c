@@ -10,6 +10,10 @@
 #endif /* DEBUG_0 */
 
 extern uint32_t g_timer_count;
+extern int processQueue[5][NUM_PROCS]; 
+extern int blockedQueue[5][NUM_PROCS];
+extern PCB **gp_pcbs;  
+
 
 PROC_INIT g_kernel_procs[NUM_KERNEL_PROCS];
 
@@ -86,27 +90,73 @@ uint8_t g_char_in;
 uint8_t g_char_out;
 
 uint8_t bBuffer[32];
+int index = 0;
+int ready_new = 1;
 uint8_t *bPtr;
 uint8_t bChar;
 
+
 void uart_i_process(void) {
-	
+
 	uint8_t IIR_IntId;	    // Interrupt ID from IIR 		 
 	LPC_UART_TypeDef *pUart = (LPC_UART_TypeDef *)LPC_UART0;
-
-	atomic_on();
 	
 	/* Reading IIR automatically acknowledges the interrupt */
 	IIR_IntId = (pUart->IIR) >> 1 ; // skip pending bit in IIR 
 	if (IIR_IntId & IIR_RDA) { // Receive Data Avaialbe
 		MSG_BUF *msg;				
+		int i = 0;
+		int k = 0;
 		
 		/* read UART. Read RBR will clear the interrupt */
 		g_char_in = pUart->RBR;		
+		
+		#ifdef _DEBUG_HOTKEYS
+		if (g_char_in == '!') {		
+			printf("Process Ready Queue \r\n");
+			for (i = 0; i < 5; i++) {
+				for (k = 0; k < NUM_PROCS; k++) {		
+					if (processQueue[i][k] == -1) {
+						printf("_  ");
+					} else if (processQueue[i][k] / 10 >= 1){
+						printf("%d ", processQueue[i][k]);
+					} else {
+						printf("%d  ", processQueue[i][k]);
+					}
+				}
+				printf("\r\n");
+			}
+			return;
+		} else if (g_char_in == '@') {
+			printf("Process Blocked Queue \r\n");
+			for (i = 0; i < 5; i++) {
+				for (k = 0; k < NUM_PROCS; k++) {		
+					if (blockedQueue[i][k] == -1) {
+						printf("_  ");
+					} else if (blockedQueue[i][k] / 10 >= 1){
+						printf("%d ", blockedQueue[i][k]);
+					} else {
+						printf("%d  ", blockedQueue[i][k]);
+					}
+				}
+				printf("\r\n");
+			}		
+			return;
+		} else if (g_char_in == '#') {
+			printf("Process Blocked On Receive Queue \r\n");
+			for (k = 0; k < NUM_PROCS; k++) {		
+				if (gp_pcbs[k]->m_state == BLOCKED_ON_RECEIVE) {
+					printf("pid: %d priority: %d \r\n", gp_pcbs[k]->m_pid, gp_pcbs[k]->m_priority);
+				}
+			}
+			printf("\r\n");
+			return;
+		}
+		#endif
+		
 		/*************************/	
 		msg = (MSG_BUF*)k_request_memory_block();		
 		if (msg == NULL) {
-			atomic_off();
 			return;
 		}
 		
@@ -115,57 +165,51 @@ void uart_i_process(void) {
 		(msg->mtext)[1] = '\0';
 		k_send_message(PID_KCD, msg);		
 		/*************************/
-		g_buffer[12] = g_char_in; // nasty hack
-		g_send_char = 1;
 		
 		
-	} else if (IIR_IntId & IIR_THRE) {
+	} 
+	if (IIR_IntId & IIR_THRE) {
+//	if (pUart->LSR & LSR_THRE) {
 	/* THRE Interrupt, transmit holding register becomes empty */
 		/*************************/		
 		int sender;
 		int i;
-		MSG_BUF* msg = (MSG_BUF*) k_receive_message_nb(&sender);	
+		MSG_BUF* msg;
 		
-		if (msg != NULL) {
-			char* msg_str = msg->mtext;
-			
-			#ifdef _DEBUG_HOTKEYS
-			if (msg_str[0] == '!') {
-				printf("%c\r\n", msg_str[0]);
-				printQ();
-			} else if (msg_str[0] == '@') {
-				printf("%c\r\n", msg_str[0]);
-				printBlockedQ();
-			} else if (msg_str[0] == '#') {
-				printf("%c\r\n", msg_str[0]);
-				printBlockedOnReceiveQ();
-			}
-			#endif
-			
-			
-			for(i=0; i<31 && msg->mtext[i]; i++)
-				bBuffer[i] = msg->mtext[i];
-			bBuffer[i] = 0;
-			
-			k_release_memory_block(msg);
-		}
+		if (ready_new) {
+			msg = (MSG_BUF*) k_receive_message_nb(&sender);	
+		
+			if (msg != NULL) {
+				char* msg_str = msg->mtext;		
+				ready_new = 0;
+				index = 0;
 				
-		for(bPtr = bBuffer; *bPtr != '\0'; bPtr++)
-			pUart->THR = *bPtr;
-		/*************************/
-		/*if (*gp_buffer != '\0' ) {
-			g_char_out = *gp_buffer;
-			pUart->THR = g_char_out;
-			gp_buffer++;
-		} else {*/
+				for(i=0; i<31 && msg->mtext[i] !='\0'; i++)
+					bBuffer[i] = msg->mtext[i];
+				
+				bBuffer[i] =  '\0';
+				
+				k_release_memory_block(msg);
+			}
+		} 
+		
+		if (bBuffer[index] != '\0') {
+			pUart->THR = bBuffer[index++];
+		}
+		else if (bBuffer[index] == '\0') {
+			pUart->THR = bBuffer[index];
+			ready_new = 1;
+			index = 0;
 			pUart->IER ^= IER_THRE; // toggle the IER_THRE bit 
-			pUart->THR = '\0';
-			g_send_char = 0;
-			gp_buffer = g_buffer;		
-		//}
-	      
+		}
+		
+			/*
+		pUart->IER ^= IER_THRE; // toggle the IER_THRE bit 
+		pUart->THR = '\0';
+		g_send_char = 0;
+		gp_buffer = g_buffer;		
+	      */
 	}
-	atomic_off();	
 }
 
 

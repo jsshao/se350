@@ -66,7 +66,7 @@ Test 3: then sends 1s delayed message to proc 2
 
 **/
 void proc1(void)
-{
+{ 
 	void *mem;
 	void *mem2;
 	MSG_BUF *msg;
@@ -232,6 +232,15 @@ void proc5(void)
 	printf("%s%d/6 tests OK\n\r", GROUP_PREFIX, TOTAL_TESTS_PASSED);
 	printf("%s%d/6 tests FAIL\n\r", GROUP_PREFIX, 6 - TOTAL_TESTS_PASSED);
 	printf("%sEND\n\r", GROUP_PREFIX);
+	
+	
+	
+	/* Stress tests */
+	while(1) {
+		request_memory_block();
+	}
+	
+
 	set_process_priority(6, LOW);
 	set_process_priority(5, LOW);
 	
