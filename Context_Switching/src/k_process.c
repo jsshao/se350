@@ -296,6 +296,7 @@ void process_init()
 	addQ(PID_CRT, 0);
 	addQ(PID_KCD, 0);
 	addQ(PID_CLOCK, 0);
+	addQ(PID_SET_PRIO, 0);
 	
 	set_kernel_procs();
 	for ( i = 0; i < NUM_KERNEL_PROCS; i++ ) {

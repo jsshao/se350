@@ -47,7 +47,7 @@ void null_process(void) {
 
 //system processes 
 void kcd_process(void){
-	char* buffer = (char*)k_request_memory_block();
+	char* buffer = (char*)request_memory_block();
 	char commands[NUM_PROCS];
 	int index = 0;
 	
@@ -133,11 +133,54 @@ void crt_process(void){
 void a_process(void) {}
 void b_process(void) {}
 void c_process(void) {}
-void set_priority_process(void) {}
+	
+void set_priority_process(void) {
+	//register %C command
+	MSG_BUF* regMsg = (MSG_BUF*)request_memory_block();	
+	regMsg->mtype = KCD_REG;
+	regMsg->mtext[0] = '%';
+	regMsg->mtext[1] = 'C';
+	send_message(PID_KCD, regMsg);
+	
+	while(1) {
+		MSG_BUF* msg;
+		int sender;
+		int error = 0;
+		msg = receive_message(&sender);
+		
+		if (msg) {
+			char* msg_str = msg->mtext;
+			int pid;
+			int priority;
+			
+			//format: %C 12 1 
+			if (msg_str[4] == ' ') {
+				pid = msg_str[3] - '0';
+				priority = msg_str[5] - '0';
+				if (msg_str[6] != '\r' && msg_str[6] != ' ') {
+					error = 1;
+				}
+			} else {
+				pid = (msg_str[3] - '0')*10 + msg_str[4] - '0';
+				priority = msg_str[6] - '0';
+				if (msg_str[7] != '\r' && msg_str[7] != ' ') {
+					error = 1;
+				}
+			}
+			
+			if (error == 1 || msg_str[2] != ' ' || pid < 0 || pid > 15 || priority < 0 || priority > 4) {
+				printf("Error - invalid input");
+			} else {
+				set_process_priority(pid, priority);
+			}
+		}
+		release_memory_block(msg);
+	}
+}
 	
 void clock_process(void) {
-	MSG_BUF* reg = (MSG_BUF*)k_request_memory_block();	
-	MSG_BUF* self_msg = (MSG_BUF*)k_request_memory_block();	
+	MSG_BUF* reg = (MSG_BUF*)request_memory_block();	
+	MSG_BUF* self_msg = (MSG_BUF*)request_memory_block();	
 	int state = 0;
 	int second = 0;
 
