@@ -441,10 +441,10 @@ int k_release_processor(void)
 int k_send_message(int pid, void *p_msg) {	
 	MSG_T* msg;
 	
-	atomic_on();
 	
 	msg = (MSG_T*)k_request_memory_block();
-	
+	atomic_on();
+
 	msg->sender_pid = gp_current_process->m_pid;
 	msg->dest_pid = pid;	
 	msg->msg = p_msg;			
@@ -500,11 +500,10 @@ void send_message_t(MSG_T* msg) {
 /* send message to process defined by pid with a delay */
 int k_delayed_send(int pid, void *p_msg, int delay) {	
 	MSG_T* msg;
-	
-	atomic_on();
-	
+		
 	msg = (MSG_T*)k_request_memory_block();
-	
+	atomic_on();
+
 	msg->sender_pid = gp_current_process->m_pid;
 	msg->dest_pid = pid;	
 	msg->msg = p_msg;
@@ -544,9 +543,9 @@ void *k_receive_message(int *p_pid) {
 	}	
 	*p_pid = msg_t->sender_pid;
 	msg = msg_t->msg;
+	atomic_off();
 	k_super_delete((void*)msg_t);		
 	
-	atomic_off();
 	
 	return msg;
 }
@@ -573,9 +572,8 @@ void *k_receive_message_nb(int *p_pid) {
 	msg_buf = msg_t->msg;
 	//msg_buf = msg_t->msg;
 	
-	k_super_delete((void*)msg_t);	
-
 	atomic_off();
+	k_super_delete((void*)msg_t);		
 	
 	return msg_buf;
 }

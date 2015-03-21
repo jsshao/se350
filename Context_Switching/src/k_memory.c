@@ -217,7 +217,9 @@ int k_release_memory_block(void *p_mem_blk) {
 			}
 		} */
 		atomic_off();
-		k_release_processor();
+		if (gp_current_process->m_pid != PID_UART_IPROC && gp_current_process->m_pid != PID_CLOCK) {
+			k_release_processor();
+		}
 		atomic_on();
 
 	}
@@ -269,7 +271,9 @@ int k_super_delete(void *p_mem_blk) {
 		gp_pcbs[pid]->m_state = RDY;
 		addQ(pid, gp_pcbs[pid]->m_priority);
 		atomic_off();
-		k_release_processor();
+		if (gp_current_process->m_pid != PID_UART_IPROC && gp_current_process->m_pid != PID_CLOCK) {
+			k_release_processor();
+		}
 		atomic_on();
 	}
 	atomic_off();

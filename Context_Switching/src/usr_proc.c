@@ -124,8 +124,7 @@ void proc2(void)
 		TEST_BIT_PASSED |= (1 << 2);		//test case 3 passed
 		TOTAL_TESTS_PASSED++;
 	}
-	release_memory_block(mem);
-	
+	release_memory_block(mem);	
 	
 	while(1) {
 		release_processor();
@@ -151,11 +150,10 @@ void proc3(void)
 	}
 	release_memory_block(mem);
 	
-	set_process_priority(1, LOW);
-	set_process_priority(2, LOW);	
-	set_process_priority(4, HIGH);	
-	set_process_priority(3, LOW);
-	 
+	set_process_priority(1, LOWEST);
+	set_process_priority(2, LOWEST);	
+	printf("Please type %%C 4 0 to continue the test (Set proc 4 to high priority)\r\n");
+	
 	while(1) {
 		release_processor();
 	}
@@ -164,65 +162,110 @@ void proc3(void)
 /* Test case 4: Registering a command with KCD and receiving when invoking command */
 void proc4(void)
 {
-	MSG_BUF* reg = (MSG_BUF*) request_memory_block();
-	void* mem;
-	int sender;
-	int i;
-	MSG_BUF* reply;
+	MSG_BUF* reg;
+	MSG_BUF* p;
+	int num;
 	
+	//set_process_priority(1, LOWEST);
+	//set_process_priority(2, LOWEST);
+	set_process_priority(3, LOWEST);
+	set_process_priority(5, MEDIUM);
+	set_process_priority(6, MEDIUM);
+	set_process_priority(4, MEDIUM);
+	
+	//registers command
+	reg = (MSG_BUF*)request_memory_block();
 	reg->mtype = KCD_REG;
 	reg->mtext[0] = '%';
-	reg->mtext[1] = 'T';
+	reg->mtext[1] = 'Z';
 	send_message(PID_KCD, reg);
 	
-	set_process_priority(5, LOWEST);
-	set_process_priority(6, LOWEST);	
+	while(1) {
+		int sender;
+		printf("Please type %%Z to trigger stress test\r\n");
+		p = receive_message(&sender);
+		if(p->mtext[0] == '%' && p->mtext[1] == 'Z') {
+			release_memory_block(p);
+			break;
+		} else {
+			release_memory_block(p);
+		}
+	}
 	
-	printf("Please enter %%T to continue the tests\r\n");
-	mem = receive_message(&sender);
-	release_memory_block(mem);
-
-	TEST_BIT_PASSED |= (1 << 3);
-	TOTAL_TESTS_PASSED++;	
-	set_process_priority(6, HIGH);
-	while (1) {
+	num = 0;
+	
+	while(1) {
+		int sender;
+		p = (MSG_BUF*)request_memory_block();
+		p->mtype = COUNT_REPORT;
+		p->mtext[0] = num % (1 << 7);
+		send_message(5, p);
+		num++;
 		release_processor();
 	}
 }
+
+/*proc B of stress test*/
+void proc5(void)
+{	
+	int sender;
+	while(1) {
+		void* msg = receive_message(&sender);
+		send_message(6,msg);
+	}
+}
+
 
 void proc6(void)
 {
-	void* temp;
-	int release_ret_val;
-	
-	set_process_priority(4, LOW);
-	
-	// Test 5: Get memory block and see if it's a valid address
-	temp = request_memory_block();
-	if (NULL != temp) {
-		TEST_BIT_PASSED |= (1 << 4);
-		TOTAL_TESTS_PASSED++;
-	}
+	MSG_BUF* queue[90] = {0};
+	MSG_BUF* msg;
+	int sender;
+	int i;
 
-	// Test 6: Release memory block and try to release the same block (should be error)
-	release_memory_block(temp);
-	release_ret_val = release_memory_block(temp);
-	if (release_ret_val == RTX_ERR) {
-		TEST_BIT_PASSED |= (1 << 5);
-		TOTAL_TESTS_PASSED++;
-	}
-	
-	set_process_priority(5, HIGH);
-	
-	while(1) {
+	while (1) {
+		if (NULL == queue[0]) {
+			msg = (MSG_BUF*)receive_message(&sender);
+		} else {
+			msg = queue[0];
+			for (i = 1; i < 90; i++) {
+				queue[i-1] = queue[i];
+			}
+			queue[89] = NULL;
+		}		
+		
+		if (msg->mtype == COUNT_REPORT) {
+			if (msg->mtext[0] % 20 == 0) {
+				MSG_BUF *delay = (MSG_BUF*) request_memory_block();
+
+				strcmp(msg->mtext, "Process C\r\n");
+				msg->mtype = DEFAULT;
+				send_message(PID_CRT, msg);
+				
+				/* Hibernate */
+				delay->mtype = WAKEUP10;
+				delayed_send(6, delay, 1000);
+				while (1) {
+					msg = (MSG_BUF*)receive_message(&sender);
+					if (WAKEUP10 == msg->mtype) {
+						release_memory_block((void*) delay);
+						break;
+					} else {
+						for (i = 0; i < 90; i++) {
+							if (NULL == queue[i]) {
+								queue[i] = msg;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		release_memory_block((void*)msg);
 		release_processor();
 	}
-}
-
-/* Final output for test passed and test failed */
-void proc5(void)
-{
-	int i;
+	
 	
 	printf("\r\n");
 	printf("%sSTART\n\r", GROUP_PREFIX);
@@ -238,23 +281,11 @@ void proc5(void)
 	printf("%s%d/6 tests OK\n\r", GROUP_PREFIX, TOTAL_TESTS_PASSED);
 	printf("%s%d/6 tests FAIL\n\r", GROUP_PREFIX, 6 - TOTAL_TESTS_PASSED);
 	printf("%sEND\n\r", GROUP_PREFIX);
-
-	set_process_priority(6, LOW);
-	set_process_priority(5, LOW);
 	
 	while(1) {
 		release_processor();
 	}
 }
-
-
-
-
-
-
-
-
-
 
 
 ///---------------------------------------------------------------------------------

@@ -148,33 +148,36 @@ void set_priority_process(void) {
 		int error = 0;
 		msg = receive_message(&sender);
 		
-		if (msg) {
-			char* msg_str = msg->mtext;
+		if (NULL != msg) {
+			char* msg_str = msg->mtext + 3;
+			char* token = (char*) strtok(msg_str, " ");
 			int pid;
 			int priority;
+			int ret_val;
 			
 			//format: %C 12 1 
-			if (msg_str[4] == ' ') {
-				pid = msg_str[3] - '0';
-				priority = msg_str[5] - '0';
-				if (msg_str[6] != '\r' && msg_str[6] != ' ') {
+			pid = atoi(token);
+			token = (char *) strtok(NULL, " ");
+			priority = atoi(token);
+			
+			if (msg->mtext[2] != ' ') {
 					error = 1;
-				}
 			} else {
-				pid = (msg_str[3] - '0')*10 + msg_str[4] - '0';
-				priority = msg_str[6] - '0';
-				if (msg_str[7] != '\r' && msg_str[7] != ' ') {
+				ret_val = set_process_priority(pid, priority);
+				if (-1 == ret_val) {
 					error = 1;
 				}
 			}
 			
-			if (error == 1 || msg_str[2] != ' ' || pid < 0 || pid > 15 || priority < 0 || priority > 4) {
-				printf("Error - invalid input");
-			} else {
-				set_process_priority(pid, priority);
+			if (1 == error ) {
+				MSG_BUF* error_msg = (MSG_BUF*) request_memory_block();
+				strcpy(error_msg->mtext, "Error - invalid input\r\n");
+				error_msg->mtype = DEFAULT;
+				send_message(PID_CRT, error_msg);
 			}
+			
+			release_memory_block(msg);
 		}
-		release_memory_block(msg);
 	}
 }
 	
@@ -253,7 +256,7 @@ void clock_process(void) {
 					minutes = t/60;
 					seconds = t%60;
 					
-					if (hours >= 24 || minutes >= 60 || seconds >= 60)  {
+					if (hours >= 24 || minutes >= 60 || seconds >= 60 || (msg_str[12] != ' ' && msg_str[12] != '\r' && msg_str[12] != '\n'))  {
 					} else {			//valid input
 						second = tempSecond;
 						state = 1;

@@ -40,6 +40,8 @@
 /* Message Types */
 #define DEFAULT 0
 #define KCD_REG 1
+#define COUNT_REPORT 2
+#define WAKEUP10 3
 
 /* ----- Types ----- */
 typedef unsigned int U32;
