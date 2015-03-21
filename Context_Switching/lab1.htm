@@ -3,7 +3,7 @@
 <title>Static Call Graph - [N:\Git\se350\Context_Switching\lab1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image N:\Git\se350\Context_Switching\lab1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Fri Mar 20 19:51:56 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Fri Mar 20 20:11:26 2015
 <BR><P>
 <H3>Maximum Stack Usage =        168 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -582,8 +582,8 @@ Global Symbols
 <BR>[Address Reference Count : 2]<UL><LI> system_proc.o(.text)
 <LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[3c]"></a>k_release_memory_block</STRONG> (Thumb, 124 bytes, Stack size 16 bytes, k_memory.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = k_release_memory_block &rArr; k_release_processor &rArr; scheduler &rArr; popQ
+<P><STRONG><a name="[3c]"></a>k_release_memory_block</STRONG> (Thumb, 162 bytes, Stack size 24 bytes, k_memory.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = k_release_memory_block &rArr; k_release_processor &rArr; scheduler &rArr; popQ
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;popBlockedQ
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atomic_on
@@ -596,8 +596,8 @@ Global Symbols
 <BR>[Address Reference Count : 2]<UL><LI> system_proc.o(.text)
 <LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[70]"></a>k_super_delete</STRONG> (Thumb, 124 bytes, Stack size 16 bytes, k_memory.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = k_super_delete &rArr; k_release_processor &rArr; scheduler &rArr; popQ
+<P><STRONG><a name="[70]"></a>k_super_delete</STRONG> (Thumb, 162 bytes, Stack size 24 bytes, k_memory.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = k_super_delete &rArr; k_release_processor &rArr; scheduler &rArr; popQ
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;popBlockedQ
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atomic_on
@@ -730,7 +730,7 @@ Global Symbols
 <BR>[Address Reference Count : 2]<UL><LI> system_proc.o(.text)
 <LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[6a]"></a>process_init</STRONG> (Thumb, 518 bytes, Stack size 24 bytes, k_process.o(.text))
+<P><STRONG><a name="[6a]"></a>process_init</STRONG> (Thumb, 526 bytes, Stack size 24 bytes, k_process.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = process_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_test_procs
@@ -777,7 +777,7 @@ Global Symbols
 <LI> usr_proc.o(.text)
 </UL>
 <P><STRONG><a name="[39]"></a>k_receive_message</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, k_process.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = k_receive_message &rArr; k_super_delete &rArr; k_release_processor &rArr; scheduler &rArr; popQ
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = k_receive_message &rArr; k_super_delete &rArr; k_release_processor &rArr; scheduler &rArr; popQ
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atomic_on
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atomic_off
@@ -788,7 +788,7 @@ Global Symbols
 <LI> usr_proc.o(.text)
 </UL>
 <P><STRONG><a name="[7d]"></a>k_receive_message_nb</STRONG> (Thumb, 126 bytes, Stack size 24 bytes, k_process.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = k_receive_message_nb &rArr; k_super_delete &rArr; k_release_processor &rArr; scheduler &rArr; popQ
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = k_receive_message_nb &rArr; k_super_delete &rArr; k_release_processor &rArr; scheduler &rArr; popQ
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atomic_on
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atomic_off
@@ -881,21 +881,21 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[84]"></a>proc4</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[84]"></a>proc4</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = proc4 &rArr; tfp_printf &rArr; tfp_format &rArr; putchw
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tfp_printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[85]"></a>proc3</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[85]"></a>proc3</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = proc3
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usr_proc.o(.text)
 </UL>
-<P><STRONG><a name="[87]"></a>proc2</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, usr_proc.o(.text))
+<P><STRONG><a name="[87]"></a>proc2</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, usr_proc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = proc2 &rArr; strcpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp

@@ -116,7 +116,6 @@ void proc2(void)
 	msg->mtype = DEFAULT;
 	strcpy(msg->mtext, "Sent from proc 2");
 	send_message(1, mem);	
-	release_memory_block(mem);
 	
 	mem = receive_message(&sender);	
 	msg = (MSG_BUF*)mem;
@@ -139,7 +138,7 @@ void proc2(void)
 void proc3(void)
 {	
 	MSG_BUF *msg;
-	void *mem = request_memory_block();
+	void *mem;
 	int sender;
 	int i;
 	
@@ -169,10 +168,6 @@ void proc4(void)
 	void* mem;
 	int sender;
 	int i;
-	MSG_BUF* keyboard1 = (MSG_BUF*) request_memory_block();
-	MSG_BUF* keyboard2 = (MSG_BUF*) request_memory_block();
-	MSG_BUF* keyboard3 = (MSG_BUF*) request_memory_block();
-	MSG_BUF* keyboard4 = (MSG_BUF*) request_memory_block();
 	MSG_BUF* reply;
 	
 	reg->mtype = KCD_REG;
@@ -216,7 +211,7 @@ void proc6(void)
 		TEST_BIT_PASSED |= (1 << 5);
 		TOTAL_TESTS_PASSED++;
 	}
-
+	
 	set_process_priority(5, HIGH);
 	
 	while(1) {

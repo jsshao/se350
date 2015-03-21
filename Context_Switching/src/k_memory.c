@@ -172,6 +172,7 @@ void *k_request_memory_block(void) {
 */
 int k_release_memory_block(void *p_mem_blk) {
 	int pid;
+	int j;
 	int index;
 	
 	atomic_on();
@@ -218,12 +219,19 @@ int k_release_memory_block(void *p_mem_blk) {
 	
 	atomic_off();
 	
+	memory_block_count = 0;
+	for (j = 0; j < NUM_MEM_BLOCKS; j++) {
+		if (flag[j] == 0)
+			memory_block_count++;
+	}
+	
 	return RTX_OK;
 }
 
 int k_super_delete(void *p_mem_blk) {
 	int pid;
 	int index;
+	int j;
 
 	atomic_on();
 	
@@ -255,6 +263,12 @@ int k_super_delete(void *p_mem_blk) {
 		atomic_on();
 	}
 	atomic_off();
+	
+	memory_block_count = 0;
+	for (j = 0; j < NUM_MEM_BLOCKS; j++) {
+		if (flag[j] == 0)
+			memory_block_count++;
+	}
 	
 	return RTX_OK;
 }
