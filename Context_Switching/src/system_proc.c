@@ -261,7 +261,10 @@ void clock_process(void) {
 					}
 				}
 				if (error) {
-					printf("Error - invalid input\r\n");
+					MSG_BUF* error_msg = (MSG_BUF*) request_memory_block();
+					strcpy(error_msg->mtext, "Error - invalid input\r\n");
+					error_msg->mtype = DEFAULT;
+					send_message(PID_CRT, error_msg);
 				}				
 			} else if (msg_str[0] == '%' && msg_str[2] == 'R') {			
 				state = 1;

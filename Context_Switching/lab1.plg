@@ -1209,3 +1209,108 @@ src\usr_proc.c(171): warning:  #177-D: variable "reply" was declared but never r
 linking...
 Program Size: Code=9456 RO-data=236 RW-data=112 ZI-data=2984  
 "lab1.axf" - 0 Error(s), 5 Warning(s).
+Build target 'Context Switching SIM'
+compiling main_svc.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+compiling system_proc.c...
+src\system_proc.c(273): warning:  #1-D: last line of file ends without a newline
+compiling k_memory.c...
+src\k_memory.c(131): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(146): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(147): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(148): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(151): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(158): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(183): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(190): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(196): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(204): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(209): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(220): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(206): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(225): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(246): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(253): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(259): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(266): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(270): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(271): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(272): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(268): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(275): warning:  #223-D: function "atomic_off" declared implicitly
+compiling usr_proc.c...
+src\usr_proc.c(143): warning:  #177-D: variable "i" was declared but never referenced
+src\usr_proc.c(170): warning:  #177-D: variable "i" was declared but never referenced
+src\usr_proc.c(171): warning:  #177-D: variable "reply" was declared but never referenced
+linking...
+Program Size: Code=9316 RO-data=236 RW-data=112 ZI-data=2984  
+"lab1.axf" - 0 Error(s), 29 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100025BBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100025BBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(273): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=9316 RO-data=236 RW-data=112 ZI-data=2984  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100025BBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100025BBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(273): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=9316 RO-data=236 RW-data=112 ZI-data=2984  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100025BBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100025BBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(273): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=9320 RO-data=236 RW-data=112 ZI-data=2984  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100025BFH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100025BFH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(265): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(277): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=9324 RO-data=236 RW-data=112 ZI-data=2984  
+"lab1.axf" - 0 Error(s), 2 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100025C3H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100025C3H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(265): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(276): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=9348 RO-data=236 RW-data=112 ZI-data=2984  
+"lab1.axf" - 0 Error(s), 2 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100025DBH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100025DBH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)

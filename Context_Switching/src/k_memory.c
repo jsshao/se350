@@ -157,16 +157,17 @@ void *k_request_memory_block(void) {
 	
 	atomic_off();
 
-	printf("------------------------------\r\n");	
+	//printf("------------------------------\r\n");	
 	memory_block_count = 0;
 	for (j = 0; j < NUM_MEM_BLOCKS; j++) {
 		if (flag[j] == 0)
 			memory_block_count++;
 		else {
-			printf("%d has a memory block\r\n", flag[j]);
+			//printf("%d has a memory block\r\n", flag[j]);
 		}
 	}
-	printf("------------------------------\r\n");
+	//printf("------------------------------\r\n");
+	
 	return memory[i];	
 }
 
@@ -223,16 +224,16 @@ int k_release_memory_block(void *p_mem_blk) {
 	
 	atomic_off();
 	
-	printf("------------------------------\r\n");
+	//printf("------------------------------\r\n");
 	memory_block_count = 0;
 	for (j = 0; j < NUM_MEM_BLOCKS; j++) {
 		if (flag[j] == 0)
 			memory_block_count++;
 		else {
-			printf("%d has a memory block\r\n", flag[j]);
+			//printf("%d has a memory block\r\n", flag[j]);
 		}
 	}
-	printf("------------------------------\r\n");
+	//printf("------------------------------\r\n");
 	
 	return RTX_OK;
 }
@@ -274,15 +275,15 @@ int k_super_delete(void *p_mem_blk) {
 	atomic_off();
 	
 	memory_block_count = 0;
-	printf("------------------------------\r\n");
+	//printf("------------------------------\r\n");
 	for (j = 0; j < NUM_MEM_BLOCKS; j++) {
 		if (flag[j] == 0)
 			memory_block_count++;
 		else {
-			printf("%d has a memory block\r\n", flag[j]);
+			//printf("%d has a memory block\r\n", flag[j]);
 		}
 	}
-	printf("------------------------------\r\n");
+	//printf("------------------------------\r\n");
 	
 	return RTX_OK;
 }
