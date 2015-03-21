@@ -1883,3 +1883,27 @@ Partial Erase Done (areas with no algorithms skipped!)
 No Algorithm found for: 10000000H - 100029ABH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
+src\usr_proc.c(198): warning:  #177-D: variable "sender" was declared but never referenced
+src\usr_proc.c(251): error:  #20: identifier "delay" is undefined
+src\usr_proc.c(270): warning:  #111-D: statement is unreachable
+Target not created
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+_____^
+*** error 56: cannot open file
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
+src\usr_proc.c(198): warning:  #177-D: variable "sender" was declared but never referenced
+src\usr_proc.c(270): warning:  #111-D: statement is unreachable
+linking...
+Program Size: Code=9972 RO-data=584 RW-data=116 ZI-data=2980  
+"lab1.axf" - 0 Error(s), 3 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100029ABH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100029ABH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)

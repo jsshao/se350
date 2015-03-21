@@ -70,9 +70,9 @@ Section Cross References
     uart_irq.o(.text) refers to kernel_procs.o(.text) for uart_i_process
     uart_irq.o(.text) refers to k_process.o(.data) for gp_current_process
     usr_proc.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
-    usr_proc.o(.text) refers to strcmpv7m.o(.text) for strcmp
-    usr_proc.o(.text) refers to printf.o(.text) for tfp_printf
     usr_proc.o(.text) refers to strcpy.o(.text) for strcpy
+    usr_proc.o(.text) refers to printf.o(.text) for tfp_printf
+    usr_proc.o(.text) refers to strcmpv7m.o(.text) for strcmp
     usr_proc.o(.text) refers to k_process.o(.text) for k_receive_message
     usr_proc.o(.text) refers to k_memory.o(.text) for k_request_memory_block
     usr_proc.o(.text) refers to usr_proc.o(.data) for TOTAL_TESTS_PASSED

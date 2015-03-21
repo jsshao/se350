@@ -238,7 +238,7 @@ void proc6(void)
 			if (msg->mtext[0] % 20 == 0) {
 				MSG_BUF *delay = (MSG_BUF*) request_memory_block();
 
-				strcmp(msg->mtext, "Process C\r\n");
+				strcpy(msg->mtext, "Process C\r\n");
 				msg->mtype = DEFAULT;
 				send_message(PID_CRT, msg);
 				
