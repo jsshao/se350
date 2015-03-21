@@ -236,11 +236,13 @@ void proc6(void)
 		
 		if (msg->mtype == COUNT_REPORT) {
 			if (msg->mtext[0] % 20 == 0) {
-				MSG_BUF *delay = (MSG_BUF*) request_memory_block();
+				MSG_BUF *delay; 
 
 				strcpy(msg->mtext, "Process C\r\n");
 				msg->mtype = DEFAULT;
 				send_message(PID_CRT, msg);
+
+                delay = (MSG_BUF*) request_memory_block();
 				
 				/* Hibernate */
 				delay->mtype = WAKEUP10;
@@ -248,7 +250,6 @@ void proc6(void)
 				while (1) {
 					msg = (MSG_BUF*)receive_message(&sender);
 					if (WAKEUP10 == msg->mtype) {
-						release_memory_block((void*) delay);
 						break;
 					} else {
 						for (i = 0; i < 90; i++) {
