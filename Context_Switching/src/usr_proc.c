@@ -89,7 +89,7 @@ void proc1(void)
 	delayed_send(3, msg, 2000);
 	
 	mem2 = request_memory_block();	
-	msg = (MSG_BUF*)mem;
+	msg = (MSG_BUF*)mem2;
 	msg->mtype = DEFAULT;
 	strcpy(msg->mtext, "Delayed 1s from 1 to 2");
 	delayed_send(2, msg, 1000);
@@ -144,7 +144,7 @@ void proc3(void)
 	
 	mem = receive_message(&sender);	
 	msg = (MSG_BUF*)mem;
-	if (1 == sender && strcmp(msg->mtext, "Delayed 1s from 1 to 2") == 0 
+	if (1 == sender && strcmp(msg->mtext, "Delayed 2s from 1 to 3") == 0 
 		&& TOTAL_TESTS_PASSED == 2) {			
 		TEST_BIT_PASSED |= (1 << 1);		//test case 2 passed
 		TOTAL_TESTS_PASSED++;
