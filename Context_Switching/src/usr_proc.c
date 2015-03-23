@@ -166,13 +166,6 @@ void proc4(void)
 	MSG_BUF* p;
 	int num;
 	
-	//set_process_priority(1, LOWEST);
-	//set_process_priority(2, LOWEST);
-	set_process_priority(3, LOWEST);
-	set_process_priority(5, MEDIUM);
-	set_process_priority(6, MEDIUM);
-	set_process_priority(4, MEDIUM);
-	
 	//registers command
 	reg = (MSG_BUF*)request_memory_block();
 	reg->mtype = KCD_REG;
@@ -184,6 +177,10 @@ void proc4(void)
 		int sender;
 		printf("Please type %%Z to trigger stress test\r\n");
 		p = receive_message(&sender);
+		set_process_priority(3, LOWEST);
+		set_process_priority(5, MEDIUM);
+		set_process_priority(6, MEDIUM);
+		set_process_priority(4, MEDIUM);
 		if(p->mtext[0] == '%' && p->mtext[1] == 'Z') {
 			release_memory_block(p);
 			break;
@@ -242,15 +239,15 @@ void proc6(void)
 				msg->mtype = DEFAULT;
 				send_message(PID_CRT, msg);
 
-                delay = (MSG_BUF*) request_memory_block();
+				delay = (MSG_BUF*) request_memory_block();
 				
 				/* Hibernate */
 				delay->mtype = WAKEUP10;
-				delayed_send(6, delay, 1000);
+				delayed_send(6, delay, 10000);
 				while (1) {
 					msg = (MSG_BUF*)receive_message(&sender);
 					if (WAKEUP10 == msg->mtype) {
-						break;
+						break; // out of while
 					} else {
 						for (i = 0; i < 90; i++) {
 							if (NULL == queue[i]) {
