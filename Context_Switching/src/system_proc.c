@@ -135,104 +135,108 @@ void crt_process(void){
 }
 
 void a_process(void) {
-	MSG_BUF* reg;
-	MSG_BUF* p;
-	int num;
-	
-	//registers command
-	reg = (MSG_BUF*)request_memory_block();
-	reg->mtype = KCD_REG;
-	reg->mtext[0] = '%';
-	reg->mtext[1] = 'Z';
-	send_message(PID_KCD, reg);
-	
-	while(1) {
-		int sender;
-		printf("Please type %%Z to trigger stress test\r\n");
-		p = receive_message(&sender);
-		set_process_priority(6, LOWEST);
-		set_process_priority(PID_B, MEDIUM);
-		set_process_priority(PID_C, MEDIUM);
-		set_process_priority(PID_A, MEDIUM);
-		if(p->mtext[0] == '%' && p->mtext[1] == 'Z') {
-			release_memory_block(p);
-			break;
-		} else {
-			release_memory_block(p);
-		}
-	}
-	
-	num = 0;
-	
-	while(1) {
-		int sender;
-		p = (MSG_BUF*)request_memory_block();
-		p->mtype = COUNT_REPORT;
-		p->mtext[0] = num;
-		send_message(PID_B, p);
-		num = (num + 1) % 20;
-		release_processor();
-	}
+    MSG_BUF* reg;
+    MSG_BUF* p;
+    int num;
+    
+    //registers command
+    reg = (MSG_BUF*)request_memory_block();
+    reg->mtype = KCD_REG;
+    reg->mtext[0] = '%';
+    reg->mtext[1] = 'Z';
+    send_message(PID_KCD, reg);
+    
+    while(1) {
+        int sender;
+        printf("Please type %%Z to trigger stress test\r\n");
+        p = receive_message(&sender);
+        set_process_priority(6, LOWEST);
+        set_process_priority(PID_B, LOW);
+        set_process_priority(PID_C, HIGH);
+        set_process_priority(PID_A, MEDIUM);
+        if(p->mtext[0] == '%' && p->mtext[1] == 'Z') {
+            //release_memory_block(p);
+            break;
+        } else {
+            release_memory_block(p);
+        }
+    }
+    
+    send_message(PID_C, p); 
+    
+    num = 0;
+    
+    while(1) {
+        int sender;
+        p = (MSG_BUF*)request_memory_block();
+        p->mtype = COUNT_REPORT;
+        p->mtext[0] = num;
+        send_message(PID_B, p);
+        num = (num + 1) % 20;
+        release_processor();
+    }
 }
 
 void b_process(void) {
-	int sender;
-	while(1) {
-		void* msg = receive_message(&sender);
-		send_message(PID_C,msg);
-	}
+    int sender;
+    while(1) {
+        void* msg = receive_message(&sender);
+        send_message(PID_C,msg);
+    }
 }
 
 void c_process(void) {
-	MSG_BUF* queue[NUM_MEM_BLOCKS] = {0};
-	MSG_BUF* msg;
-	int sender;
-	int i;
+    MSG_BUF* msg;
+    int sender;
+    int i;
+    MSG_BUF* delay;
+		MSG_BUF* queue[NUM_MEM_BLOCKS] = {0};
 
-	while (1) {
-		if (NULL == queue[0]) {
-			msg = (MSG_BUF*)receive_message(&sender);
-		} else {
-			msg = queue[0];
-			for (i = 1; i < NUM_MEM_BLOCKS; i++) {
-				queue[i-1] = queue[i];
-			}
-			queue[NUM_MEM_BLOCKS - 1] = NULL;
-		}		
-		
-		if (msg->mtype == COUNT_REPORT) {
-			if (msg->mtext[0] % 20 == 0) {
-				MSG_BUF *delay; 
+    delay = (MSG_BUF*) receive_message (&sender);
 
-				strcpy(msg->mtext, "Process C\r\n");
-				msg->mtype = DEFAULT;
-				//release_processor();
-				send_message(PID_CRT, msg);
+    while (1) {
+        if (NULL == queue[0]) {
+            msg = (MSG_BUF*)receive_message(&sender);
+        } else {
+            msg = queue[0];
+            for (i = 1; i < NUM_MEM_BLOCKS; i++) {
+                queue[i-1] = queue[i];
+            }
+            queue[NUM_MEM_BLOCKS - 1] = NULL;
+        }        
+        
+        if (msg->mtype == COUNT_REPORT) {
+            if (msg->mtext[0] % 20 == 0) {
+                strcpy(msg->mtext, "Process C\r\n");
+                msg->mtype = DEFAULT;
+                send_message(PID_CRT, msg);
 
-				delay = (MSG_BUF*) request_memory_block();
-				
-				/* Hibernate */
-				delay->mtype = WAKEUP10;
-				delayed_send(PID_C, delay, 10000);
-				while (1) {
-					msg = (MSG_BUF*)receive_message(&sender);
-					if (WAKEUP10 == msg->mtype) {
-						break; // out of while
-					} else {
-						for (i = 0; i < NUM_MEM_BLOCKS; i++) {
-							if (NULL == queue[i]) {
-								queue[i] = msg;
-								break;
-							}
-						}
-					}
-				}
-			}
-		}
-		
-		release_memory_block((void*)msg);
-		release_processor();
-	}	
+                //delay = (MSG_BUF*) request_memory_block();
+                
+                /* Hibernate */
+                delay->mtype = WAKEUP10;
+                delayed_send(PID_C, delay, 10000);
+                while (1) {
+                    msg = (MSG_BUF*)receive_message(&sender);
+                    if (WAKEUP10 == msg->mtype) {
+                        break; // out of while
+                    } else {
+                        for (i = 0; i < NUM_MEM_BLOCKS; i++) {
+                            if (NULL == queue[i]) {
+                                queue[i] = msg;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if (msg->mtype != WAKEUP10) {
+            release_memory_block((void*)msg);
+        }
+        release_processor();
+    }    
 }
 	
 void set_priority_process(void) {
