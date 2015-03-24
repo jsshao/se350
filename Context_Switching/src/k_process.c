@@ -298,6 +298,10 @@ void process_init()
 	addQ(PID_CLOCK, 0);
 	addQ(PID_SET_PRIO, 0);
 	
+	addQ(PID_A, g_proc_table[PID_A].m_priority);
+	addQ(PID_B, g_proc_table[PID_B].m_priority);
+	addQ(PID_C, g_proc_table[PID_C].m_priority);
+	
 	set_kernel_procs();
 	for ( i = 0; i < NUM_KERNEL_PROCS; i++ ) {
 		g_proc_table[i + NUM_NULL_PROCS + NUM_TEST_PROCS + NUM_SYSTEM_PROCS].m_pid = g_kernel_procs[i].m_pid;

@@ -43,6 +43,8 @@
 #define COUNT_REPORT 2
 #define WAKEUP10 3
 
+#define NUM_MEM_BLOCKS 60
+
 /* ----- Types ----- */
 typedef unsigned int U32;
 

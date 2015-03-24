@@ -79,8 +79,8 @@ src\uart_irq.c(189): warning:  #223-D: function "peekQ" declared implicitly
 src\uart_irq.c(191): warning:  #223-D: function "k_release_processor" declared implicitly
 compiling usr_proc.c...
 src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
-src\usr_proc.c(198): warning:  #177-D: variable "sender" was declared but never referenced
-src\usr_proc.c(271): warning:  #111-D: statement is unreachable
+src\usr_proc.c(195): warning:  #177-D: variable "sender" was declared but never referenced
+src\usr_proc.c(268): warning:  #111-D: statement is unreachable
 linking...
 Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2980  
 "lab1.axf" - 0 Error(s), 61 Warning(s).
@@ -91,12 +91,51 @@ No Algorithm found for: 10000000H - 100029A3H
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
+compiling k_memory.c...
+src\k_memory.c(131): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(146): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(147): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(148): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(151): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(158): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(183): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(190): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(196): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(204): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(209): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(221): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(206): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(227): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(248): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(255): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(261): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(268): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(272): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(273): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(275): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(270): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(279): warning:  #223-D: function "atomic_off" declared implicitly
 compiling usr_proc.c...
 src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
 src\usr_proc.c(195): warning:  #177-D: variable "sender" was declared but never referenced
 src\usr_proc.c(268): warning:  #111-D: statement is unreachable
 linking...
-Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2980  
+Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 27 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 100029A3H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 100029A3H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
+src\usr_proc.c(195): warning:  #177-D: variable "sender" was declared but never referenced
+src\usr_proc.c(268): warning:  #111-D: statement is unreachable
+linking...
+Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2740  
 "lab1.axf" - 0 Error(s), 3 Warning(s).
 Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
 No Algorithm found for: 10000000H - 100029A3H
@@ -110,7 +149,7 @@ src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never refer
 src\usr_proc.c(195): warning:  #177-D: variable "sender" was declared but never referenced
 src\usr_proc.c(268): warning:  #111-D: statement is unreachable
 linking...
-Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2980  
+Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2740  
 "lab1.axf" - 0 Error(s), 3 Warning(s).
 Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
 No Algorithm found for: 10000000H - 100029A3H
@@ -124,7 +163,7 @@ src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never refer
 src\usr_proc.c(195): warning:  #177-D: variable "sender" was declared but never referenced
 src\usr_proc.c(268): warning:  #111-D: statement is unreachable
 linking...
-Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2980  
+Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2740  
 "lab1.axf" - 0 Error(s), 3 Warning(s).
 Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
 No Algorithm found for: 10000000H - 100029A3H
@@ -133,16 +172,331 @@ No Algorithm found for: 10000000H - 100029A3H
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
 Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(167): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(206): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(252): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(258): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(273): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(367): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(378): warning:  #1-D: last line of file ends without a newline
 compiling usr_proc.c...
 src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
-src\usr_proc.c(195): warning:  #177-D: variable "sender" was declared but never referenced
-src\usr_proc.c(268): warning:  #111-D: statement is unreachable
+src\usr_proc.c(183): error:  #20: identifier "i" is undefined
+Target not created
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
 linking...
-Program Size: Code=9964 RO-data=584 RW-data=116 ZI-data=2980  
-"lab1.axf" - 0 Error(s), 3 Warning(s).
+Program Size: Code=10216 RO-data=584 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=10216 RO-data=584 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
 Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
-No Algorithm found for: 10000000H - 100029A3H
+No Algorithm found for: 10000000H - 10002A9FH
 Partial Erase Done (areas with no algorithms skipped!)
-No Algorithm found for: 10000000H - 100029A3H
+No Algorithm found for: 10000000H - 10002A9FH
 Partial Programming Done (areas with no algorithms skipped!)
 Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=10216 RO-data=584 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(250): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(449): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(478): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(482): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(508): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(527): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(551): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(580): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(607): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=10248 RO-data=584 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 9 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002ABFH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002ABFH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(167): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(186): error:  #20: identifier "NUM_MEM_BLOCKS" is undefined
+src\system_proc.c(206): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(252): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(258): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(273): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(367): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(378): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(12): warning:  #260-D: explicit type is missing ("int" assumed)
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(187): error:  #28: expression must have a constant value
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(253): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(259): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(274): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(368): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(379): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(187): error:  #28: expression must have a constant value
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(253): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(259): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(274): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(368): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(379): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(187): error:  #259: constant value is not known
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(253): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(259): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(274): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(368): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(379): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(253): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(259): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(274): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(368): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(379): warning:  #1-D: last line of file ends without a newline
+compiling k_memory.c...
+src\k_memory.c(131): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(146): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(147): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(148): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(151): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(158): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(183): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(190): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(196): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(204): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(209): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(221): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(206): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(227): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(248): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(255): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(261): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(268): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(272): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(273): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(275): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(270): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(279): warning:  #223-D: function "atomic_off" declared implicitly
+linking...
+lab1.axf: Error: L6200E: Symbol NUM_MEM_BLOCKS multiply defined (by k_memory.o and system_proc.o).
+Target not created
+Build target 'Context Switching SIM'
+linking...
+lab1.axf: Error: L6200E: Symbol NUM_MEM_BLOCKS multiply defined (by k_memory.o and system_proc.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(187): error:  #20: identifier "NUM_MEM_BLOCKS" is undefined
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(253): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(259): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(274): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(368): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(379): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(209): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(255): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(261): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(276): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(370): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(381): warning:  #1-D: last line of file ends without a newline
+linking...
+lab1.axf: Error: L6200E: Symbol NUM_MEM_BLOCKS multiply defined (by k_memory.o and system_proc.o).
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(188): error:  #65: expected a ";"
+src\system_proc.c(209): warning:  #12-D: parsing restarts here after previous syntax error
+src\system_proc.c(210): error:  #77-D: this declaration has no storage class or type specifier
+src\system_proc.c(210): error:  #65: expected a ";"
+src\system_proc.c(211): error:  #79: expected a type specifier
+src\system_proc.c(211): error:  #79: expected a type specifier
+src\system_proc.c(211): error:  #757: variable "msg" is not a type name
+src\system_proc.c(211): warning:  #77-D: this declaration has no storage class or type specifier
+src\system_proc.c(211): error:  #147-D: declaration is incompatible with "int _send_message(U32, int, void *)__svc(2147483648)" (declared at line 100 of "src\rtx.h")
+src\system_proc.c(213): error:  #77-D: this declaration has no storage class or type specifier
+src\system_proc.c(213): error:  #59: function call is not allowed in a constant expression
+src\system_proc.c(213): warning:  #1296-D: extended constant initialiser used
+src\system_proc.c(213): error:  #44: expression must have pointer type
+src\system_proc.c(216): error:  #77-D: this declaration has no storage class or type specifier
+src\system_proc.c(216): error:  #65: expected a ";"
+src\system_proc.c(217): error:  #79: expected a type specifier
+src\system_proc.c(217): error:  #79: expected a type specifier
+src\system_proc.c(217): error:  #757: variable "delay" is not a type name
+src\system_proc.c(217): error:  #79: expected a type specifier
+src\system_proc.c(217): warning:  #77-D: this declaration has no storage class or type specifier
+src\system_proc.c(217): error:  #147-D: declaration is incompatible with "int _delayed_send(U32, int, void *, int)__svc(2147483648)" (declared at line 109 of "src\rtx.h")
+src\system_proc.c(218): error:  #169: expected a declaration
+src\system_proc.c(234): warning:  #12-D: parsing restarts here after previous syntax error
+src\system_proc.c(235): error:  #79: expected a type specifier
+src\system_proc.c(235): warning:  #77-D: this declaration has no storage class or type specifier
+src\system_proc.c(235): error:  #147-D: declaration is incompatible with "int _release_processor(U32)__svc(2147483648)" (declared at line 76 of "src\rtx.h")
+src\system_proc.c(236): error:  #169: expected a declaration
+src\system_proc.c(261): warning:  #12-D: parsing restarts here after previous syntax error
+src\system_proc.c(262): error:  #77-D: this declaration has no storage class or type specifier
+src\system_proc.c(262): error:  #20: identifier "strtok" is undefined
+src\system_proc.c(262): error:  #59: function call is not allowed in a constant expression
+src\system_proc.c(262): error:  #44: expression must have pointer type
+src\system_proc.c(263): error:  #77-D: this declaration has no storage class or type specifier
+src\system_proc.c(263): error:  #20: identifier "atoi" is undefined
+src\system_proc.c(263): error:  #59: function call is not allowed in a constant expression
+src\system_proc.c(263): error:  #28: expression must have a constant value
+src\system_proc.c(265): error:  #169: expected a declaration
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(189): error:  #259: constant value is not known
+src\system_proc.c(209): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(255): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(261): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(276): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(370): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(381): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(209): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(255): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(261): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(276): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(370): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(381): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=10268 RO-data=592 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 7 Warning(s).
+Build target 'Context Switching SIM'
+compiling main_svc.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(253): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(259): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(274): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(368): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(379): warning:  #1-D: last line of file ends without a newline
+compiling k_rtx_init.c...
+compiling k_memory.c...
+src\k_memory.c(131): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(146): warning:  #223-D: function "addBlockedQ" declared implicitly
+src\k_memory.c(147): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(148): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(151): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(158): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(183): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(190): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(196): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(204): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(209): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(219): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(221): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(206): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(227): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(248): warning:  #223-D: function "atomic_on" declared implicitly
+src\k_memory.c(255): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(261): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(268): warning:  #223-D: function "popBlockedQ" declared implicitly
+src\k_memory.c(272): warning:  #223-D: function "addQ" declared implicitly
+src\k_memory.c(273): warning:  #223-D: function "atomic_off" declared implicitly
+src\k_memory.c(275): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_memory.c(270): warning:  #177-D: variable "qPid" was declared but never referenced
+src\k_memory.c(279): warning:  #223-D: function "atomic_off" declared implicitly
+compiling k_process.c...
+src\k_process.c(250): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(449): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(478): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(482): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(508): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\k_process.c(527): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(551): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(580): warning:  #223-D: function "k_super_delete" declared implicitly
+src\k_process.c(607): warning:  #1-D: last line of file ends without a newline
+compiling timer.c...
+src\timer.c(131): warning:  #223-D: function "peekQ" declared implicitly
+src\timer.c(133): warning:  #223-D: function "k_release_processor" declared implicitly
+compiling kernel_procs.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\kernel_procs.c(43): warning:  #223-D: function "atomic_on" declared implicitly
+src\kernel_procs.c(45): warning:  #223-D: function "k_receive_message_t" declared implicitly
+src\kernel_procs.c(77): warning:  #223-D: function "send_message_t" declared implicitly
+src\kernel_procs.c(83): warning:  #223-D: function "atomic_off" declared implicitly
+src\kernel_procs.c(40): warning:  #177-D: variable "temp" was declared but never referenced
+src\kernel_procs.c(158): warning:  #223-D: function "k_request_memory_block" declared implicitly
+src\kernel_procs.c(166): warning:  #223-D: function "k_send_message" declared implicitly
+src\kernel_procs.c(180): warning:  #223-D: function "k_receive_message_nb" declared implicitly
+src\kernel_procs.c(192): warning:  #223-D: function "k_release_memory_block" declared implicitly
+src\kernel_procs.c(183): warning:  #177-D: variable "msg_str" was declared but never referenced
+compiling uart_irq.c...
+src\uart_polling.h(30): warning:  #47-D: incompatible redefinition of macro "BIT" (declared at line 36 of "src\uart_def.h")
+src\uart_irq.c(183): warning:  #223-D: function "atomic_on" declared implicitly
+src\uart_irq.c(184): warning:  #223-D: function "uart_i_process" declared implicitly
+src\uart_irq.c(185): warning:  #223-D: function "atomic_off" declared implicitly
+src\uart_irq.c(189): warning:  #223-D: function "peekQ" declared implicitly
+src\uart_irq.c(191): warning:  #223-D: function "k_release_processor" declared implicitly
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=10248 RO-data=584 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 61 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002ABFH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002ABFH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=10264 RO-data=584 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002ACFH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002ACFH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling usr_proc.c...
+src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never referenced
+src\usr_proc.c(181): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=10036 RO-data=584 RW-data=116 ZI-data=2740  
+"lab1.axf" - 0 Error(s), 2 Warning(s).

@@ -45,7 +45,7 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
 
 */
 
-const int NUM_MEM_BLOCKS = 90;
+//const int NUM_MEM_BLOCKS = 60;
 const int MEM_BLOCK_SIZE = 128;
 void* memory[NUM_MEM_BLOCKS] = {0}; // addresses of available memory
 int flag[NUM_MEM_BLOCKS] = {0}; // 0 is ununsed memory block
