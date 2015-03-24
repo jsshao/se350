@@ -13,7 +13,7 @@ extern uint32_t g_timer_count;
 extern int processQueue[5][NUM_PROCS]; 
 extern int blockedQueue[5][NUM_PROCS];
 extern PCB **gp_pcbs;  
-
+extern int flag[NUM_MEM_BLOCKS];
 
 PROC_INIT g_kernel_procs[NUM_KERNEL_PROCS];
 
@@ -151,7 +151,34 @@ void uart_i_process(void) {
 			}
 			printf("\r\n");
 			return;
-		}
+		} else if (g_char_in == '$') {
+			printf("Process Blocked On Envelope Queue \r\n");
+			for (i = 0; i < 5; i++) {
+				for (k = 0; k < NUM_PROCS; k++) {
+					int pidz = blockedQueue[i][k];
+					if (pidz == -1 || gp_pcbs[pidz]->m_state != BLOCKED_ON_ENV) {
+						printf("_  ");
+					} else if (pidz / 10 >= 1){
+						printf("%d ", pidz);
+					} else {
+						printf("%d  ", pidz);
+					}
+				}
+				printf("\r\n");
+			}	
+			return;
+		} else if (g_char_in == '&') {
+			int j;
+			printf("Process Memory assignment \r\n");							
+			for (j = 0; j < NUM_MEM_BLOCKS; j++) {
+				if (flag[j] != 0) {
+					//MSG_BUF* buf = (MSG_BUF*) flag[j];
+					printf("%d has a memory block of msg type\r\n", flag[j]);
+				}
+			}
+			printf("------------------------------\r\n");
+			return;
+		}	
 		#endif
 		
 		/*************************/	
@@ -202,7 +229,7 @@ void uart_i_process(void) {
 			index = 0;
 			if (gp_pcbs[PID_UART_IPROC]->head == NULL) {
 				pUart->IER ^= IER_THRE; // toggle the IER_THRE bit
-}				
+			}				
 		}
 		
 			/*
