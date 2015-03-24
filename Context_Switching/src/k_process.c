@@ -138,16 +138,10 @@ int popBlockedQ() {
 			if (pid == -1) 
 				break;
 			
-			//remove this
-			if (gp_pcbs[pid]->m_state != BLOCKED) {
-				int frank = 0;
-				frank++;
-			}
-			
 			if (gp_pcbs[pid]->m_state != BLOCKED_ON_ENV) {
 				int l;				
 				//shift rest down
-				for (l = 1; l < NUM_PROCS; l++) {
+				for (l = k + 1; l < NUM_PROCS; l++) {
 					blockedQueue[i][l-1] = blockedQueue[i][l];
 				}
 				blockedQueue[i][NUM_PROCS-1] = -1;	
@@ -177,7 +171,7 @@ int popBlockedEnvQ() {
 			if (gp_pcbs[pid]->m_state == BLOCKED_ON_ENV) {
 				int l;				
 				//shift rest down
-				for (l = 1; l < NUM_PROCS; l++) {
+				for (l = k + 1; l < NUM_PROCS; l++) {
 					blockedQueue[i][l-1] = blockedQueue[i][l];
 				}
 				blockedQueue[i][NUM_PROCS-1] = -1;	
@@ -364,7 +358,7 @@ void process_init()
 	}
 	addQ(PID_CRT, 0);
 	addQ(PID_KCD, 0);
-	addQ(PID_CLOCK, 0);
+	//addQ(PID_CLOCK, 0);
 	addQ(PID_SET_PRIO, 0);
 	
 	addQ(PID_A, g_proc_table[PID_A].m_priority);
@@ -494,6 +488,11 @@ int k_release_processor(void)
 	gp_current_process = scheduler();
 
 	//printQ();
+	
+	if (gp_current_process->m_pid == 11) {
+		int frank;
+		frank = -1;
+	}
 	
 	if (gp_current_process == NULL  ) {		
 		return RTX_ERR;

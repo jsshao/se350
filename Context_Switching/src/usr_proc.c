@@ -152,7 +152,7 @@ void proc3(void)
 	
 	set_process_priority(1, LOWEST);
 	set_process_priority(2, LOWEST);	
-	printf("Please type %%C 4 0/1/2 to continue the test (Set proc 4 to LOW/MEDIUM/HIGH priority)\r\n");
+	printf("Please type %%C 4 0/1 to continue the test (Set proc 4 to HIGH/MEDIUM priority)\r\n");
 	
 	while(1) {
 		release_processor();

@@ -44,7 +44,7 @@
 #define WAKEUP10 3
 #define CLOCK 4
 
-#define NUM_MEM_BLOCKS 60
+#define NUM_MEM_BLOCKS 40
 
 /* ----- Types ----- */
 typedef unsigned int U32;

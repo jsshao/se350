@@ -152,7 +152,7 @@ void a_process(void) {
 		p = receive_message(&sender);
 		set_process_priority(6, LOWEST);
 		set_process_priority(PID_B, MEDIUM);
-		set_process_priority(PID_C, MEDIUM);
+		set_process_priority(PID_C, LOW);
 		set_process_priority(PID_A, MEDIUM);
 		if(p->mtext[0] == '%' && p->mtext[1] == 'Z') {
 			release_memory_block(p);
@@ -206,6 +206,7 @@ void c_process(void) {
 
 				strcpy(msg->mtext, "Process C\r\n");
 				msg->mtype = DEFAULT;
+				//release_processor();
 				send_message(PID_CRT, msg);
 
 				delay = (MSG_BUF*) request_memory_block();
