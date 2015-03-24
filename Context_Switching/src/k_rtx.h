@@ -50,7 +50,7 @@ typedef unsigned int U32;
 #define NUM_MEM_BLOCKS 60
 
 /* process states, note we only assume three states in this example */
-typedef enum {NEW = 0, RDY, RUN, BLOCKED, BLOCKED_ON_RECEIVE} PROC_STATE_E;  
+typedef enum {NEW = 0, RDY, RUN, BLOCKED, BLOCKED_ON_RECEIVE, BLOCKED_ON_ENV} PROC_STATE_E;  
 
 /*
   PCB data structure definition.

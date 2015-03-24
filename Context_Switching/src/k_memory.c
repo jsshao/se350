@@ -47,8 +47,14 @@ U32 *gp_stack; /* The last allocated stack low address. 8 bytes aligned */
 
 //const int NUM_MEM_BLOCKS = 60;
 const int MEM_BLOCK_SIZE = 128;
+
+const int MEM_BLOCK_SIZE_ENV = 40;
+int flag_env[NUM_MEM_BLOCKS] = {0}; // 0 is ununsed memory block
+void* memory_env[NUM_MEM_BLOCKS] = {0};
+
 void* memory[NUM_MEM_BLOCKS] = {0}; // addresses of available memory
 int flag[NUM_MEM_BLOCKS] = {0}; // 0 is ununsed memory block
+
 
 /* Debug variable to keep track of memory leaks */
 int memory_block_count = 0;
@@ -83,7 +89,7 @@ void memory_init(void)
 		--gp_stack; 
 	}
 
-	/* Fixed sized memory pool (max of 120 blocks of 128 bytes each) */
+	/* Fixed sized memory pool*/
 	for (i = 0; i < NUM_MEM_BLOCKS; i++) {
 		flag[i] = 0;
 		
@@ -95,6 +101,19 @@ void memory_init(void)
 			memory[i] = (void *) (p_end + i*MEM_BLOCK_SIZE);
 		}
 	}
+	
+	//memory for envelopes
+	for (i = 0; i < NUM_MEM_BLOCKS; i++) {
+		flag_env[i] = 0;
+		
+		if ((void*)(p_end + i*MEM_BLOCK_SIZE_ENV + MEM_BLOCK_SIZE * NUM_MEM_BLOCKS) > gp_stack) {
+			printf("Trying to allocate too much memory ENVELOPES \r\n");
+			break;	
+		}
+		else {
+			memory_env[i] = (void *) (MEM_BLOCK_SIZE * NUM_MEM_BLOCKS + p_end + i*MEM_BLOCK_SIZE_ENV);
+		}
+	}	
 }
 
 /**
@@ -171,6 +190,46 @@ void *k_request_memory_block(void) {
 	return memory[i];	
 }
 
+
+/** 
+requests memory for envelope
+**/
+void* k_request_memory_env(void) {
+	int i, j;
+	int available = 0;
+
+	atomic_on();
+	
+	while (!available) {
+		//check for if there is available memory
+		for (i = 0; i < NUM_MEM_BLOCKS; i++) {	
+			// available
+			if (flag_env[i] == 0) {
+				available = 1;
+				break;
+			}
+		}
+		
+		//if there is no memory, add current process to blocked queue, and release processor
+		if (!available && gp_current_process->m_pid != PID_UART_IPROC) {
+			gp_current_process->m_state = BLOCKED_ON_ENV;
+			addBlockedQ(gp_current_process->m_pid, gp_current_process->m_priority);	
+			atomic_off();			
+			k_release_processor();		
+			atomic_on();
+		} else if (!available && gp_current_process->m_pid == PID_UART_IPROC) {
+			atomic_off();
+			return NULL;
+		}
+	}
+	
+	flag_env[i] = gp_current_process->m_pid;
+	
+	atomic_off();
+	
+	return memory_env[i];	
+}
+
 /*
 	when memory is released, mark that memory block as avaliable
 	and remove first element in block queue and put it into ready queue
@@ -237,6 +296,56 @@ int k_release_memory_block(void *p_mem_blk) {
 	}
 	//printf("------------------------------\r\n");
 	
+	return RTX_OK;
+}
+
+
+/*
+	release env memory
+*/
+int k_release_memory_env(void *p_mem_blk) {
+	int pid;
+	int j;
+	int index;
+	
+	atomic_on();
+
+	// get index of flag array from pointer
+	index = ((char*)p_mem_blk - (char*)memory_env[0]) / MEM_BLOCK_SIZE_ENV;
+	
+	// if index is invalid, return
+	if (index >= NUM_MEM_BLOCKS || index < 0) {
+		atomic_off();
+		return RTX_ERR;
+	}
+	
+	//set flag array to be avaliable for block at index or if it doesn't belong to the process
+	if (flag_env[index] == 0) { //|| flag[index] != gp_current_process->m_pid) {
+		atomic_off();
+		return RTX_ERR;
+	} else {
+		flag_env[index] = 0;
+	}
+	
+	
+	//remove first process in blockedQ, and check for preemption
+	pid = popBlockedEnvQ();
+	if (pid != -1) {
+		int qPid;
+		
+		gp_pcbs[pid]->m_state = RDY;
+		addQ(pid, gp_pcbs[pid]->m_priority);
+		
+		atomic_off();
+		if (gp_current_process->m_pid != PID_UART_IPROC && gp_current_process->m_pid != PID_CLOCK) {
+			k_release_processor();
+		}
+		atomic_on();
+
+	}
+	
+	atomic_off();
+
 	return RTX_OK;
 }
 

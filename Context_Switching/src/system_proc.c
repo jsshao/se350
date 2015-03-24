@@ -152,7 +152,7 @@ void a_process(void) {
 		p = receive_message(&sender);
 		set_process_priority(3, LOWEST);
 		set_process_priority(PID_B, MEDIUM);
-		set_process_priority(PID_C, HIGH);
+		set_process_priority(PID_C, MEDIUM);
 		set_process_priority(PID_A, MEDIUM);
 		if(p->mtext[0] == '%' && p->mtext[1] == 'Z') {
 			release_memory_block(p);
@@ -212,7 +212,7 @@ void c_process(void) {
 				
 				/* Hibernate */
 				delay->mtype = WAKEUP10;
-				delayed_send(PID_C, delay, 10000);
+				delayed_send(PID_C, delay, 2000);
 				while (1) {
 					msg = (MSG_BUF*)receive_message(&sender);
 					if (WAKEUP10 == msg->mtype) {

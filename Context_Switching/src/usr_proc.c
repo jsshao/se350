@@ -180,7 +180,7 @@ void proc6(void)
 {
 	int i;
 	
-	/*
+	
 	printf("\r\n");
 	printf("%sSTART\n\r", GROUP_PREFIX);
 	printf("%stotal 6 tests\n\r", GROUP_PREFIX);
@@ -195,7 +195,7 @@ void proc6(void)
 	printf("%s%d/6 tests OK\n\r", GROUP_PREFIX, TOTAL_TESTS_PASSED);
 	printf("%s%d/6 tests FAIL\n\r", GROUP_PREFIX, 6 - TOTAL_TESTS_PASSED);
 	printf("%sEND\n\r", GROUP_PREFIX);
-	*/
+	
 	while(1) {
 		release_processor();
 	}

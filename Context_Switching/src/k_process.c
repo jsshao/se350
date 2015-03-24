@@ -70,6 +70,7 @@ void addBlockedQ(int pid, int priority) {
 	}
 }
 
+
 void printQ() {
 	int i = 0;
 	int k = 0;		
@@ -130,8 +131,76 @@ int popBlockedQ() {
 		if (blockedQueue[i][0] == -1) {
 			continue;
 		}
+		
+		//find the first blocked on memory
+		for (k = 0; k < NUM_PROCS; k++) {
+			pid = blockedQueue[i][k];
+			if (pid == -1) 
+				break;
+			
+			//remove this
+			if (gp_pcbs[pid]->m_state != BLOCKED) {
+				int frank = 0;
+				frank++;
+			}
+			
+			if (gp_pcbs[pid]->m_state != BLOCKED_ON_ENV) {
+				int l;				
+				//shift rest down
+				for (l = 1; l < NUM_PROCS; l++) {
+					blockedQueue[i][l-1] = blockedQueue[i][l];
+				}
+				blockedQueue[i][NUM_PROCS-1] = -1;	
+				return pid;
+			}
+		}	
+	}		
+  return -1;	 
+}
+
+int popBlockedEnvQ() {
+	int i = 0;
+	int pid = -1;
+	// priority
+	for (i = 0; i < 5; i++) {		
+		int k;
+		if (blockedQueue[i][0] == -1) {
+			continue;
+		}
+		
+		//find the first blocked on memory
+		for (k = 0; k < NUM_PROCS; k++) {
+			pid = blockedQueue[i][k];
+			if (pid == -1) 
+				break;
+			
+			if (gp_pcbs[pid]->m_state == BLOCKED_ON_ENV) {
+				int l;				
+				//shift rest down
+				for (l = 1; l < NUM_PROCS; l++) {
+					blockedQueue[i][l-1] = blockedQueue[i][l];
+				}
+				blockedQueue[i][NUM_PROCS-1] = -1;	
+				return pid;
+			}
+		}	
+	}		
+  return -1;	 
+}
+
+/* OLD BLOCKED Q IMPLEMENTATION
+int popBlockedQueue() {
+	int i = 0;
+	int pid = -1;
+	// priority
+	for (i = 0; i < 5; i++) {		
+		int k;
+		if (blockedQueue[i][0] == -1) {
+			continue;
+		}
 		// iterate through and shift
 		pid = blockedQueue[i][0];
+		
 		for (k = 1; k < NUM_PROCS; k++) {
 			blockedQueue[i][k-1] = blockedQueue[i][k];
 		}
@@ -141,7 +210,7 @@ int popBlockedQ() {
 	}
 		
 	 return pid;	 
-}
+}*/
 
 
 void addQ(int pid, int priority) {
@@ -342,7 +411,6 @@ void process_init()
  */
 
 
-
 PCB *scheduler(void)
 {
 	int pid;
@@ -415,7 +483,7 @@ int k_release_processor(void)
 	
 	// UNLESS system just started(gp_current_process is NULL) or current process is blocked
 	// add current process to ready queue
-	if (gp_current_process != NULL  && gp_current_process->m_state != BLOCKED
+	if (gp_current_process != NULL  && gp_current_process->m_state != BLOCKED && gp_current_process->m_state != BLOCKED_ON_ENV
 			&& gp_current_process->m_state != BLOCKED_ON_RECEIVE) {
 		addQ(gp_current_process->m_pid, gp_current_process->m_priority);		
 	}
@@ -445,8 +513,7 @@ int k_release_processor(void)
 int k_send_message(int pid, void *p_msg) {	
 	MSG_T* msg;
 	
-	
-	msg = (MSG_T*)k_request_memory_block();
+	msg = (MSG_T*)k_request_memory_env();
 	atomic_on();
 
 	msg->sender_pid = gp_current_process->m_pid;
@@ -505,7 +572,7 @@ void send_message_t(MSG_T* msg) {
 int k_delayed_send(int pid, void *p_msg, int delay) {	
 	MSG_T* msg;
 		
-	msg = (MSG_T*)k_request_memory_block();
+	msg = (MSG_T*)k_request_memory_env();
 	atomic_on();
 
 	msg->sender_pid = gp_current_process->m_pid;
@@ -548,7 +615,7 @@ void *k_receive_message(int *p_pid) {
 	*p_pid = msg_t->sender_pid;
 	msg = msg_t->msg;
 	atomic_off();
-	k_super_delete((void*)msg_t);		
+	k_release_memory_env((void*)msg_t);		
 	
 	
 	return msg;
@@ -577,7 +644,7 @@ void *k_receive_message_nb(int *p_pid) {
 	//msg_buf = msg_t->msg;
 	
 	atomic_off();
-	k_super_delete((void*)msg_t);		
+	k_release_memory_env((void*)msg_t);		
 	
 	return msg_buf;
 }
