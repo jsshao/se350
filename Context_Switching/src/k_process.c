@@ -358,7 +358,7 @@ void process_init()
 	}
 	addQ(PID_CRT, 0);
 	addQ(PID_KCD, 0);
-	//addQ(PID_CLOCK, 0);
+	addQ(PID_CLOCK, 0);
 	addQ(PID_SET_PRIO, 0);
 	
 	addQ(PID_A, g_proc_table[PID_A].m_priority);

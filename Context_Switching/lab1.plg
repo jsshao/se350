@@ -408,3 +408,166 @@ src\usr_proc.c(142): warning:  #177-D: variable "i" was declared but never refer
 linking...
 Program Size: Code=11176 RO-data=592 RW-data=116 ZI-data=2900  
 "lab1.axf" - 0 Error(s), 1 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E67H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E67H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(254): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(260): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(275): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(377): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11176 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 6 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E67H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E67H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(254): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(260): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(275): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(377): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11176 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 6 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E67H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E67H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(254): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(260): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(275): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(377): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11176 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 6 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E67H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E67H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(254): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(260): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(275): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(377): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11176 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 6 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E67H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E67H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(254): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(260): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(275): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(377): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11176 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 6 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E67H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E67H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(254): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(260): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(275): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(377): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11176 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 6 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E67H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E67H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(254): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(260): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(275): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(377): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11176 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 6 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E67H
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E67H
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling k_process.c...
+src\k_process.c(313): warning:  #223-D: function "k_release_processor" declared implicitly
+src\k_process.c(493): warning:  #550-D: variable "frank" was set but never used
+src\k_process.c(515): warning:  #223-D: function "k_request_memory_env" declared implicitly
+src\k_process.c(544): warning:  #940-D: missing return statement at end of non-void function "k_send_message"
+src\k_process.c(548): warning:  #177-D: variable "dest" was declared but never referenced
+src\k_process.c(574): warning:  #223-D: function "k_request_memory_env" declared implicitly
+src\k_process.c(593): warning:  #940-D: missing return statement at end of non-void function "k_delayed_send"
+src\k_process.c(617): warning:  #223-D: function "k_release_memory_env" declared implicitly
+src\k_process.c(646): warning:  #223-D: function "k_release_memory_env" declared implicitly
+src\k_process.c(673): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11184 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 10 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E6FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E6FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
+Build target 'Context Switching SIM'
+compiling system_proc.c...
+src\system_proc.c(168): warning:  #177-D: variable "sender" was declared but never referenced
+src\system_proc.c(207): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(254): warning:  #223-D: function "strtok" declared implicitly
+src\system_proc.c(260): warning:  #223-D: function "atoi" declared implicitly
+src\system_proc.c(275): warning:  #223-D: function "strcpy" declared implicitly
+src\system_proc.c(377): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=11184 RO-data=592 RW-data=116 ZI-data=2900  
+"lab1.axf" - 0 Error(s), 6 Warning(s).
+Load "N:\\Git\\se350\\Context_Switching\\lab1.AXF" 
+No Algorithm found for: 10000000H - 10002E6FH
+Partial Erase Done (areas with no algorithms skipped!)
+No Algorithm found for: 10000000H - 10002E6FH
+Partial Programming Done (areas with no algorithms skipped!)
+Partial Verify OK (areas with no algorithms skipped!)
