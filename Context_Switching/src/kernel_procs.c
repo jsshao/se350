@@ -173,6 +173,7 @@ void uart_i_process(void) {
 			for (j = 0; j < NUM_MEM_BLOCKS; j++) {
 				if (flag[j] != 0) {
 					//MSG_BUF* buf = (MSG_BUF*) flag[j];
+					
 					printf("%d has a memory block of msg type\r\n", flag[j]);
 				}
 			}
@@ -216,7 +217,9 @@ void uart_i_process(void) {
 				
 				bBuffer[i] =  '\0';
 				
-				k_release_memory_block(msg);
+				if (CLOCK != msg->mtype) {
+					k_release_memory_block(msg);
+				}
 			}
 		} 
 		

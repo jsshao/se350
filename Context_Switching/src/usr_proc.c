@@ -37,9 +37,9 @@ void set_test_procs() {
 		g_test_procs[i].m_stack_size=0x100;
 	}
 	
-	g_test_procs[0].m_priority=HIGH;
-	g_test_procs[1].m_priority=MEDIUM;
-	g_test_procs[2].m_priority=HIGH;
+	g_test_procs[0].m_priority=MEDIUM;
+	g_test_procs[1].m_priority=LOW;
+	g_test_procs[2].m_priority=MEDIUM;
 
 	g_test_procs[0].mpf_start_pc = &proc1;
 	g_test_procs[1].mpf_start_pc = &proc2;
@@ -152,24 +152,55 @@ void proc3(void)
 	
 	set_process_priority(1, LOWEST);
 	set_process_priority(2, LOWEST);	
-	printf("Please type %%C 7 0 to continue the test (Set proc A to high priority)\r\n");
+	printf("Please type %%C 4 0/1/2 to continue the test (Set proc 4 to LOW/MEDIUM/HIGH priority)\r\n");
 	
 	while(1) {
 		release_processor();
 	}
 }
 
-/* Test case 4: Registering a command with KCD and receiving when invoking command */
+/* Test case 4: Test %C 4 0 actually set this process to a higher priority (premption) */
 void proc4(void)
 {
+	set_process_priority(3, LOWEST);
+	set_process_priority(4, LOW);
+	
+	TEST_BIT_PASSED |= (1 << 3);		//test case 4 passed
+	TOTAL_TESTS_PASSED++;
+	
+	set_process_priority(5, MEDIUM);
+	
 	while(1) {
 		release_processor();
 	}	
 }
 
-/*proc B of stress test*/
+/* Test case 5 and 6 */
 void proc5(void)
 {	
+	void* temp;
+	int release_ret_val;
+
+	set_process_priority(4, LOWEST);
+	set_process_priority(5, LOW);
+	
+	// Test 5: Get memory block and see if it's a valid address
+	temp = request_memory_block();
+	if (NULL != temp) {
+		TEST_BIT_PASSED |= (1 << 4);
+		TOTAL_TESTS_PASSED++;
+	}
+
+	// Test 6: Release memory block and try to release the same block (should be error)
+	release_memory_block(temp);
+	release_ret_val = release_memory_block(temp);
+	if (release_ret_val == RTX_ERR) {
+		TEST_BIT_PASSED |= (1 << 5);
+		TOTAL_TESTS_PASSED++;
+	}
+	
+	set_process_priority(6, MEDIUM);
+	
 	while(1) {
 		release_processor();
 	}
@@ -180,7 +211,9 @@ void proc6(void)
 {
 	int i;
 	
-	
+	set_process_priority(5, LOWEST);
+	set_process_priority(6, LOW);
+
 	printf("\r\n");
 	printf("%sSTART\n\r", GROUP_PREFIX);
 	printf("%stotal 6 tests\n\r", GROUP_PREFIX);
@@ -195,6 +228,8 @@ void proc6(void)
 	printf("%s%d/6 tests OK\n\r", GROUP_PREFIX, TOTAL_TESTS_PASSED);
 	printf("%s%d/6 tests FAIL\n\r", GROUP_PREFIX, 6 - TOTAL_TESTS_PASSED);
 	printf("%sEND\n\r", GROUP_PREFIX);
+	
+	set_process_priority(PID_A, HIGH);
 	
 	while(1) {
 		release_processor();

@@ -97,5 +97,8 @@ typedef struct msgbuf
 /* Message Types */
 #define DEFAULT 0
 #define KCD_REG 1
+#define COUNT_REPORT 2
+#define WAKEUP10 3
+#define CLOCK 4
 
 #endif // ! K_RTX_H_

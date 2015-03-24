@@ -42,6 +42,7 @@
 #define KCD_REG 1
 #define COUNT_REPORT 2
 #define WAKEUP10 3
+#define CLOCK 4
 
 #define NUM_MEM_BLOCKS 60
 

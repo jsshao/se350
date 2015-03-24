@@ -150,7 +150,7 @@ void a_process(void) {
 		int sender;
 		printf("Please type %%Z to trigger stress test\r\n");
 		p = receive_message(&sender);
-		set_process_priority(3, LOWEST);
+		set_process_priority(6, LOWEST);
 		set_process_priority(PID_B, MEDIUM);
 		set_process_priority(PID_C, MEDIUM);
 		set_process_priority(PID_A, MEDIUM);
@@ -168,9 +168,9 @@ void a_process(void) {
 		int sender;
 		p = (MSG_BUF*)request_memory_block();
 		p->mtype = COUNT_REPORT;
-		p->mtext[0] = num % (1 << 7);
+		p->mtext[0] = num;
 		send_message(PID_B, p);
-		num++;
+		num = (num + 1) % 20;
 		release_processor();
 	}
 }
@@ -212,7 +212,7 @@ void c_process(void) {
 				
 				/* Hibernate */
 				delay->mtype = WAKEUP10;
-				delayed_send(PID_C, delay, 2000);
+				delayed_send(PID_C, delay, 10000);
 				while (1) {
 					msg = (MSG_BUF*)receive_message(&sender);
 					if (WAKEUP10 == msg->mtype) {
@@ -293,7 +293,7 @@ void clock_process(void) {
 	reg->mtext[1] = 'W';
 	send_message(PID_KCD, reg);
 	
-	self_msg->mtype = DEFAULT;
+	self_msg->mtype = CLOCK;
 	self_msg->mtext[0] = 'S';
 	send_message(PID_CLOCK, self_msg);	
 	
@@ -303,8 +303,6 @@ void clock_process(void) {
 		msg = receive_message(&sender);
 		if(sender == PID_CLOCK) {
 			if (state == 1) {
-				//print
-				//printf("%d \n\r", second);	
 				
 				int hours = (second/3600) % 24;				
 				int t = second%3600;
@@ -364,11 +362,10 @@ void clock_process(void) {
 					}
 				}
 				if (error) {
-					MSG_BUF* error_msg = (MSG_BUF*) request_memory_block();
-					strcpy(error_msg->mtext, "Error - invalid input\r\n");
-					error_msg->mtype = DEFAULT;
-					send_message(PID_CRT, error_msg);
-				}				
+					#ifdef DEBUG_0
+						printf("\r\nError - invalid input\r\n");
+					#endif
+					}				
 			} else if (msg_str[0] == '%' && msg_str[2] == 'R') {			
 				state = 1;
 				second = 0;
